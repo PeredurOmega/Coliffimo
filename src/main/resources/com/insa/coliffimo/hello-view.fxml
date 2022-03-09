@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.*?>
-<?import javafx.geometry.Insets?>
+<?import com.sothawo.mapjfx.MapView?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.insa.coliffimo.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-    <Label fx:id="welcomeText"/>
-    <MFXButton id="custom" minHeight="27.0" minWidth="70.0" text="Custom" onAction="#onHelloButtonClick"/>
-</VBox>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.insa.coliffimo.HelloController">
+    <top>
+        <Label fx:id="welcomeText"/>
+        <MFXButton id="custom" minHeight="27.0" minWidth="70.0" text="Custom" onAction="#onHelloButtonClick"/>
+    </top>
+    <center>
+        <MapView fx:id="mapView" BorderPane.alignment="CENTER"/>
+    </center>
+</BorderPane>
