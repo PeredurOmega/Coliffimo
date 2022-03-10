@@ -1,5 +1,6 @@
 package com.insa.coliffimo.metier;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -20,20 +21,22 @@ public class Map {
      * Variable containing the list of intersections.
      * Hashmap with intersection id as hashmap key and intersection as hashmap value.
      */
-    private HashMap<Integer, Intersection> listIntersections;
+    private HashMap<Long, Intersection> listIntersections;
 
     /**
      * Constructor of the class.
      */
     public Map(){
+
         this.listSegments = new ArrayList<>();
+        this.listIntersections = new HashMap<>();
     }
 
     public ArrayList<Segment> getListSegments() {
         return listSegments;
     }
 
-    public HashMap<Integer, Intersection> getListIntersections() {
+    public HashMap<Long, Intersection> getListIntersections() {
         return listIntersections;
     }
 

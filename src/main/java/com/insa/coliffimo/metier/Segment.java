@@ -18,12 +18,12 @@ public class Segment {
     /**
      * Variable containing the identifiant of the origin intersection.
      */
-    private int origin;
+    private Long origin;
 
     /**
      * Variable containing the identifiant of the destination intersection.
      */
-    private int destination;
+    private Long destination;
 
     /**
      * Constructor of the class.
@@ -32,7 +32,7 @@ public class Segment {
      * @param origin
      * @param destination
      */
-    public Segment(String name, float length, int origin, int destination) {
+    public Segment(String name, float length, Long origin, Long destination) {
         this.name = name;
         this.length = length;
         this.origin = origin;
@@ -55,19 +55,19 @@ public class Segment {
         this.length = length;
     }
 
-    public int getOrigin() {
+    public Long getOrigin() {
         return origin;
     }
 
-    public void setOrigin(int origin) {
+    public void setOrigin(Long origin) {
         this.origin = origin;
     }
 
-    public int getDestination() {
+    public Long getDestination() {
         return destination;
     }
 
-    public void setDestination(int destination) {
+    public void setDestination(Long destination) {
         this.destination = destination;
     }
 
