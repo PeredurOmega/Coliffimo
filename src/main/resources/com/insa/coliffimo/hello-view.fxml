@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.sothawo.mapjfx.MapView?>
+<?import com.dlsc.gmapsfx.GoogleMapView?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
@@ -12,6 +12,6 @@
         <MFXButton id="custom" minHeight="27.0" minWidth="70.0" text="Custom" onAction="#onHelloButtonClick"/>
     </top>
     <center>
-        <MapView fx:id="mapView" BorderPane.alignment="CENTER"/>
+        <GoogleMapView fx:id="mapView" BorderPane.alignment="CENTER"/>
     </center>
 </BorderPane>
