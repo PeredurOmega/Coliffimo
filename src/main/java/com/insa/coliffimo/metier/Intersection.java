@@ -1,5 +1,7 @@
 package com.insa.coliffimo.metier;
 
+import java.math.BigInteger;
+
 /**
  * Class representing an intersection between several streets on a map.
  */
@@ -8,7 +10,7 @@ public class Intersection {
     /**
      * Variable containing the identifiant of intersection.
      */
-    private int id;
+    private Long id;
 
     /**
      * Variable containing the latitude of intersection.
@@ -26,17 +28,17 @@ public class Intersection {
      * @param latitude
      * @param longitude
      */
-    public Intersection(int id, float latitude, float longitude){
+    public Intersection(Long id, float latitude, float longitude){
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

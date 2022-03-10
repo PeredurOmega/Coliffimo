@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<map>
+<intersection id="25175791" latitude="45.75406" longitude="4.857418"/>
+<intersection id="2129259178" latitude="45.750404" longitude="4.8744674"/>
+<intersection id="26086130" latitude="45.75871" longitude="4.8704023"/>
+<intersection id="2129259176" latitude="45.75171" longitude="4.8718166"/>
+<intersection id="479185301" latitude="45.750896" longitude="4.859119"/>
+<intersection id="25611760" latitude="45.754536" longitude="4.866525"/>
+<intersection id="25303831" latitude="45.74979" longitude="4.87572"/>
+<intersection id="479185303" latitude="45.751904" longitude="4.857877"/>
+<intersection id="25303832" latitude="45.749344" longitude="4.876714"/>
+<intersection id="25303833" latitude="45.748894" longitude="4.877902"/>
+<intersection id="33066088" latitude="45.759098" longitude="4.8617606"/>
+<intersection id="2129259180" latitude="45.750214" longitude="4.8742905"/>
+<intersection id="26316433" latitude="45.75862" longitude="4.870949"/>
+<intersection id="25468070" latitude="45.76204" longitude="4.862937"/>
+<intersection id="26086121" latitude="45.760586" longitude="4.866353"/>
+<intersection id="26086122" latitude="45.760376" longitude="4.8680854"/>
+<intersection id="26086120" latitude="45.761326" longitude="4.8646603"/>
+<intersection id="26086126" latitude="45.75925" longitude="4.865438"/>
+<intersection id="26086123" latitude="45.762226" longitude="4.868497"/>
+<intersection id="26086124" latitude="45.759098" longitude="4.8629594"/>
+<intersection id="26086129" latitude="45.759094" longitude="4.867803"/>
+<intersection id="25152444" latitude="45.747326" longitude="4.858333"/>
+<intersection id="26086127" latitude="45.75929" longitude="4.8660555"/>
+<intersection id="26086128" latitude="45.759357" longitude="4.8678627"/>
+<intersection id="479185309" latitude="45.752026" longitude="4.858831"/>
+<intersection id="208776568" latitude="45.758827" longitude="4.869551"/>
+<intersection id="495424862" latitude="45.752663" longitude="4.857675"/>
+<intersection id="25468067" latitude="45.762028" longitude="4.864684"/>
+<intersection id="25175778" latitude="45.75343" longitude="4.8574653"/>
+<intersection id="25611411" latitude="45.75486" longitude="4.879142"/>
+<intersection id="26316432" latitude="45.75836" longitude="4.872581"/>
+<intersection id="25303800" latitude="45.747585" longitude="4.877618"/>
+<intersection id="25611425" latitude="45.754944" longitude="4.8772635"/>
+<intersection id="25611428" latitude="45.75478" longitude="4.87484"/>
+<intersection id="25611424" latitude="45.754955" longitude="4.8783345"/>
+<intersection id="26316429" latitude="45.7573" longitude="4.8731403"/>
+<intersection id="1345284783" latitude="45.752106" longitude="4.8660784"/>
+<intersection id="26317212" latitude="45.753757" longitude="4.8719707"/>
+<intersection id="55475018" latitude="45.75978" longitude="4.875795"/>
+<intersection id="25321469" latitude="45.748405" longitude="4.875445"/>
+<intersection id="25335981" latitude="45.750526" longitude="4.8685336"/>
+<intersection id="2069548756" latitude="45.761852" longitude="4.8579416"/>
+<intersection id="26317209" latitude="45.754433" longitude="4.8718023"/>
+<intersection id="26317207" latitude="45.75405" longitude="4.86861"/>
+<intersection id="2672660419" latitude="45.756004" longitude="4.8742256"/>
+<intersection id="25321357" latitude="45.747253" longitude="4.8703413"/>
+<intersection id="55475004" latitude="45.759575" longitude="4.8759494"/>
+<intersection id="565375197" latitude="45.753437" longitude="4.871185"/>
+<intersection id="25321359" latitude="45.747795" longitude="4.872455"/>
+<intersection id="26079802" latitude="45.754997" longitude="4.8576107"/>
+<intersection id="26317214" latitude="45.754124" longitude="4.867271"/>
+<intersection id="26079801" latitude="45.754852" longitude="4.8574104"/>
+<intersection id="26079800" latitude="45.75513" longitude="4.8574104"/>
+<intersection id="26317312" latitude="45.753" longitude="4.8787503"/>
+<intersection id="26317310" latitude="45.75405" longitude="4.878974"/>
+<intersection id="459797866" latitude="45.75379" longitude="4.874625"/>
+<intersection id="459797864" latitude="45.75356" longitude="4.8737674"/>
+<intersection id="55475038" latitude="45.759636" longitude="4.875504"/>
+<intersection id="26086114" latitude="45.761364" longitude="4.862966"/>
+<intersection id="26086115" latitude="45.761345" longitude="4.863875"/>
+<intersection id="459797860" latitude="45.7518" longitude="4.873133"/>
+<intersection id="26086118" latitude="45.761295" longitude="4.8664956"/>
+<intersection id="26086119" latitude="45.76131" longitude="4.8654766"/>
+<intersection id="26086117" latitude="45.761303" longitude="4.868284"/>
+<intersection id="2117622744" latitude="45.757072" longitude="4.8586116"/>
+<intersection id="2117622742" latitude="45.75619" longitude="4.858778"/>
+<intersection id="1679901320" latitude="45.762653" longitude="4.875565"/>
+<intersection id="55475025" latitude="45.759773" longitude="4.8756394"/>
+<intersection id="25303840" latitude="45.7522" longitude="4.874652"/>
+<intersection id="208769091" latitude="45.759727" longitude="4.8709283"/>
+<intersection id="25303841" latitude="45.75184" longitude="4.87654"/>
+<intersection id="25334442" latitude="45.74966" longitude="4.865105"/>
+<intersection id="2117622739" latitude="45.755558" longitude="4.858861"/>
+<intersection id="2117622731" latitude="45.755" longitude="4.8590035"/>
+<intersection id="250042857" latitude="45.754208" longitude="4.8638077"/>
+<intersection id="26317313" latitude="45.753277" longitude="4.8788133"/>
+<intersection id="25321302" latitude="45.749954" longitude="4.8637676"/>
+<intersection id="25321422" latitude="45.749027" longitude="4.873145"/>
+<intersection id="25321304" latitude="45.74843" longitude="4.8656287"/>
+<intersection id="342869317" latitude="45.759945" longitude="4.87886"/>
+<intersection id="3870641969" latitude="45.75985" longitude="4.8724995"/>
+<intersection id="2117622723" latitude="45.75425" longitude="4.8591485"/>
+<intersection id="2117622721" latitude="45.753757" longitude="4.8601513"/>
+<intersection id="4428355731" latitude="45.750877" longitude="4.8608565"/>
+<intersection id="3870641963" latitude="45.759747" longitude="4.872273"/>
+<intersection id="26317248" latitude="45.753586" longitude="4.871547"/>
+<intersection id="26057083" latitude="45.756855" longitude="4.86569"/>
+<intersection id="25321433" latitude="45.74969" longitude="4.873468"/>
+<intersection id="1682387619" latitude="45.752823" longitude="4.8751845"/>
+<intersection id="26057084" latitude="45.756714" longitude="4.8673143"/>
+<intersection id="26057085" latitude="45.756638" longitude="4.8683963"/>
+<intersection id="26317260" latitude="45.75318" longitude="4.875235"/>
+<intersection id="1682387615" latitude="45.752647" longitude="4.8724184"/>
+<intersection id="33065949" latitude="45.759" longitude="4.861726"/>
+<intersection id="26317259" latitude="45.753216" longitude="4.8756714"/>
+<intersection id="342867241" latitude="45.76051" longitude="4.879188"/>
+<intersection id="26317234" latitude="45.75526" longitude="4.8726516"/>
+<intersection id="26317235" latitude="45.754982" longitude="4.865772"/>
+<intersection id="26317232" latitude="45.75503" longitude="4.8707204"/>
+<intersection id="26317233" latitude="45.754574" longitude="4.8668556"/>
+<intersection id="25321687" latitude="45.75154" longitude="4.87438"/>
+<intersection id="25321327" latitude="45.74706" longitude="4.8751974"/>
+<intersection id="25321447" latitude="45.750668" longitude="4.8739367"/>
+<intersection id="25321689" latitude="45.751118" longitude="4.876261"/>
+<intersection id="254567104" latitude="45.762047" longitude="4.862103"/>
+<intersection id="342868447" latitude="45.76004" longitude="4.877385"/>
+<intersection id="26057064" latitude="45.75704" longitude="4.8625107"/>
+<intersection id="26317229" latitude="45.75465" longitude="4.8674865"/>
+<intersection id="26317228" latitude="45.755142" longitude="4.871614"/>
+<intersection id="26057069" latitude="45.75693" longitude="4.86464"/>
+<intersection id="254581659" latitude="45.762287" longitude="4.8576846"/>
+<intersection id="26317246" latitude="45.7529" longitude="4.8740664"/>
+<intersection id="25321330" latitude="45.747303" longitude="4.873961"/>
+<intersection id="25321456" latitude="45.749214" longitude="4.875591"/>
+<intersection id="26317242" latitude="45.75426" longitude="4.8732033"/>
+<intersection id="25321334" latitude="45.747627" longitude="4.872355"/>
+<intersection id="26057062" latitude="45.757103" longitude="4.8616505"/>
+<intersection id="26086307" latitude="45.751766" longitude="4.8568363"/>
+<intersection id="25335974" latitude="45.748856" longitude="4.868323"/>
+<intersection id="26057055" latitude="45.757072" longitude="4.8587456"/>
+<intersection id="92375972" latitude="45.75687" longitude="4.8576"/>
+<intersection id="26317236" latitude="45.75603" longitude="4.864057"/>
+<intersection id="92375975" latitude="45.757076" longitude="4.857793"/>
+<intersection id="92375974" latitude="45.756714" longitude="4.857779"/>
+<intersection id="26317294" latitude="45.752865" longitude="4.877914"/>
+<intersection id="1423439485" latitude="45.76235" longitude="4.878438"/>
+<intersection id="26317293" latitude="45.752815" longitude="4.8769016"/>
+<intersection id="55463792" latitude="45.75585" longitude="4.876966"/>
+<intersection id="25468041" latitude="45.762028" longitude="4.8638415"/>
+<intersection id="55463789" latitude="45.755737" longitude="4.876579"/>
+<intersection id="26576954" latitude="45.747383" longitude="4.858934"/>
+<intersection id="26576955" latitude="45.74725" longitude="4.8587947"/>
+<intersection id="1368674810" latitude="45.75577" longitude="4.876167"/>
+<intersection id="26576953" latitude="45.747192" longitude="4.859119"/>
+<intersection id="1368674811" latitude="45.75587" longitude="4.876154"/>
+<intersection id="3870640550" latitude="45.75942" longitude="4.872516"/>
+<intersection id="2069548810" latitude="45.762756" longitude="4.859692"/>
+<intersection id="55463799" latitude="45.755966" longitude="4.876903"/>
+<intersection id="26576965" latitude="45.758797" longitude="4.8583546"/>
+<intersection id="55463796" latitude="45.756237" longitude="4.8778014"/>
+<intersection id="26576963" latitude="45.755165" longitude="4.8591056"/>
+<intersection id="251171098" latitude="45.751587" longitude="4.8779144"/>
+<intersection id="26576964" latitude="45.75771" longitude="4.858617"/>
+<intersection id="26317393" latitude="45.75209" longitude="4.8788476"/>
+<intersection id="26121686" latitude="45.74841" longitude="4.859172"/>
+<intersection id="522100855" latitude="45.751476" longitude="4.866085"/>
+<intersection id="2365376415" latitude="45.748672" longitude="4.8785987"/>
+<intersection id="25321408" latitude="45.748898" longitude="4.873075"/>
+<intersection id="25321407" latitude="45.748512" longitude="4.8728576"/>
+<intersection id="21993013" latitude="45.74786" longitude="4.8624663"/>
+<intersection id="54803125" latitude="45.762478" longitude="4.870813"/>
+<intersection id="54803121" latitude="45.762657" longitude="4.872357"/>
+<intersection id="54803122" latitude="45.76158" longitude="4.8708496"/>
+<intersection id="1368674809" latitude="45.755665" longitude="4.8761983"/>
+<intersection id="251050862" latitude="45.75084" longitude="4.8726606"/>
+<intersection id="1603856892" latitude="45.752464" longitude="4.870312"/>
+<intersection id="21993017" latitude="45.748215" longitude="4.863507"/>
+<intersection id="21993015" latitude="45.747337" longitude="4.865067"/>
+<intersection id="54803119" latitude="45.761772" longitude="4.8724155"/>
+<intersection id="2456932713" latitude="45.760902" longitude="4.877833"/>
+<intersection id="33065924" latitude="45.75878" longitude="4.858702"/>
+<intersection id="1368674802" latitude="45.75492" longitude="4.8753004"/>
+<intersection id="26057098" latitude="45.75631" longitude="4.871078"/>
+<intersection id="2129259173" latitude="45.751522" longitude="4.871599"/>
+<intersection id="1368674800" latitude="45.754917" longitude="4.876105"/>
+<intersection id="1368674806" latitude="45.755222" longitude="4.876136"/>
+<intersection id="3393859927" latitude="45.749573" longitude="4.8595033"/>
+<intersection id="251047560" latitude="45.751255" longitude="4.8727455"/>
+<intersection id="1036842196" latitude="45.75098" longitude="4.859755"/>
+<intersection id="3393859920" latitude="45.749447" longitude="4.8603206"/>
+<intersection id="1036842078" latitude="45.749855" longitude="4.859729"/>
+<intersection id="208769120" latitude="45.759434" longitude="4.869736"/>
+<intersection id="55457354" latitude="45.762676" longitude="4.8782406"/>
+<intersection id="26033277" latitude="45.756165" longitude="4.8574095"/>
+<intersection id="3370328152" latitude="45.76138" longitude="4.8620934"/>
+<intersection id="3393859930" latitude="45.74965" longitude="4.859534"/>
+<intersection id="208769112" latitude="45.75941" longitude="4.86923"/>
+<intersection id="251050719" latitude="45.752224" longitude="4.874003"/>
+<intersection id="1288817934" latitude="45.749992" longitude="4.8702283"/>
+<intersection id="251047558" latitude="45.752396" longitude="4.873476"/>
+<intersection id="3393859904" latitude="45.749123" longitude="4.8594327"/>
+<intersection id="48830472" latitude="45.758003" longitude="4.874931"/>
+<intersection id="26057106" latitude="45.7561" longitude="4.8726816"/>
+<intersection id="48830470" latitude="45.75691" longitude="4.8763556"/>
+<intersection id="48830471" latitude="45.757717" longitude="4.876506"/>
+<intersection id="26057109" latitude="45.757126" longitude="4.8746276"/>
+<intersection id="2026239409" latitude="45.752804" longitude="4.869617"/>
+<intersection id="208769227" latitude="45.759556" longitude="4.8696303"/>
+<intersection id="55463805" latitude="45.75561" longitude="4.8755274"/>
+<intersection id="26577743" latitude="45.762623" longitude="4.8575273"/>
+<intersection id="1368674799" latitude="45.7549" longitude="4.87564"/>
+<intersection id="48830474" latitude="45.75852" longitude="4.8765216"/>
+<intersection id="48833743" latitude="45.76003" longitude="4.866216"/>
+<intersection id="208769334" latitude="45.759197" longitude="4.8769765"/>
+<intersection id="48833747" latitude="45.759834" longitude="4.867973"/>
+<intersection id="208769457" latitude="45.760174" longitude="4.877455"/>
+<intersection id="48833748" latitude="45.7601" longitude="4.8654733"/>
+<intersection id="251171031" latitude="45.75276" longitude="4.8784537"/>
+<intersection id="208769219" latitude="45.759624" longitude="4.8697677"/>
+<intersection id="55463812" latitude="45.754936" longitude="4.876986"/>
+<intersection id="249801845" latitude="45.754467" longitude="4.863723"/>
+<intersection id="1703401805" latitude="45.749405" longitude="4.866139"/>
+<intersection id="195271" latitude="45.7512" longitude="4.8685937"/>
+<intersection id="195270" latitude="45.751556" longitude="4.865392"/>
+<intersection id="195262" latitude="45.74992" longitude="4.8604593"/>
+<intersection id="195261" latitude="45.753925" longitude="4.8615813"/>
+<intersection id="195263" latitude="45.750793" longitude="4.86073"/>
+<intersection id="195266" latitude="45.75" longitude="4.8644643"/>
+<intersection id="55463826" latitude="45.75659" longitude="4.8790674"/>
+<intersection id="195268" latitude="45.75073" longitude="4.8650455"/>
+<intersection id="4193445730" latitude="45.756573" longitude="4.8789897"/>
+<intersection id="1682387539" latitude="45.749924" longitude="4.8719816"/>
+<intersection id="1259561375" latitude="45.75071" longitude="4.870559"/>
+<intersection id="25336175" latitude="45.75301" longitude="4.863642"/>
+<intersection id="25336178" latitude="45.752552" longitude="4.8658633"/>
+<intersection id="4193445733" latitude="45.757183" longitude="4.878625"/>
+<intersection id="25719228" latitude="45.74938" longitude="4.8602924"/>
+<intersection id="208769312" latitude="45.759335" longitude="4.877039"/>
+<intersection id="195273" latitude="45.749615" longitude="4.8684645"/>
+<intersection id="195272" latitude="45.749878" longitude="4.868472"/>
+<intersection id="195275" latitude="45.747925" longitude="4.8676333"/>
+<intersection id="195274" latitude="45.7489" longitude="4.8681254"/>
+<intersection id="195276" latitude="45.74762" longitude="4.865224"/>
+<intersection id="2835339775" latitude="45.758167" longitude="4.8668036"/>
+<intersection id="2835339774" latitude="45.757305" longitude="4.8666577"/>
+<intersection id="55474983" latitude="45.75947" longitude="4.8756676"/>
+<intersection id="25336189" latitude="45.752617" longitude="4.8687177"/>
+<intersection id="55474989" latitude="45.75948" longitude="4.87583"/>
+<intersection id="25173835" latitude="45.75045" longitude="4.8569613"/>
+<intersection id="25336179" latitude="45.754128" longitude="4.863194"/>
+<intersection id="208769303" latitude="45.75924" longitude="4.877136"/>
+<intersection id="55474973" latitude="45.76165" longitude="4.875242"/>
+<intersection id="55474978" latitude="45.761276" longitude="4.876554"/>
+<intersection id="25173820" latitude="45.749996" longitude="4.858258"/>
+<intersection id="640541652" latitude="45.751877" longitude="4.871223"/>
+<intersection id="195259" latitude="45.75095" longitude="4.859947"/>
+<intersection id="15925440" latitude="45.747505" longitude="4.857594"/>
+<intersection id="2650077854" latitude="45.753654" longitude="4.8593636"/>
+<intersection id="3509898986" latitude="45.753796" longitude="4.867863"/>
+<intersection id="2587463836" latitude="45.753925" longitude="4.859339"/>
+<intersection id="208769083" latitude="45.75947" longitude="4.870945"/>
+<intersection id="26079797" latitude="45.754993" longitude="4.8568406"/>
+<intersection id="2586814489" latitude="45.757202" longitude="4.8783083"/>
+<intersection id="21992980" latitude="45.748535" longitude="4.862575"/>
+<intersection id="25451370" latitude="45.750343" longitude="4.866599"/>
+<intersection id="26079798" latitude="45.754997" longitude="4.8572116"/>
+<intersection id="1679901326" latitude="45.762775" longitude="4.873984"/>
+<intersection id="25336254" latitude="45.751957" longitude="4.8713155"/>
+<intersection id="2587460578" latitude="45.75883" longitude="4.8659945"/>
+<intersection id="2587460577" latitude="45.758675" longitude="4.867718"/>
+<intersection id="80311393" latitude="45.75908" longitude="4.862537"/>
+<intersection id="26033326" latitude="45.756176" longitude="4.8582525"/>
+<intersection id="2034547839" latitude="45.7495" longitude="4.859674"/>
+<intersection id="1036842114" latitude="45.74993" longitude="4.8595204"/>
+<intersection id="26033324" latitude="45.757076" longitude="4.857407"/>
+<intersection id="2034547834" latitude="45.749058" longitude="4.8610687"/>
+<intersection id="25336247" latitude="45.75039" longitude="4.8738017"/>
+<intersection id="18697372" latitude="45.747116" longitude="4.859554"/>
+<intersection id="55475052" latitude="45.758472" longitude="4.8751354"/>
+<intersection id="474605986" latitude="45.747997" longitude="4.864131"/>
+<intersection id="3267479470" latitude="45.75974" longitude="4.872321"/>
+<intersection id="21992996" latitude="45.747612" longitude="4.86394"/>
+<intersection id="208769180" latitude="45.759502" longitude="4.872345"/>
+<intersection id="474605980" latitude="45.74871" longitude="4.8645"/>
+<intersection id="21992995" latitude="45.74773" longitude="4.8634377"/>
+<intersection id="2383442941" latitude="45.754566" longitude="4.861602"/>
+<intersection id="208769069" latitude="45.758217" longitude="4.8735127"/>
+<intersection id="25175819" latitude="45.754997" longitude="4.859137"/>
+<intersection id="342872879" latitude="45.760693" longitude="4.8777256"/>
+<intersection id="342873729" latitude="45.760193" longitude="4.8781986"/>
+<intersection id="474605974" latitude="45.748684" longitude="4.864619"/>
+<intersection id="21712143" latitude="45.74872" longitude="4.857905"/>
+<intersection id="208769295" latitude="45.759293" longitude="4.876936"/>
+<intersection id="3236267785" latitude="45.7578" longitude="4.878393"/>
+<intersection id="3509888072" latitude="45.753685" longitude="4.867738"/>
+<intersection id="2586814494" latitude="45.758804" longitude="4.878655"/>
+<intersection id="565368324" latitude="45.747086" longitude="4.8623657"/>
+<intersection id="2383442929" latitude="45.755955" longitude="4.861632"/>
+<intersection id="208769163" latitude="45.75964" longitude="4.872506"/>
+<intersection id="208769047" latitude="45.759624" longitude="4.8743205"/>
+<intersection id="1860559399" latitude="45.747787" longitude="4.874241"/>
+<intersection id="26316513" latitude="45.757706" longitude="4.870082"/>
+<intersection id="2841904735" latitude="45.74913" longitude="4.8594513"/>
+<intersection id="2477791932" latitude="45.74716" longitude="4.8587885"/>
+<intersection id="2383442939" latitude="45.75542" longitude="4.8616195"/>
+<intersection id="2841904730" latitude="45.749687" longitude="4.8594136"/>
+<intersection id="2383442931" latitude="45.755123" longitude="4.8616166"/>
+<intersection id="33066313" latitude="45.759087" longitude="4.861669"/>
+<intersection id="208769279" latitude="45.761482" longitude="4.869925"/>
+<intersection id="208769039" latitude="45.76069" longitude="4.8749375"/>
+<intersection id="26125366" latitude="45.7531" longitude="4.8704033"/>
+<intersection id="26079652" latitude="45.758354" longitude="4.864919"/>
+<intersection id="26079654" latitude="45.758083" longitude="4.8675914"/>
+<intersection id="26079653" latitude="45.758255" longitude="4.865917"/>
+<intersection id="208769145" latitude="45.7595" longitude="4.8722763"/>
+<intersection id="208769027" latitude="45.758717" longitude="4.8737717"/>
+<intersection id="251167391" latitude="45.74758" longitude="4.875293"/>
+<intersection id="26079656" latitude="45.75858" longitude="4.862883"/>
+<intersection id="26079655" latitude="45.757935" longitude="4.8685865"/>
+<intersection id="208822503" latitude="45.76229" longitude="4.869225"/>
+<intersection id="479185290" latitude="45.75072" longitude="4.858164"/>
+<intersection id="54803905" latitude="45.76194" longitude="4.8739953"/>
+<intersection id="21992964" latitude="45.74778" longitude="4.8682485"/>
+<intersection id="208769133" latitude="45.759453" longitude="4.8698664"/>
+<intersection id="342873658" latitude="45.76038" longitude="4.8775625"/>
+<intersection id="342873532" latitude="45.76051" longitude="4.8783274"/>
+<intersection id="208769499" latitude="45.760597" longitude="4.87622"/>
+<intersection id="975886496" latitude="45.756874" longitude="4.8574047"/>
+<segment destination="25175778" length="69.979805" name="Rue Danton" origin="25175791"/>
+<segment destination="2117622723" length="136.00636" name="Rue de l'Abondance" origin="25175791"/>
+<segment destination="2129259180" length="25.26484" name="" origin="2129259178"/>
+<segment destination="25303831" length="118.890465" name="Avenue Lacassagne" origin="2129259178"/>
+<segment destination="208776568" length="67.38149" name="Rue Sainte-Anne de Baraban" origin="26086130"/>
+<segment destination="2129259173" length="26.899399" name="" origin="2129259176"/>
+<segment destination="251047560" length="88.17194" name="Avenue Lacassagne" origin="2129259176"/>
+<segment destination="479185309" length="127.57283" name="Rue Philomène Magnin" origin="479185301"/>
+<segment destination="479185290" length="76.625084" name="Rue de l'Abbé Boisard" origin="479185301"/>
+<segment destination="1036842196" length="50.411644" name="Rue de l'Abbé Boisard" origin="479185301"/>
+<segment destination="26317233" length="26.020561" name="Avenue Félix Faure" origin="25611760"/>
+<segment destination="26317214" length="73.66637" name="Avenue Lacassagne" origin="25611760"/>
+<segment destination="250042857" length="214.0224" name="Avenue Félix Faure" origin="25611760"/>
+<segment destination="25321456" length="64.89446" name="Rue Feuillat" origin="25303831"/>
+<segment destination="25321689" length="153.72511" name="Rue Feuillat" origin="25303831"/>
+<segment destination="2129259180" length="122.619156" name="Rue Bara" origin="25303831"/>
+<segment destination="25303832" length="91.81539" name="Avenue Lacassagne" origin="25303831"/>
+<segment destination="479185290" length="133.29784" name="Rue Professeur René Guillet" origin="479185303"/>
+<segment destination="479185309" length="75.256165" name="Rue de la Buire" origin="479185303"/>
+<segment destination="25303833" length="104.95519" name="Avenue Lacassagne" origin="25303832"/>
+<segment destination="2365376415" length="59.433758" name="Avenue Lacassagne" origin="25303833"/>
+<segment destination="33066313" length="7.2110343" name="Avenue Georges Pompidou" origin="33066088"/>
+<segment destination="2129259178" length="25.26484" name="" origin="2129259180"/>
+<segment destination="25336247" length="42.580826" name="Rue Bara" origin="2129259180"/>
+<segment destination="26086130" length="43.43769" name="Rue Sainte-Anne de Baraban" origin="26316433"/>
+<segment destination="254567104" length="64.74053" name="Rue Riboud" origin="25468070"/>
+<segment destination="25468041" length="70.17448" name="Rue Riboud" origin="25468070"/>
+<segment destination="26086114" length="75.166565" name="Rue Maurice Flandin" origin="25468070"/>
+<segment destination="26086122" length="136.39932" name="Rue Roposte" origin="26086121"/>
+<segment destination="48833743" length="62.881767" name="Rue Étienne Richerand" origin="26086121"/>
+<segment destination="48833747" length="61.05543" name="Rue Baraban" origin="26086122"/>
+<segment destination="26086117" length="104.15767" name="Rue Baraban" origin="26086122"/>
+<segment destination="25468067" length="77.947" name="Rue Ternois" origin="26086120"/>
+<segment destination="26086119" length="63.36733" name="Rue d'Aubigny" origin="26086120"/>
+<segment destination="26086115" length="60.97287" name="Rue d'Aubigny" origin="26086120"/>
+<segment destination="26086124" length="193.08192" name="Avenue Georges Pompidou" origin="26086126"/>
+<segment destination="48833748" length="94.98224" name="Rue Gandolière" origin="26086126"/>
+<segment destination="26086127" length="48.14814" name="Avenue Georges Pompidou" origin="26086126"/>
+<segment destination="26086117" length="104.1326" name="Rue Baraban" origin="26086123"/>
+<segment destination="26079656" length="57.778957" name="Rue Maurice Flandin" origin="26086124"/>
+<segment destination="80311393" length="32.83932" name="Avenue Georges Pompidou" origin="26086124"/>
+<segment destination="26086126" length="193.08192" name="Avenue Georges Pompidou" origin="26086124"/>
+<segment destination="26086128" length="29.557299" name="Rue Baraban" origin="26086129"/>
+<segment destination="2587460577" length="47.348785" name="Rue Baraban" origin="26086129"/>
+<segment destination="26576954" length="50.25232" name="Grande Rue de la Guillotière" origin="25152444"/>
+<segment destination="26576955" length="36.783928" name="Grande Rue de la Guillotière" origin="25152444"/>
+<segment destination="2477791932" length="41.447834" name="Grande Rue de la Guillotière" origin="25152444"/>
+<segment destination="26086128" length="140.42914" name="Avenue Georges Pompidou" origin="26086127"/>
+<segment destination="2587460578" length="51.051052" name="Rue Étienne Richerand" origin="26086127"/>
+<segment destination="26086126" length="48.14814" name="Avenue Georges Pompidou" origin="26086127"/>
+<segment destination="208769112" length="106.253914" name="Avenue Georges Pompidou" origin="26086128"/>
+<segment destination="26086129" length="29.557299" name="Rue Baraban" origin="26086128"/>
+<segment destination="48833747" length="53.631104" name="Rue Baraban" origin="26086128"/>
+<segment destination="26086127" length="140.42914" name="Avenue Georges Pompidou" origin="26086128"/>
+<segment destination="479185301" length="127.57283" name="Rue Philomène Magnin" origin="479185309"/>
+<segment destination="495424862" length="159.34192" name="Rue Danielle Faÿnel Duclos Rue Philomène Magnin" origin="479185309"/>
+<segment destination="208769120" length="68.82436" name="Rue de Nazareth" origin="208776568"/>
+<segment destination="26086129" length="138.84" name="Rue Sainte-Anne de Baraban" origin="208776568"/>
+<segment destination="25175778" length="86.8148" name="Rue Professeur René Guillet" origin="495424862"/>
+<segment destination="479185309" length="159.34192" name="Rue Danielle Faÿnel Duclos Rue Philomène Magnin" origin="495424862"/>
+<segment destination="479185303" length="86.1731" name="Rue Professeur René Guillet" origin="495424862"/>
+<segment destination="25611424" length="63.580322" name="Route de Genas" origin="25611411"/>
+<segment destination="26317310" length="91.03066" name="Rue Claudius Penet" origin="25611411"/>
+<segment destination="26316433" length="129.96458" name="Rue Sainte-Anne de Baraban" origin="26316432"/>
+<segment destination="25303833" length="148.15503" name="Rue du Professeur Rochaix" origin="25303800"/>
+<segment destination="55463812" length="21.551727" name="Route de Genas" origin="25611425"/>
+<segment destination="25611424" length="83.16971" name="Route de Genas" origin="25611425"/>
+<segment destination="55463792" length="104.732445" name="Rue Meunier" origin="25611425"/>
+<segment destination="26317293" length="238.35002" name="Rue Feuillat" origin="25611425"/>
+<segment destination="26317242" length="139.95462" name="Rue du Dauphiné" origin="25611428"/>
+<segment destination="26317260" length="180.70561" name="Rue du Docteur Vaillant" origin="25611428"/>
+<segment destination="1368674799" length="63.594482" name="Rue du Dauphiné" origin="25611428"/>
+<segment destination="25611425" length="83.16971" name="Route de Genas" origin="25611424"/>
+<segment destination="25611411" length="63.580322" name="Route de Genas" origin="25611424"/>
+<segment destination="26317294" length="234.77402" name="Rue Bellicard" origin="25611424"/>
+<segment destination="26057109" length="117.094574" name="Rue Antoine Charial" origin="26316429"/>
+<segment destination="522100855" length="70.188835" name="Rue Rampon" origin="1345284783"/>
+<segment destination="26317209" length="76.32593" name="Rue de Carry" origin="26317212"/>
+<segment destination="26317248" length="38.124634" name="Rue du Dauphiné" origin="26317212"/>
+<segment destination="26317242" length="110.82931" name="Rue du Dauphiné" origin="26317212"/>
+<segment destination="208769499" length="96.57731" name="Rue Édouard Aynard" origin="55475018"/>
+<segment destination="55475025" length="12.28458" name="Place Marengo" origin="55475018"/>
+<segment destination="55475004" length="28.9105" name="Place Marengo" origin="55475018"/>
+<segment destination="25321456" length="90.44906" name="Rue Feuillat" origin="25321469"/>
+<segment destination="195272" length="72.58715" name="Rue du Professeur Paul Sisley" origin="25335981"/>
+<segment destination="2069548810" length="207.19589" name="Rue de Bonnel" origin="2069548756"/>
+<segment destination="26317228" length="79.975136" name="Rue de Carry" origin="26317209"/>
+<segment destination="26317207" length="251.37651" name="Rue de la Métallurgie" origin="26317209"/>
+<segment destination="26317209" length="251.37651" name="Rue de la Métallurgie" origin="26317207"/>
+<segment destination="26125366" length="174.88742" name="Rue David" origin="26317207"/>
+<segment destination="26057106" length="120.3281" name="Rue Paul Bert" origin="2672660419"/>
+<segment destination="55475018" length="28.9105" name="Place Marengo" origin="55475004"/>
+<segment destination="55474989" length="14.101396" name="Place Marengo" origin="55475004"/>
+<segment destination="208769295" length="82.654625" name="Avenue Antoine de Saint-Exupéry" origin="55475004"/>
+<segment destination="1682387615" length="129.8884" name="Impasse Belloeuf" origin="565375197"/>
+<segment destination="26317248" length="32.646736" name="Rue du Dauphiné" origin="565375197"/>
+<segment destination="26125366" length="71.13966" name="Rue du Dauphiné" origin="565375197"/>
+<segment destination="25321334" length="20.22657" name="Rue du Docteur Rebatel" origin="25321359"/>
+<segment destination="25335974" length="341.72525" name="Rue Saint-Maximin" origin="25321359"/>
+<segment destination="26079800" length="23.776384" name="Place Danton" origin="26079802"/>
+<segment destination="2117622731" length="108.09743" name="Rue du Pensionnat" origin="26079802"/>
+<segment destination="250042857" length="345.9447" name="Rue des Cadets de la France Libre Rue Jean-Pierre Lévy" origin="26317214"/>
+<segment destination="3509898986" length="58.81714" name="Avenue Lacassagne" origin="26317214"/>
+<segment destination="26079802" length="24.764387" name="Place Danton" origin="26079801"/>
+<segment destination="25175791" length="88.53801" name="Rue Danton" origin="26079801"/>
+<segment destination="26079798" length="23.799927" name="Place Danton" origin="26079800"/>
+<segment destination="26317313" length="31.349016" name="Rue Claudius Penet" origin="26317312"/>
+<segment destination="26317313" length="87.10888" name="Rue Claudius Penet" origin="26317310"/>
+<segment destination="25611411" length="91.03066" name="Rue Claudius Penet" origin="26317310"/>
+<segment destination="459797864" length="71.58854" name="Impasse Lacombe" origin="459797866"/>
+<segment destination="459797866" length="71.58854" name="Impasse Lacombe" origin="459797864"/>
+<segment destination="26317246" length="80.7477" name="Rue Villebois-Mareuil" origin="459797864"/>
+<segment destination="55475025" length="19.43745" name="Place Marengo" origin="55475038"/>
+<segment destination="55474983" length="23.662092" name="Place Marengo" origin="55475038"/>
+<segment destination="208769047" length="91.837265" name="Rue François Gillet" origin="55475038"/>
+<segment destination="3370328152" length="67.72544" name="Rue d'Aubigny" origin="26086114"/>
+<segment destination="26086115" length="70.569046" name="Rue d'Aubigny" origin="26086114"/>
+<segment destination="26086124" length="252.46027" name="Rue Maurice Flandin" origin="26086114"/>
+<segment destination="26086120" length="60.97287" name="Rue d'Aubigny" origin="26086115"/>
+<segment destination="26086114" length="70.569046" name="Rue d'Aubigny" origin="26086115"/>
+<segment destination="25321687" length="101.035904" name="Passage Feuillat" origin="459797860"/>
+<segment destination="251047560" length="67.994415" name="Rue de Domrémy" origin="459797860"/>
+<segment destination="251047558" length="72.6692" name="Rue de Domrémy" origin="459797860"/>
+<segment destination="26086119" length="79.10604" name="Rue d'Aubigny" origin="26086118"/>
+<segment destination="26086121" length="79.720085" name="Rue Étienne Richerand" origin="26086118"/>
+<segment destination="26086117" length="138.79436" name="Rue d'Aubigny" origin="26086118"/>
+<segment destination="26086120" length="63.36733" name="Rue d'Aubigny" origin="26086119"/>
+<segment destination="26086118" length="79.10604" name="Rue d'Aubigny" origin="26086119"/>
+<segment destination="26086122" length="104.15767" name="Rue Baraban" origin="26086117"/>
+<segment destination="26086123" length="104.1326" name="Rue Baraban" origin="26086117"/>
+<segment destination="26086118" length="138.79436" name="Rue d'Aubigny" origin="26086117"/>
+<segment destination="208769279" length="128.86993" name="Rue Saint-Victorien" origin="26086117"/>
+<segment destination="92375975" length="63.53379" name="Rue Paul Bert" origin="2117622744"/>
+<segment destination="2117622742" length="98.99292" name="Boulevard Vivier-Merle" origin="2117622744"/>
+<segment destination="26057055" length="10.406557" name="Rue Paul Bert" origin="2117622744"/>
+<segment destination="2117622739" length="70.71593" name="Boulevard Vivier-Merle" origin="2117622742"/>
+<segment destination="26033326" length="40.810665" name="Rue des Rancy" origin="2117622742"/>
+<segment destination="55474973" length="114.625244" name="Rue Pascal" origin="1679901320"/>
+<segment destination="55475018" length="12.28458" name="Place Marengo" origin="55475025"/>
+<segment destination="55475038" length="19.43745" name="Place Marengo" origin="55475025"/>
+<segment destination="208769039" length="115.5685" name="Avenue Marc Sangnier" origin="55475025"/>
+<segment destination="25321687" length="76.26666" name="Rue du Docteur Paul Diday" origin="25303840"/>
+<segment destination="251050719" length="50.582382" name="Impasse Jeanne d'Arc" origin="25303840"/>
+<segment destination="54803122" length="206.64528" name="Rue Claudius Pionchon" origin="208769091"/>
+<segment destination="208769219" length="92.4231" name="Place de la Ferrandière" origin="208769091"/>
+<segment destination="25303840" length="151.94449" name="Rue Jeanne d'Arc" origin="25303841"/>
+<segment destination="25321689" length="83.108986" name="Rue Feuillat" origin="25303841"/>
+<segment destination="26317293" length="111.942184" name="Rue Feuillat" origin="25303841"/>
+<segment destination="195266" length="68.44089" name="Rue Saint-Maximin" origin="25334442"/>
+<segment destination="474605974" length="115.165535" name="Rue Rossan" origin="25334442"/>
+<segment destination="2117622731" length="63.25565" name="Boulevard Vivier-Merle" origin="2117622739"/>
+<segment destination="26033326" length="83.423706" name="Rue Lavoisier" origin="2117622739"/>
+<segment destination="25175819" length="10.355757" name="Rue du Pensionnat" origin="2117622731"/>
+<segment destination="2117622723" length="84.0667" name="Boulevard Vivier-Merle" origin="2117622731"/>
+<segment destination="25611760" length="214.0224" name="Avenue Félix Faure" origin="250042857"/>
+<segment destination="25336179" length="48.468773" name="Avenue Félix Faure" origin="250042857"/>
+<segment destination="249801845" length="29.81919" name="Rue Kimmerling" origin="250042857"/>
+<segment destination="26317312" length="31.349016" name="Rue Claudius Penet" origin="26317313"/>
+<segment destination="26317310" length="87.10888" name="Rue Claudius Penet" origin="26317313"/>
+<segment destination="21993017" length="194.25832" name="Rue Saint-Théodore" origin="25321302"/>
+<segment destination="195266" length="54.717278" name="Rue du Dauphiné" origin="25321302"/>
+<segment destination="195262" length="256.8284" name="Rue du Dauphiné" origin="25321302"/>
+<segment destination="25321408" length="15.331951" name="Rue du Docteur Rebatel" origin="25321422"/>
+<segment destination="1288817934" length="250.5025" name="Rue de Montbrillant" origin="25321422"/>
+<segment destination="195275" length="165.48785" name="Rue Guilloud" origin="25321304"/>
+<segment destination="1703401805" length="115.59021" name="Rue des Tuiliers" origin="25321304"/>
+<segment destination="342867241" length="67.77638" name="Allée de l'Enfance" origin="342869317"/>
+<segment destination="342868447" length="147.80559" name="Allée du Couchant Allée de l'Enfance" origin="342869317"/>
+<segment destination="3870641963" length="21.147356" name="Rue de la Cité" origin="3870641969"/>
+<segment destination="208769163" length="23.496798" name="Rue de la Cité" origin="3870641969"/>
+<segment destination="2650077854" length="70.70859" name="Boulevard Vivier-Merle" origin="2117622723"/>
+<segment destination="2587463836" length="72.46447" name="Avenue Félix Faure" origin="2117622721"/>
+<segment destination="195261" length="112.49038" name="Avenue Félix Faure" origin="2117622721"/>
+<segment destination="2650077854" length="62.200565" name="Avenue Félix Faure" origin="2117622721"/>
+<segment destination="195263" length="13.370239" name="Rue du Général Mouton-Duvernet" origin="4428355731"/>
+<segment destination="195261" length="348.3609" name="Rue du Général Mouton-Duvernet" origin="4428355731"/>
+<segment destination="25336175" length="514.477" name="Rue Jeanne Hachette" origin="4428355731"/>
+<segment destination="208769091" length="104.45981" name="Place de la Ferrandière" origin="3870641963"/>
+<segment destination="26317212" length="38.124634" name="Rue du Dauphiné" origin="26317248"/>
+<segment destination="565375197" length="32.646736" name="Rue du Dauphiné" origin="26317248"/>
+<segment destination="26057069" length="81.91166" name="Rue Paul Bert" origin="26057083"/>
+<segment destination="25321422" length="77.777405" name="Rue du Docteur Rebatel" origin="25321433"/>
+<segment destination="26317246" length="87.1567" name="Impasse de la Ruche" origin="1682387619"/>
+<segment destination="26057083" length="127.00451" name="Rue Paul Bert" origin="26057084"/>
+<segment destination="26079654" length="153.978" name="Rue Baraban" origin="26057084"/>
+<segment destination="26057084" length="84.381294" name="Rue Paul Bert" origin="26057085"/>
+<segment destination="26317229" length="232.252" name="Rue Turbil" origin="26057085"/>
+<segment destination="25611428" length="180.70561" name="Rue du Docteur Vaillant" origin="26317260"/>
+<segment destination="565375197" length="129.8884" name="Impasse Belloeuf" origin="1682387615"/>
+<segment destination="33066088" length="11.389886" name="Rue de la Villette" origin="33065949"/>
+<segment destination="80311393" length="63.56973" name="Avenue Georges Pompidou" origin="33065949"/>
+<segment destination="26057062" length="211.0173" name="Rue de la Villette" origin="33065949"/>
+<segment destination="1368674799" length="187.75513" name="Rue Girié" origin="26317259"/>
+<segment destination="2456932713" length="113.9548" name="Rue Lafontaine" origin="342867241"/>
+<segment destination="342869317" length="67.77638" name="Allée de l'Enfance" origin="342867241"/>
+<segment destination="26057106" length="93.64789" name="Petite Rue Saint-Eusèbe" origin="26317234"/>
+<segment destination="26317228" length="81.59183" name="Avenue Félix Faure" origin="26317234"/>
+<segment destination="55463805" length="226.60776" name="Avenue Félix Faure" origin="26317234"/>
+<segment destination="25611760" length="76.77519" name="Avenue Lacassagne" origin="26317235"/>
+<segment destination="26057098" length="145.27324" name="Rue Meynis" origin="26317232"/>
+<segment destination="26317228" length="70.396255" name="Avenue Félix Faure" origin="26317232"/>
+<segment destination="26317229" length="254.54216" name="Avenue Félix Faure" origin="26317232"/>
+<segment destination="25611760" length="26.020561" name="Avenue Félix Faure" origin="26317233"/>
+<segment destination="26057084" length="240.98518" name="Rue Baraban" origin="26317233"/>
+<segment destination="26317229" length="49.68636" name="Avenue Félix Faure" origin="26317233"/>
+<segment destination="25321689" length="153.3693" name="Passage Feuillat" origin="25321687"/>
+<segment destination="459797860" length="101.035904" name="Passage Feuillat" origin="25321687"/>
+<segment destination="25321447" length="103.34052" name="Rue du Docteur Paul Diday" origin="25321687"/>
+<segment destination="25321330" length="99.70037" name="Rue de l'Harmonie" origin="25321327"/>
+<segment destination="251167391" length="58.375137" name="Rue Feuillat" origin="25321327"/>
+<segment destination="2129259178" length="50.40357" name="Avenue Lacassagne" origin="25321447"/>
+<segment destination="25336247" length="32.53504" name="Rue du Docteur Rebatel" origin="25321447"/>
+<segment destination="25321687" length="153.3693" name="Passage Feuillat" origin="25321689"/>
+<segment destination="25303841" length="83.108986" name="Rue Feuillat" origin="25321689"/>
+<segment destination="25303831" length="153.72511" name="Rue Feuillat" origin="25321689"/>
+<segment destination="25468070" length="64.74053" name="Rue Riboud" origin="254567104"/>
+<segment destination="208769457" length="15.785075" name="Rue Richelieu" origin="342868447"/>
+<segment destination="208769312" length="82.82316" name="Rue Richelieu" origin="342868447"/>
+<segment destination="342869317" length="147.80559" name="Allée du Couchant Allée de l'Enfance" origin="342868447"/>
+<segment destination="25336179" length="357.00134" name="Rue Maurice Flandin" origin="26057064"/>
+<segment destination="26317236" length="164.15819" name="Avenue Lacassagne" origin="26057064"/>
+<segment destination="26057062" length="67.43828" name="Rue Paul Bert" origin="26057064"/>
+<segment destination="26317232" length="254.54216" name="Avenue Félix Faure" origin="26317229"/>
+<segment destination="26317233" length="49.68636" name="Avenue Félix Faure" origin="26317229"/>
+<segment destination="26317214" length="61.443684" name="Place Rouget de l'Isle" origin="26317229"/>
+<segment destination="26317207" length="109.498764" name="Rue David" origin="26317229"/>
+<segment destination="26317232" length="70.396255" name="Avenue Félix Faure" origin="26317228"/>
+<segment destination="26317234" length="81.59183" name="Avenue Félix Faure" origin="26317228"/>
+<segment destination="26057064" length="167.2197" name="Rue Paul Bert" origin="26057069"/>
+<segment destination="26079652" length="159.78378" name="Rue Gabillot" origin="26057069"/>
+<segment destination="1682387619" length="87.1567" name="Impasse de la Ruche" origin="26317246"/>
+<segment destination="26317248" length="215.509" name="Rue de la Ruche" origin="26317246"/>
+<segment destination="25321334" length="129.78181" name="Rue de l'Harmonie" origin="25321330"/>
+<segment destination="25321327" length="99.70037" name="Rue de l'Harmonie" origin="25321330"/>
+<segment destination="25321433" length="174.66516" name="Rue Fiol" origin="25321456"/>
+<segment destination="25303831" length="64.89446" name="Rue Feuillat" origin="25321456"/>
+<segment destination="459797864" length="89.59381" name="Rue Villebois-Mareuil" origin="26317242"/>
+<segment destination="26317212" length="110.82931" name="Rue du Dauphiné" origin="26317242"/>
+<segment destination="25611428" length="139.95462" name="Rue du Dauphiné" origin="26317242"/>
+<segment destination="25321330" length="129.78181" name="Rue de l'Harmonie" origin="25321334"/>
+<segment destination="26057064" length="67.43828" name="Rue Paul Bert" origin="26057062"/>
+<segment destination="2383442929" length="127.89951" name="Rue du Général Mouton-Duvernet" origin="26057062"/>
+<segment destination="33065949" length="211.0173" name="Rue de la Villette" origin="26057062"/>
+<segment destination="26057055" length="225.47935" name="Rue Paul Bert" origin="26057062"/>
+<segment destination="195273" length="85.42524" name="Rue du Professeur Paul Sisley" origin="25335974"/>
+<segment destination="195274" length="16.124802" name="Rue Saint-Maximin" origin="25335974"/>
+<segment destination="2117622744" length="10.406557" name="Rue Paul Bert" origin="26057055"/>
+<segment destination="26576964" length="71.57768" name="Boulevard Vivier-Merle" origin="26057055"/>
+<segment destination="26057062" length="225.47935" name="Rue Paul Bert" origin="26057055"/>
+<segment destination="975886496" length="15.188097" name="Place Pierre Renaudel" origin="92375972"/>
+<segment destination="26033324" length="27.423489" name="Rue Lavoisier" origin="92375972"/>
+<segment destination="26317235" length="177.07799" name="Avenue Lacassagne" origin="26317236"/>
+<segment destination="26057069" length="109.60838" name="Rue Moissonnier" origin="26317236"/>
+<segment destination="2117622744" length="63.53379" name="Rue Paul Bert" origin="92375975"/>
+<segment destination="26033324" length="29.939322" name="Rue Paul Bert" origin="92375975"/>
+<segment destination="92375972" length="22.408638" name="Rue Lavoisier" origin="92375974"/>
+<segment destination="92375975" length="40.51647" name="Place Pierre Renaudel" origin="92375974"/>
+<segment destination="25611424" length="234.77402" name="Rue Bellicard" origin="26317294"/>
+<segment destination="26317293" length="78.770195" name="Rue Félix" origin="26317294"/>
+<segment destination="2456932713" length="169.0433" name="Rue Richelieu" origin="1423439485"/>
+<segment destination="55457354" length="39.759953" name="Rue Richelieu" origin="1423439485"/>
+<segment destination="25303841" length="111.942184" name="Rue Feuillat" origin="26317293"/>
+<segment destination="25611425" length="238.35002" name="Rue Feuillat" origin="26317293"/>
+<segment destination="55463799" length="13.81556" name="Rue Meunier" origin="55463792"/>
+<segment destination="55463796" length="77.77078" name="Place des Maisons Neuves" origin="55463792"/>
+<segment destination="25468067" length="65.390274" name="Rue Riboud" origin="25468041"/>
+<segment destination="26086115" length="76.27878" name="Rue Bellecombe" origin="25468041"/>
+<segment destination="55463792" length="32.672306" name="Place des Maisons Neuves" origin="55463789"/>
+<segment destination="3393859904" length="197.8001" name="Boulevard Vivier-Merle" origin="26576954"/>
+<segment destination="26121686" length="115.87691" name="Boulevard des Tchécoslovaques" origin="26576954"/>
+<segment destination="26576953" length="26.196728" name="Grande Rue de la Guillotière" origin="26576955"/>
+<segment destination="2477791932" length="10.054522" name="Boulevard des Tchécoslovaques" origin="26576955"/>
+<segment destination="1368674809" length="11.871078" name="Place des Maisons Neuves" origin="1368674810"/>
+<segment destination="1368674811" length="11.389846" name="Rue Frédéric Mistral" origin="1368674810"/>
+<segment destination="55463805" length="52.7486" name="Avenue Félix Faure" origin="1368674810"/>
+<segment destination="26576954" length="26.16321" name="Grande Rue de la Guillotière" origin="26576953"/>
+<segment destination="18697372" length="34.76711" name="Grande Rue de la Guillotière" origin="26576953"/>
+<segment destination="1368674810" length="11.389846" name="Rue Frédéric Mistral" origin="1368674811"/>
+<segment destination="2672660419" length="150.36613" name="Rue Paul Bert" origin="1368674811"/>
+<segment destination="48830470" length="116.254364" name="Rue Frédéric Mistral" origin="1368674811"/>
+<segment destination="26316432" length="117.66286" name="Rue de la Cité" origin="3870640550"/>
+<segment destination="1368674810" length="61.247414" name="Place des Maisons Neuves" origin="55463799"/>
+<segment destination="33065924" length="27.023342" name="Avenue Georges Pompidou" origin="26576965"/>
+<segment destination="2069548756" length="343.10223" name="Boulevard Vivier-Merle" origin="26576965"/>
+<segment destination="25611424" length="149.72107" name="Rue Rhonat" origin="55463796"/>
+<segment destination="4193445730" length="99.45865" name="Rue Jean Jaurès" origin="55463796"/>
+<segment destination="55463799" length="75.874596" name="Place des Maisons Neuves" origin="55463796"/>
+<segment destination="2117622739" length="47.98013" name="Rue Lavoisier" origin="26576963"/>
+<segment destination="26057055" length="214.2913" name="Boulevard Vivier-Merle" origin="26576963"/>
+<segment destination="25303832" length="266.44214" name="Rue Jules Verne" origin="251171098"/>
+<segment destination="25303841" length="110.330574" name="Rue Jeanne d'Arc" origin="251171098"/>
+<segment destination="251171031" length="137.23657" name="Rue de l'Est" origin="251171098"/>
+<segment destination="33065924" length="122.99652" name="Boulevard Vivier-Merle" origin="26576964"/>
+<segment destination="26576965" length="123.08343" name="Boulevard Vivier-Merle" origin="26576964"/>
+<segment destination="2841904735" length="84.053215" name="Boulevard des Tchécoslovaques" origin="26121686"/>
+<segment destination="21712143" length="104.18585" name="Rue Jules Brunard" origin="26121686"/>
+<segment destination="1345284783" length="70.188835" name="Rue Rampon" origin="522100855"/>
+<segment destination="195271" length="197.0728" name="Rue Roger Bréchan" origin="522100855"/>
+<segment destination="25321469" length="191.91711" name="Rue Élie Paris" origin="25321408"/>
+<segment destination="25321407" length="46.197845" name="Rue du Docteur Rebatel" origin="25321408"/>
+<segment destination="25321359" length="85.53022" name="Rue du Docteur Rebatel" origin="25321407"/>
+<segment destination="565368324" length="86.49793" name="Petite Rue de Monplaisir" origin="21993013"/>
+<segment destination="21992995" length="76.79771" name="Rue Édouard Rochet" origin="21993013"/>
+<segment destination="21992980" length="75.947624" name="Petite Rue de Monplaisir" origin="21993013"/>
+<segment destination="208822503" length="124.96992" name="Rue Saint-Sidoine" origin="54803125"/>
+<segment destination="54803125" length="121.46178" name="Rue du 14 Juillet 1789" origin="54803121"/>
+<segment destination="54803119" length="98.74163" name="Rue du Docteur Dolard" origin="54803121"/>
+<segment destination="54803125" length="99.5104" name="Rue Claudius Pionchon" origin="54803122"/>
+<segment destination="54803119" length="123.30982" name="Rue du 4 Septembre 1797 Rue Saint-Victorien" origin="54803122"/>
+<segment destination="1368674810" length="11.871078" name="Place des Maisons Neuves" origin="1368674809"/>
+<segment destination="55463789" length="30.600428" name="Place des Maisons Neuves" origin="1368674809"/>
+<segment destination="1368674806" length="49.524254" name="Place des Maisons Neuves" origin="1368674809"/>
+<segment destination="1682387539" length="114.692825" name="Rue des Prévoyants de l'Avenir" origin="251050862"/>
+<segment destination="2129259173" length="114.30229" name="Rue Bara" origin="251050862"/>
+<segment destination="640541652" length="96.13519" name="" origin="1603856892"/>
+<segment destination="25336254" length="96.2063" name="Avenue Lacassagne" origin="1603856892"/>
+<segment destination="21992995" length="54.23289" name="Rue Saint-Théodore" origin="21993017"/>
+<segment destination="21992980" length="80.674286" name="Cours Albert Thomas" origin="21993017"/>
+<segment destination="195276" length="33.907093" name="Rue des Tuiliers" origin="21993015"/>
+<segment destination="3870641969" length="213.72795" name="Rue de la Cité Rue du Docteur Dolard" origin="54803119"/>
+<segment destination="54803122" length="123.30982" name="Rue du 4 Septembre 1797 Rue Saint-Victorien" origin="54803119"/>
+<segment destination="342867241" length="113.9548" name="Rue Lafontaine" origin="2456932713"/>
+<segment destination="55474978" length="107.5206" name="Rue Lafontaine" origin="2456932713"/>
+<segment destination="342872879" length="24.71337" name="Rue Richelieu" origin="2456932713"/>
+<segment destination="1423439485" length="169.0433" name="Rue Richelieu" origin="2456932713"/>
+<segment destination="33065949" length="235.9005" name="Avenue Georges Pompidou" origin="33065924"/>
+<segment destination="25611428" length="39.089375" name="Rue du Dauphiné" origin="1368674802"/>
+<segment destination="26057085" length="211.31693" name="Rue Paul Bert" origin="26057098"/>
+<segment destination="640541652" length="49.161777" name="Rue Bara" origin="2129259173"/>
+<segment destination="1368674799" length="36.126144" name="Route de Genas" origin="1368674800"/>
+<segment destination="55463812" length="68.41653" name="Route de Genas" origin="1368674800"/>
+<segment destination="1368674806" length="33.922108" name="Place des Maisons Neuves" origin="1368674800"/>
+<segment destination="1368674800" length="33.922108" name="Place des Maisons Neuves" origin="1368674806"/>
+<segment destination="1368674809" length="49.524254" name="Place des Maisons Neuves" origin="1368674806"/>
+<segment destination="1368674802" length="75.2092" name="Rue du Dauphiné" origin="1368674806"/>
+<segment destination="2034547839" length="15.589813" name="Cours Albert Thomas" origin="3393859927"/>
+<segment destination="3393859930" length="8.647819" name="" origin="3393859927"/>
+<segment destination="459797860" length="67.994415" name="Rue de Domrémy" origin="251047560"/>
+<segment destination="25321447" length="113.25773" name="Avenue Lacassagne" origin="251047560"/>
+<segment destination="1036842114" length="118.46849" name="Boulevard Vivier-Merle" origin="1036842196"/>
+<segment destination="479185301" length="50.411644" name="Rue de l'Abbé Boisard" origin="1036842196"/>
+<segment destination="25719228" length="7.7847524" name="Rue du Général Mouton-Duvernet" origin="3393859920"/>
+<segment destination="1036842078" length="74.09365" name="Boulevard Vivier-Merle Cours Albert Thomas" origin="3393859920"/>
+<segment destination="195262" length="53.857296" name="Rue du Général Mouton-Duvernet" origin="3393859920"/>
+<segment destination="195259" length="123.36402" name="Boulevard Vivier-Merle" origin="1036842078"/>
+<segment destination="208769133" length="10.284923" name="Rue Nazareth" origin="208769120"/>
+<segment destination="1423439485" length="44.850292" name="Rue Richelieu" origin="55457354"/>
+<segment destination="26079800" length="114.86338" name="Rue Danton" origin="26033277"/>
+<segment destination="26086114" length="67.72544" name="Rue d'Aubigny" origin="3370328152"/>
+<segment destination="2841904730" length="10.372925" name="" origin="3393859930"/>
+<segment destination="26086128" length="106.253914" name="Avenue Georges Pompidou" origin="208769112"/>
+<segment destination="208769120" length="39.416725" name="Rue Nazareth" origin="208769112"/>
+<segment destination="25303840" length="50.582382" name="Impasse Jeanne d'Arc" origin="251050719"/>
+<segment destination="1259561375" length="83.691925" name="Rue Professeur Louis Roche" origin="1288817934"/>
+<segment destination="25335981" length="144.92577" name="Rue de Montbrillant" origin="1288817934"/>
+<segment destination="459797860" length="72.6692" name="Rue de Domrémy" origin="251047558"/>
+<segment destination="195259" length="207.29044" name="Boulevard Vivier-Merle" origin="3393859904"/>
+<segment destination="55475052" length="54.468452" name="Rue de l'Espérance" origin="48830472"/>
+<segment destination="208769069" length="112.53927" name="Rue Sainte-Anne de Baraban" origin="48830472"/>
+<segment destination="26057098" length="126.56524" name="Rue Paul Bert" origin="26057106"/>
+<segment destination="26316429" length="138.28099" name="Rue Saint-Eusèbe" origin="26057106"/>
+<segment destination="1368674811" length="116.254364" name="Rue Frédéric Mistral" origin="48830470"/>
+<segment destination="48830471" length="90.98456" name="Rue Frédéric Mistral" origin="48830470"/>
+<segment destination="48830472" length="126.28599" name="Rue Sainte-Anne de Baraban" origin="48830471"/>
+<segment destination="48830474" length="90.38153" name="Rue Frédéric Mistral" origin="48830471"/>
+<segment destination="48830470" length="90.98456" name="Rue Frédéric Mistral" origin="48830471"/>
+<segment destination="48830472" length="100.56292" name="Rue de l'Espérance" origin="26057109"/>
+<segment destination="2672660419" length="128.7313" name="Rue de l'Espérance" origin="26057109"/>
+<segment destination="48830470" length="136.30344" name="Rue Antoine Charial" origin="26057109"/>
+<segment destination="1603856892" length="65.81088" name="Avenue Lacassagne" origin="2026239409"/>
+<segment destination="25336189" length="73.50747" name="Rue du Dauphiné" origin="2026239409"/>
+<segment destination="26125366" length="69.514244" name="Rue du Dauphiné" origin="2026239409"/>
+<segment destination="208769112" length="35.125885" name="Place de la Ferrandière" origin="208769227"/>
+<segment destination="208769120" length="16.263586" name="Place de la Ferrandière" origin="208769227"/>
+<segment destination="1368674809" length="52.383896" name="Avenue Félix Faure" origin="55463805"/>
+<segment destination="26317234" length="226.60776" name="Avenue Félix Faure" origin="55463805"/>
+<segment destination="2069548810" length="168.78093" name="Rue de Bonnel" origin="26577743"/>
+<segment destination="1368674800" length="36.126144" name="Route de Genas" origin="1368674799"/>
+<segment destination="1368674802" length="26.501734" name="Rue du Dauphiné" origin="1368674799"/>
+<segment destination="26317259" length="187.75513" name="Rue Girié" origin="1368674799"/>
+<segment destination="55474989" length="119.83992" name="Avenue Marc Sangnier" origin="48830474"/>
+<segment destination="208769334" length="86.07172" name="Rue Richelieu" origin="48830474"/>
+<segment destination="48830471" length="90.38153" name="Rue Frédéric Mistral" origin="48830474"/>
+<segment destination="48833748" length="58.243683" name="Rue des Petites Sœurs" origin="48833743"/>
+<segment destination="26086127" length="83.11128" name="Rue Étienne Richerand" origin="48833743"/>
+<segment destination="208769303" length="15.276517" name="" origin="208769334"/>
+<segment destination="208769295" length="12.193949" name="" origin="208769334"/>
+<segment destination="48830474" length="86.07172" name="Rue Richelieu" origin="208769334"/>
+<segment destination="26086122" length="61.05543" name="Rue Baraban" origin="48833747"/>
+<segment destination="48833743" length="138.0391" name="Rue des Petites Sœurs" origin="48833747"/>
+<segment destination="26086128" length="53.631104" name="Rue Baraban" origin="48833747"/>
+<segment destination="342873658" length="24.386381" name="Rue Richelieu" origin="208769457"/>
+<segment destination="208769499" length="106.73056" name="Rue Frédéric Passy" origin="208769457"/>
+<segment destination="342868447" length="15.785075" name="Rue Richelieu" origin="208769457"/>
+<segment destination="26086119" length="134.36157" name="Rue Gandolière" origin="48833748"/>
+<segment destination="251171098" length="137.23657" name="Rue de l'Est" origin="251171031"/>
+<segment destination="208769227" length="12.926414" name="Place de la Ferrandière" origin="208769219"/>
+<segment destination="208769279" length="211.55408" name="Rue Louis Jasseron" origin="208769219"/>
+<segment destination="25611425" length="21.551727" name="Route de Genas" origin="55463812"/>
+<segment destination="1368674800" length="68.41653" name="Route de Genas" origin="55463812"/>
+<segment destination="55463789" length="94.38046" name="Rue Paul Pechoux" origin="55463812"/>
+<segment destination="250042857" length="29.81919" name="Rue Kimmerling" origin="249801845"/>
+<segment destination="26317235" length="168.98726" name="Rue Kimmerling" origin="249801845"/>
+<segment destination="25451370" length="110.58808" name="Rue des Tuiliers" origin="1703401805"/>
+<segment destination="25334442" length="85.21657" name="Rue Saint-Maximin" origin="1703401805"/>
+<segment destination="25335981" length="75.26833" name="Rue du Professeur Paul Sisley" origin="195271"/>
+<segment destination="25336178" length="117.45386" name="Rue du Dauphiné" origin="195270"/>
+<segment destination="522100855" length="54.50388" name="Rue Roger Bréchan" origin="195270"/>
+<segment destination="3393859920" length="53.857296" name="Rue du Général Mouton-Duvernet" origin="195262"/>
+<segment destination="25321302" length="256.8284" name="Rue du Dauphiné" origin="195262"/>
+<segment destination="195263" length="100.00355" name="Rue du Général Mouton-Duvernet" origin="195262"/>
+<segment destination="2117622721" length="112.49038" name="Avenue Félix Faure" origin="195261"/>
+<segment destination="25336179" length="127.18727" name="Avenue Félix Faure" origin="195261"/>
+<segment destination="4428355731" length="348.3609" name="Rue du Général Mouton-Duvernet" origin="195261"/>
+<segment destination="2383442941" length="71.5091" name="Rue du Général Mouton-Duvernet" origin="195261"/>
+<segment destination="4428355731" length="13.370239" name="Rue du Général Mouton-Duvernet" origin="195263"/>
+<segment destination="195262" length="100.0792" name="Rue du Général Mouton-Duvernet" origin="195263"/>
+<segment destination="195268" length="96.7444" name="Rue du Dauphiné" origin="195266"/>
+<segment destination="25321302" length="54.717278" name="Rue du Dauphiné" origin="195266"/>
+<segment destination="4193445730" length="6.4504447" name="Rue Jean Jaurès" origin="55463826"/>
+<segment destination="195266" length="96.7444" name="Rue du Dauphiné" origin="195268"/>
+<segment destination="25451370" length="127.95288" name="Rue Saint-Philippe" origin="195268"/>
+<segment destination="195270" length="95.865654" name="Rue du Dauphiné" origin="195268"/>
+<segment destination="55463826" length="6.4504447" name="Rue Jean Jaurès" origin="4193445730"/>
+<segment destination="55463796" length="99.45865" name="Rue Jean Jaurès" origin="4193445730"/>
+<segment destination="4193445733" length="74.169395" name="Rue Raymond Terracher" origin="4193445730"/>
+<segment destination="251050862" length="114.692825" name="Rue des Prévoyants de l'Avenir" origin="1682387539"/>
+<segment destination="1288817934" length="83.691925" name="Rue Professeur Louis Roche" origin="1259561375"/>
+<segment destination="25336178" length="179.80255" name="Rue Jean Renoir" origin="25336175"/>
+<segment destination="25336179" length="129.12434" name="Rue Jeanne Hachette" origin="25336175"/>
+<segment destination="4428355731" length="514.477" name="Rue Jeanne Hachette" origin="25336175"/>
+<segment destination="25336189" length="222.6015" name="Rue du Dauphiné" origin="25336178"/>
+<segment destination="25336175" length="179.80255" name="Rue Jean Renoir" origin="25336178"/>
+<segment destination="2586814489" length="24.719471" name="Rue Raymond Terracher" origin="4193445733"/>
+<segment destination="4193445730" length="74.169395" name="Rue Raymond Terracher" origin="4193445733"/>
+<segment destination="3393859920" length="7.7847524" name="Rue du Général Mouton-Duvernet" origin="25719228"/>
+<segment destination="3393859930" length="66.13708" name="Cours Albert Thomas" origin="25719228"/>
+<segment destination="208769303" length="15.056885" name="" origin="208769312"/>
+<segment destination="208769295" length="9.775154" name="" origin="208769312"/>
+<segment destination="342868447" length="82.82316" name="Rue Richelieu" origin="208769312"/>
+<segment destination="195272" length="29.069725" name="Rue du Professeur Paul Sisley" origin="195273"/>
+<segment destination="195274" length="83.59344" name="Rue du Professeur Paul Sisley" origin="195273"/>
+<segment destination="25321407" length="362.365" name="Rue des Dahlias" origin="195273"/>
+<segment destination="195273" length="29.069725" name="Rue du Professeur Paul Sisley" origin="195272"/>
+<segment destination="25451370" length="154.44595" name="Rue Saint-Philippe" origin="195272"/>
+<segment destination="21992964" length="50.327866" name="Rue Guilloud" origin="195275"/>
+<segment destination="195275" length="115.403114" name="Rue Villon" origin="195274"/>
+<segment destination="1703401805" length="163.97949" name="Rue Saint-Maximin" origin="195274"/>
+<segment destination="25321304" length="95.299446" name="Rue des Tuiliers" origin="195276"/>
+<segment destination="474605986" length="94.638626" name="Cours Albert Thomas" origin="195276"/>
+<segment destination="2835339774" length="96.5331" name="Impasse de l'Ordre" origin="2835339775"/>
+<segment destination="26079654" length="61.78396" name="Rue Antoine Charial" origin="2835339775"/>
+<segment destination="2835339775" length="96.5331" name="Impasse de l'Ordre" origin="2835339774"/>
+<segment destination="55474989" length="12.930663" name="Place Marengo" origin="55474983"/>
+<segment destination="55475038" length="23.662092" name="Place Marengo" origin="55474983"/>
+<segment destination="2026239409" length="73.50747" name="Rue du Dauphiné" origin="25336189"/>
+<segment destination="195271" length="157.39076" name="Rue du Professeur Paul Sisley" origin="25336189"/>
+<segment destination="48830474" length="119.83992" name="Avenue Marc Sangnier" origin="55474989"/>
+<segment destination="55475004" length="14.101396" name="Place Marengo" origin="55474989"/>
+<segment destination="55474983" length="12.930663" name="Place Marengo" origin="55474989"/>
+<segment destination="479185290" length="98.039276" name="Rue de l'Abbé Boisard" origin="25173835"/>
+<segment destination="250042857" length="48.468773" name="Avenue Félix Faure" origin="25336179"/>
+<segment destination="195261" length="127.18727" name="Avenue Félix Faure" origin="25336179"/>
+<segment destination="25336175" length="129.12434" name="Rue Jeanne Hachette" origin="25336179"/>
+<segment destination="2586814494" length="127.41763" name="Avenue Antoine de Saint-Exupéry" origin="208769303"/>
+<segment destination="208769312" length="15.056885" name="" origin="208769303"/>
+<segment destination="208769334" length="15.276517" name="" origin="208769303"/>
+<segment destination="54803905" length="103.20281" name="Rue Lafontaine" origin="55474973"/>
+<segment destination="55474978" length="109.96871" name="Rue Lafontaine" origin="55474973"/>
+<segment destination="208769039" length="109.41269" name="Rue Pascal" origin="55474973"/>
+<segment destination="208769499" length="79.801414" name="Rue Édouard Aynard" origin="55474978"/>
+<segment destination="2456932713" length="107.5206" name="Rue Lafontaine" origin="55474978"/>
+<segment destination="55474973" length="109.96871" name="Rue Lafontaine" origin="55474978"/>
+<segment destination="21712143" length="144.76486" name="Rue Pierre Robin" origin="25173820"/>
+<segment destination="25173835" length="112.63291" name="Cours Gambetta" origin="25173820"/>
+<segment destination="25336254" length="11.288361" name="Rue Bara" origin="640541652"/>
+<segment destination="2650077854" length="304.3873" name="Boulevard Vivier-Merle" origin="195259"/>
+<segment destination="25152444" length="60.756367" name="Grande Rue de la Guillotière" origin="15925440"/>
+<segment destination="2117622721" length="62.200565" name="Avenue Félix Faure" origin="2650077854"/>
+<segment destination="1036842196" length="301.50327" name="Boulevard Vivier-Merle" origin="2650077854"/>
+<segment destination="2587463836" length="30.231571" name="Boulevard Vivier-Merle" origin="2650077854"/>
+<segment destination="25175778" length="149.44188" name="Avenue Félix Faure" origin="2650077854"/>
+<segment destination="3509888072" length="15.735389" name="" origin="3509898986"/>
+<segment destination="2026239409" length="175.30086" name="Avenue Lacassagne" origin="3509898986"/>
+<segment destination="2117622721" length="72.46447" name="Avenue Félix Faure" origin="2587463836"/>
+<segment destination="25175819" length="120.29985" name="Boulevard Vivier-Merle" origin="2587463836"/>
+<segment destination="26316433" length="94.49828" name="Rue Claudius Pionchon" origin="208769083"/>
+<segment destination="208769145" length="103.36165" name="Rue Nazareth" origin="208769083"/>
+<segment destination="26079798" length="28.791878" name="Rue du Pensionnat" origin="26079797"/>
+<segment destination="3236267785" length="66.92192" name="Rue Raymond Terracher" origin="2586814489"/>
+<segment destination="4193445733" length="24.719471" name="Rue Raymond Terracher" origin="2586814489"/>
+<segment destination="2034547834" length="130.47949" name="Cours Albert Thomas" origin="21992980"/>
+<segment destination="21993013" length="75.947624" name="Petite Rue de Monplaisir" origin="21992980"/>
+<segment destination="195272" length="154.44595" name="Rue Saint-Philippe" origin="25451370"/>
+<segment destination="195268" length="127.95288" name="Rue Saint-Philippe" origin="25451370"/>
+<segment destination="26079801" length="24.543253" name="Place Danton" origin="26079798"/>
+<segment destination="1679901320" length="123.51345" name="Rue Clos Poncet" origin="1679901326"/>
+<segment destination="54803905" length="92.98088" name="Avenue Marc Sangnier" origin="1679901326"/>
+<segment destination="2129259176" length="47.480927" name="Avenue Lacassagne" origin="25336254"/>
+<segment destination="26079653" length="64.645546" name="Rue Étienne Richerand" origin="2587460578"/>
+<segment destination="26086129" length="47.348785" name="Rue Baraban" origin="2587460577"/>
+<segment destination="2587460578" length="134.90417" name="Rue des Teinturiers" origin="2587460577"/>
+<segment destination="26079654" length="66.22617" name="Rue Baraban" origin="2587460577"/>
+<segment destination="33066088" length="60.452965" name="Avenue Georges Pompidou" origin="80311393"/>
+<segment destination="26086124" length="32.83932" name="Avenue Georges Pompidou" origin="80311393"/>
+<segment destination="26033277" length="65.436676" name="Rue des Rancy" origin="26033326"/>
+<segment destination="92375974" length="69.9046" name="Rue Lavoisier" origin="26033326"/>
+<segment destination="25719228" length="53.609547" name="Rue du Général Mouton-Duvernet Cours Albert Thomas" origin="2034547839"/>
+<segment destination="1036842078" length="26.84361" name="" origin="1036842114"/>
+<segment destination="2841904730" length="28.104166" name="Boulevard Vivier-Merle" origin="1036842114"/>
+<segment destination="975886496" length="22.768776" name="Rue Danton" origin="26033324"/>
+<segment destination="92375975" length="29.939322" name="Rue Paul Bert" origin="26033324"/>
+<segment destination="3393859920" length="73.04839" name="Cours Albert Thomas" origin="2034547834"/>
+<segment destination="25719228" length="70.048775" name="Cours Albert Thomas" origin="2034547834"/>
+<segment destination="25321433" length="82.277626" name="Rue du Docteur Rebatel" origin="25336247"/>
+<segment destination="251050862" length="101.70724" name="Rue Bara" origin="25336247"/>
+<segment destination="26576953" length="34.76711" name="Grande Rue de la Guillotière" origin="18697372"/>
+<segment destination="55474983" length="118.67187" name="Rue Édouard Aynard" origin="55475052"/>
+<segment destination="21993017" length="54.14699" name="Cours Albert Thomas" origin="474605986"/>
+<segment destination="474605980" length="84.36449" name="Rue Rossan" origin="474605986"/>
+<segment destination="3870641963" length="3.812855" name="Place de la Ferrandière" origin="3267479470"/>
+<segment destination="474605986" length="45.34168" name="Rue Rossan" origin="21992996"/>
+<segment destination="21993015" length="92.71113" name="Rue Édouard Rochet" origin="21992996"/>
+<segment destination="208769163" length="20.712637" name="Rue Nazareth" origin="208769180"/>
+<segment destination="3870640550" length="16.328531" name="Rue de Nazareth" origin="208769180"/>
+<segment destination="474605974" length="9.721205" name="Rue Rossan" origin="474605980"/>
+<segment destination="21992996" length="41.093044" name="Rue Édouard Rochet" origin="21992995"/>
+<segment destination="2383442931" length="63.2941" name="Rue du Général Mouton-Duvernet" origin="2383442941"/>
+<segment destination="195261" length="71.5091" name="Rue du Général Mouton-Duvernet" origin="2383442941"/>
+<segment destination="26316429" length="105.66926" name="Impasse Saint-Eusèbe" origin="208769069"/>
+<segment destination="26316432" length="74.09167" name="Rue Sainte-Anne de Baraban" origin="208769069"/>
+<segment destination="208769027" length="59.16955" name="Rue Saint-Eusèbe" origin="208769069"/>
+<segment destination="26576963" length="18.624685" name="Boulevard Vivier-Merle" origin="25175819"/>
+<segment destination="2456932713" length="24.71337" name="Rue Richelieu" origin="342872879"/>
+<segment destination="342873658" length="37.097897" name="Rue Richelieu" origin="342872879"/>
+<segment destination="342873532" length="51.028988" name="Impasse Lafontaine" origin="342872879"/>
+<segment destination="342873658" length="53.651497" name="Impasse Richelieu" origin="342873729"/>
+<segment destination="25321304" length="83.31093" name="Rue Guilloud" origin="474605974"/>
+<segment destination="474605980" length="9.721205" name="Rue Rossan" origin="474605974"/>
+<segment destination="15925440" length="137.15297" name="Rue Pierre Robin" origin="21712143"/>
+<segment destination="208769312" length="9.775154" name="" origin="208769295"/>
+<segment destination="208769334" length="12.193949" name="" origin="208769295"/>
+<segment destination="55475004" length="82.654625" name="Avenue Antoine de Saint-Exupéry" origin="208769295"/>
+<segment destination="4193445733" length="116.277916" name="" origin="3236267785"/>
+<segment destination="2586814489" length="195.75995" name="Rue Jean-Louis Maubant" origin="3236267785"/>
+<segment destination="2586814494" length="114.406746" name="Rue Raymond Terracher" origin="3236267785"/>
+<segment destination="3509898986" length="15.735389" name="" origin="3509888072"/>
+<segment destination="208769303" length="127.41763" name="Avenue Antoine de Saint-Exupéry" origin="2586814494"/>
+<segment destination="3236267785" length="114.406746" name="Rue Raymond Terracher" origin="2586814494"/>
+<segment destination="21993013" length="86.49793" name="Petite Rue de Monplaisir" origin="565368324"/>
+<segment destination="2383442939" length="60.350677" name="Rue du Général Mouton-Duvernet" origin="2383442929"/>
+<segment destination="26057062" length="127.89951" name="Rue du Général Mouton-Duvernet" origin="2383442929"/>
+<segment destination="3870640550" length="24.571829" name="Rue de la Cité" origin="208769163"/>
+<segment destination="3267479470" length="19.012548" name="Place de la Ferrandière" origin="208769163"/>
+<segment destination="208769047" length="140.8208" name="Rue François Gillet" origin="208769163"/>
+<segment destination="208769027" length="109.713776" name="Rue Pascal" origin="208769047"/>
+<segment destination="208769039" length="127.59808" name="Rue Pascal" origin="208769047"/>
+<segment destination="208769163" length="140.8208" name="Rue François Gillet" origin="208769047"/>
+<segment destination="55475038" length="91.837265" name="Rue François Gillet" origin="208769047"/>
+<segment destination="251167391" length="84.843506" name="Impasse Gazagnon" origin="1860559399"/>
+<segment destination="26086130" length="114.03479" name="Rue Combet-Descombes" origin="26316513"/>
+<segment destination="26316429" length="241.59207" name="Rue Antoine Charial" origin="26316513"/>
+<segment destination="2034547839" length="45.08708" name="Boulevard des Tchécoslovaques" origin="2841904735"/>
+<segment destination="3393859927" length="50.13689" name="Boulevard des Tchécoslovaques" origin="2841904735"/>
+<segment destination="2383442931" length="33.079563" name="Rue du Général Mouton-Duvernet" origin="2383442939"/>
+<segment destination="2383442929" length="60.239296" name="Rue du Général Mouton-Duvernet" origin="2383442939"/>
+<segment destination="3393859927" length="16.706312" name="" origin="2841904730"/>
+<segment destination="25173820" length="96.30125" name="Cours Gambetta" origin="2841904730"/>
+<segment destination="2383442939" length="33.079563" name="Rue du Général Mouton-Duvernet" origin="2383442931"/>
+<segment destination="2383442941" length="63.680832" name="Rue du Général Mouton-Duvernet" origin="2383442931"/>
+<segment destination="33065949" length="10.711094" name="Rue de la Villette" origin="33066313"/>
+<segment destination="26576965" length="259.48038" name="Avenue Georges Pompidou" origin="33066313"/>
+<segment destination="54803122" length="72.628426" name="Rue Saint-Victorien" origin="208769279"/>
+<segment destination="26086117" length="128.86993" name="Rue Saint-Victorien" origin="208769279"/>
+<segment destination="208769047" length="127.59808" name="Rue Pascal" origin="208769039"/>
+<segment destination="54803905" length="157.37244" name="Avenue Marc Sangnier" origin="208769039"/>
+<segment destination="208769499" length="100.48389" name="Rue Frédéric Passy" origin="208769039"/>
+<segment destination="55474973" length="109.41269" name="Rue Pascal" origin="208769039"/>
+<segment destination="55475025" length="115.5685" name="Avenue Marc Sangnier" origin="208769039"/>
+<segment destination="2026239409" length="69.514244" name="Rue du Dauphiné" origin="26125366"/>
+<segment destination="565375197" length="71.13966" name="Rue du Dauphiné" origin="26125366"/>
+<segment destination="26079653" length="78.23124" name="Rue Antoine Charial" origin="26079652"/>
+<segment destination="2587460577" length="66.22617" name="Rue Baraban" origin="26079654"/>
+<segment destination="26079655" length="79.02355" name="Rue Antoine Charial" origin="26079654"/>
+<segment destination="26057083" length="156.70116" name="Rue Étienne Richerand" origin="26079653"/>
+<segment destination="2835339775" length="69.480034" name="Rue Antoine Charial" origin="26079653"/>
+<segment destination="208769180" length="5.3707037" name="Rue Nazareth" origin="208769145"/>
+<segment destination="3267479470" length="29.410686" name="Place de la Ferrandière" origin="208769145"/>
+<segment destination="208769047" length="109.713776" name="Rue Pascal" origin="208769027"/>
+<segment destination="55475052" length="109.26013" name="" origin="208769027"/>
+<segment destination="208769069" length="59.16955" name="Rue Saint-Eusèbe" origin="208769027"/>
+<segment destination="25321469" length="92.586105" name="Rue Feuillat" origin="251167391"/>
+<segment destination="1860559399" length="84.843506" name="Impasse Gazagnon" origin="251167391"/>
+<segment destination="26057064" length="174.16241" name="Rue Maurice Flandin" origin="26079656"/>
+<segment destination="26079652" length="160.01234" name="Rue Antoine Charial" origin="26079656"/>
+<segment destination="26316513" length="118.77753" name="Rue Antoine Charial" origin="26079655"/>
+<segment destination="26057085" length="145.00984" name="Rue Turbil" origin="26079655"/>
+<segment destination="26086123" length="56.935192" name="Rue Saint-Sidoine" origin="208822503"/>
+<segment destination="25173835" length="98.039276" name="Rue de l'Abbé Boisard" origin="479185290"/>
+<segment destination="479185301" length="76.625084" name="Rue de l'Abbé Boisard" origin="479185290"/>
+<segment destination="54803119" length="124.02671" name="Rue du 4 Septembre 1797" origin="54803905"/>
+<segment destination="208769039" length="157.37244" name="Avenue Marc Sangnier" origin="54803905"/>
+<segment destination="55474973" length="103.20281" name="Rue Lafontaine" origin="54803905"/>
+<segment destination="1679901326" length="92.98088" name="Avenue Marc Sangnier" origin="54803905"/>
+<segment destination="25321357" length="172.6005" name="Rue Guilloud" origin="21992964"/>
+<segment destination="25335974" length="119.90758" name="Rue du Professeur Paul Sisley" origin="21992964"/>
+<segment destination="208769083" length="83.729836" name="Rue Nazareth" origin="208769133"/>
+<segment destination="208769219" length="20.79932" name="Rue Louis Jasseron" origin="208769133"/>
+<segment destination="342873729" length="53.651497" name="Impasse Richelieu" origin="342873658"/>
+<segment destination="342872879" length="37.097897" name="Rue Richelieu" origin="342873658"/>
+<segment destination="208769457" length="24.386381" name="Rue Richelieu" origin="342873658"/>
+<segment destination="342872879" length="51.028988" name="Impasse Lafontaine" origin="342873532"/>
+<segment destination="208769457" length="106.73056" name="Rue Frédéric Passy" origin="208769499"/>
+<segment destination="55474978" length="79.801414" name="Rue Édouard Aynard" origin="208769499"/>
+<segment destination="55475018" length="96.57731" name="Rue Édouard Aynard" origin="208769499"/>
+<segment destination="26033277" length="78.72686" name="Rue Danton" origin="975886496"/>
+</map>
