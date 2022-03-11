@@ -13,6 +13,8 @@ import java.io.File;
 import java.nio.file.Paths;
 
 public class TestXmlParser {
+    private static final String XML_MAP_RESOURCE_DIRECTORY_PATH = Paths.get("src", "test", "resources").toAbsolutePath() + "/";
+
     XmlParser xmlParser;
 
     @BeforeEach
@@ -24,7 +26,7 @@ public class TestXmlParser {
     @ValueSource(strings = { "empty file.xml", "empty file with xml tag.xml", "empty file with xml and map tags.xml" })
     @DisplayName("Test_ConvertXmlToMap_WithEmptyFile_ReturnsEmptyMap")
     void Test_ConvertXmlToMap_WithEmptyFile_ReturnsEmptyMap(String xmlMapResourceFileName) {
-        String xmlMapResourceFilePath = Paths.get("src", "test", "resources").toAbsolutePath() + "/" + xmlMapResourceFileName;
+        String xmlMapResourceFilePath = XML_MAP_RESOURCE_DIRECTORY_PATH + xmlMapResourceFileName;
         Map expectedMap = new Map();
 
         Map actualMap = xmlParser.ConvertXmlToMap(new File(xmlMapResourceFilePath));
@@ -36,8 +38,7 @@ public class TestXmlParser {
     @ValueSource(strings = { "map with intersections and other tags.xml", "map with only intersections tags.xml" })
     @DisplayName("Test_ConvertXmlToMap_WithIntersectionsAndOtherTags_ReturnsMap")
     void Test_ConvertXmlToMap_WithIntersectionsAndOtherTags_ReturnsMap(String xmlMapResourceFileName) {
-        String xmlMapResourceFilePath = Paths.get("src", "test", "resources").toAbsolutePath() + "/" + xmlMapResourceFileName;
-
+        String xmlMapResourceFilePath = XML_MAP_RESOURCE_DIRECTORY_PATH + xmlMapResourceFileName;
         Map expectedMap = new Map();
         expectedMap.addIntersection(new Intersection(21992964L, (float)45.74778, (float)4.8682485));
         expectedMap.addIntersection(new Intersection(208769133L, (float)45.759453, (float)4.8698664));
