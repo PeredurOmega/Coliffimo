@@ -5,6 +5,7 @@ module com.insa.coliffimo {
     requires javafx.swing;
     requires MaterialFX;
     requires com.dlsc.gmapsfx;
+    requires jsprit.core;
 
     opens com.insa.coliffimo to javafx.fxml;
     exports com.insa.coliffimo;
