@@ -1,20 +1,17 @@
 package com.insa.coliffimo;
 
-import com.dlsc.gmapsfx.GoogleMapView;
-import com.dlsc.gmapsfx.MapComponentInitializedListener;
-import com.dlsc.gmapsfx.javascript.object.*;
-import com.dlsc.gmapsfx.service.directions.DirectionStatus;
-import com.dlsc.gmapsfx.service.directions.DirectionsResult;
-import com.dlsc.gmapsfx.service.directions.DirectionsService;
-import com.dlsc.gmapsfx.service.directions.DirectionsServiceCallback;
+import com.insa.coliffimo.leaflet.*;
+import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.concurrent.CompletableFuture;
 
-public class HelloController implements Initializable, MapComponentInitializedListener, DirectionsServiceCallback {
+public class HelloController implements Initializable {
 
     //private static final Logger logger = LoggerFactory.getLogger(Controller.)
     @FXML
@@ -24,10 +21,7 @@ public class HelloController implements Initializable, MapComponentInitializedLi
      * the MapView containing the map
      */
     @FXML
-    private GoogleMapView mapView;
-
-    protected DirectionsService directionsService;
-    protected DirectionsPane directionsPane;
+    private LeafletMapView mapView;
 
     @FXML
     protected void onHelloButtonClick() {
@@ -36,27 +30,27 @@ public class HelloController implements Initializable, MapComponentInitializedLi
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        mapView.setKey("AIzaSyBXlM08I6ahyYAL6F10o_eNwbu2qqzhx7k");
-        mapView.addMapInitializedListener(this);
-    }
+        CompletableFuture<Worker.State> cfMapLoadState = mapView.displayMap(
+                new MapConfig(
+                        Arrays.asList(MapLayer.values()),
+                        new ZoomControlConfig(true, ControlPosition.BOTTOM_LEFT),
+                        new ScaleControlConfig(true, ControlPosition.BOTTOM_LEFT, true))
+        );
 
-    @Override
-    public void mapInitialized() {
-        MapOptions options = new MapOptions();
+        // display Berlin initially after map has been loaded
+        cfMapLoadState.whenComplete((workerState, error) -> {
+            if (workerState == Worker.State.SUCCEEDED) {
+                mapView.setView(new LatLong(52.5172, 13.4040), 9);
+            }
+        });
 
-        options.center(new LatLong(47.606189, -122.335842))
-                .zoomControl(true)
-                .zoom(12)
-                .minZoom(1)
-                .overviewMapControl(false)
-                .mapType(MapTypeIdEnum.ROADMAP);
-        GoogleMap map = mapView.createMap(options);
-        directionsService = new DirectionsService();
-        directionsPane = mapView.getDirec();
-    }
+        /*
+        positionTooltip.setAutoHide(true)
 
-    @Override
-    public void directionsReceived(DirectionsResult results, DirectionStatus status) {
-
+        slPosition.valueProperty().addListener { _, oldValue, newValue ->
+            if (oldValue.toInt() != newValue.toInt()) {
+                movePositionMarker()
+            }
+        }*/
     }
 }
