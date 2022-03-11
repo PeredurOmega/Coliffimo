@@ -23,7 +23,7 @@ public class TestXmlParser {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = { "empty file.xml", "empty file with xml tag.xml", "empty file with xml and map tags.xml" })
+    @ValueSource(strings = { "only other tags.xml", "empty file with xml and map tags.xml" })
     @DisplayName("Test_ConvertXmlToMap_WithEmptyFile_ReturnsEmptyMap")
     void Test_ConvertXmlToMap_WithEmptyFile_ReturnsEmptyMap(String xmlMapResourceFileName) {
         String xmlMapResourceFilePath = XML_MAP_RESOURCE_DIRECTORY_PATH + xmlMapResourceFileName;
