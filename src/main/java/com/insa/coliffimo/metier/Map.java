@@ -23,6 +23,18 @@ public class Map {
         this.listIntersections = new HashMap<>();
     }
 
+    public HashMap<Long, Intersection> getListIntersections() {
+        return listIntersections;
+    }
+
+    /**
+     * Add Intersection to the hashmap of intersections of the map.
+     * @param i : the intersection to add.
+     */
+    public void addIntersection(Intersection i){
+        this.listIntersections.put(i.getId(), i);
+    }
+
     @Override
     public String toString() {
         return "Map{" +
@@ -41,13 +53,5 @@ public class Map {
     @Override
     public int hashCode() {
         return Objects.hash(listIntersections);
-    }
-
-    /**
-     * Method for add Intersection to the hashmap of intersections of the map.
-     * @param i : the intersection to add.
-     */
-    public void addIntersection(Intersection i){
-        this.listIntersections.put(i.getId(), i);
     }
 }
