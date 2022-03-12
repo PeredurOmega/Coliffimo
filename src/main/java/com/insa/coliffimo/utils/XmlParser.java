@@ -22,7 +22,8 @@ public class XmlParser {
     private static final String INTERSECTION_LATITUDE_ATTRIBUTE_NAME = "latitude";
 
     /**
-     * @brief parse xml file into a map object
+     * Parse xml file into a map object
+     * @param xmlFile The xml file to parse
      * @source https://mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/
      */
     public Map ConvertXmlToMap(File xmlFile) {
@@ -52,17 +53,18 @@ public class XmlParser {
 
         return map;
     }
+
     /**
      * Add an intersection to the map from the document
-     * @param m the map to update
-     * @param d the document from which to get informations
+     * @param m The map to update
+     * @param d The document from which to get information
      */
     private void addIntersectionsToMap(Map m, Document d)
     {
         NodeList nodesIntersection = d.getElementsByTagName(INTERSECTION_TAG_NAME);
 
-        for (int temp = 0; temp < nodesIntersection.getLength(); temp++) {
-            Node node = nodesIntersection.item(temp);
+        for (int i = 0; i < nodesIntersection.getLength(); i++) {
+            Node node = nodesIntersection.item(i);
 
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) node;

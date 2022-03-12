@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Intersection {
 
     /**
-     * Variable containing the identifiant of intersection.
+     * Variable containing the id of intersection.
      */
     private Long id;
 

@@ -1,6 +1,5 @@
 package com.insa.coliffimo.metier;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -31,14 +30,6 @@ public class Map {
 
         this.listSegments = new ArrayList<>();
         this.listIntersections = new HashMap<>();
-    }
-
-    public ArrayList<Segment> getListSegments() {
-        return listSegments;
-    }
-
-    public HashMap<Long, Intersection> getListIntersections() {
-        return listIntersections;
     }
 
     @Override
