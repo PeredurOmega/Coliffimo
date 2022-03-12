@@ -1,22 +1,14 @@
 package com.insa.coliffimo.metier;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * Class representing a map of segments and intersections.
+ * Class representing a map of intersections.
  *
- * @see com.insa.coliffimo.metier.Segment
  * @see com.insa.coliffimo.metier.Intersection
  */
 public class Map {
-
-    /**
-     * Variable containing the list of segments.
-     */
-    private ArrayList<Segment> listSegments;
-
     /**
      * Variable containing the list of intersections.
      * Hashmap with intersection id as hashmap key and intersection as hashmap value.
@@ -28,14 +20,12 @@ public class Map {
      */
     public Map(){
 
-        this.listSegments = new ArrayList<>();
         this.listIntersections = new HashMap<>();
     }
 
     @Override
     public String toString() {
         return "Map{" +
-                "listSegments=" + listSegments +
                 ", listIntersections=" + listIntersections +
                 '}';
     }
@@ -45,20 +35,12 @@ public class Map {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Map map = (Map) o;
-        return Objects.equals(listSegments, map.listSegments) && Objects.equals(listIntersections, map.listIntersections);
+        return Objects.equals(listIntersections, map.listIntersections);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(listSegments, listIntersections);
-    }
-
-    /**
-     * Method for add Segment to the list of segments of the map.
-     * @param s : the segment to add.
-     */
-    public void addSegment(Segment s){
-        this.listSegments.add(s);
+        return Objects.hash(listIntersections);
     }
 
     /**
