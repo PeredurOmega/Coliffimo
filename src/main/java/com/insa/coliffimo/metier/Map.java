@@ -1,8 +1,8 @@
 package com.insa.coliffimo.metier;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Class representing a map of segments and intersections.
@@ -32,20 +32,25 @@ public class Map {
         this.listIntersections = new HashMap<>();
     }
 
-    public ArrayList<Segment> getListSegments() {
-        return listSegments;
-    }
-
-    public HashMap<Long, Intersection> getListIntersections() {
-        return listIntersections;
-    }
-
     @Override
     public String toString() {
         return "Map{" +
                 "listSegments=" + listSegments +
                 ", listIntersections=" + listIntersections +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Map map = (Map) o;
+        return Objects.equals(listSegments, map.listSegments) && Objects.equals(listIntersections, map.listIntersections);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(listSegments, listIntersections);
     }
 
     /**

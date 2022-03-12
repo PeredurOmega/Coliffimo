@@ -1,6 +1,7 @@
 package com.insa.coliffimo.metier;
 
 import java.math.BigInteger;
+import java.util.Objects;
 
 /**
  * Class representing an intersection between several streets on a map.
@@ -8,7 +9,7 @@ import java.math.BigInteger;
 public class Intersection {
 
     /**
-     * Variable containing the identifiant of intersection.
+     * Variable containing the id of intersection.
      */
     private Long id;
 
@@ -67,4 +68,16 @@ public class Intersection {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Intersection that = (Intersection) o;
+        return Float.compare(that.latitude, latitude) == 0 && Float.compare(that.longitude, longitude) == 0 && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, latitude, longitude);
+    }
 }

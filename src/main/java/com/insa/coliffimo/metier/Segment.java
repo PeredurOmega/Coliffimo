@@ -1,5 +1,7 @@
 package com.insa.coliffimo.metier;
 
+import java.util.Objects;
+
 /**
  * Class representing a section of street between two intersections.
  */
@@ -81,4 +83,16 @@ public class Segment {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Segment segment = (Segment) o;
+        return Float.compare(segment.length, length) == 0 && Objects.equals(name, segment.name) && Objects.equals(origin, segment.origin) && Objects.equals(destination, segment.destination);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, length, origin, destination);
+    }
 }

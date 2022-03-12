@@ -14,8 +14,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 public class XmlParser {
     private static final String INTERSECTION_TAG_NAME = "intersection";
@@ -23,14 +21,12 @@ public class XmlParser {
     private static final String INTERSECTION_LONGITUDE_ATTRIBUTE_NAME = "longitude";
     private static final String INTERSECTION_LATITUDE_ATTRIBUTE_NAME = "latitude";
 
-
-    private static final String XML_MAPS_RESOURCE_FILE_NAME = "smallMap.xml";
-
     /**
-     * @brief parse xml file into a map object
+     * Parse xml file into a map object
+     * @param xmlFile The xml file to parse
      * @source https://mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/
      */
-    public Map parse() {
+    public Map ConvertXmlToMap(File xmlFile) {
         Map map = new Map();
 
         // Instantiate the Factory
@@ -43,8 +39,7 @@ public class XmlParser {
 
             // parse XML file
             DocumentBuilder db = dbf.newDocumentBuilder();
-
-            Document doc = db.parse(getFileFromResource(XML_MAPS_RESOURCE_FILE_NAME));
+            Document doc = db.parse(xmlFile);
 
             // optional, but recommended
             // http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
@@ -52,7 +47,7 @@ public class XmlParser {
 
             addIntersectionsToMap(map, doc);
 
-        } catch (ParserConfigurationException | SAXException | IOException | URISyntaxException e) {
+        } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
 
@@ -61,15 +56,15 @@ public class XmlParser {
 
     /**
      * Add an intersection to the map from the document
-     * @param m the map to update
-     * @param d the document from which to get informations
+     * @param m The map to update
+     * @param d The document from which to get information
      */
     private void addIntersectionsToMap(Map m, Document d)
     {
         NodeList nodesIntersection = d.getElementsByTagName(INTERSECTION_TAG_NAME);
 
-        for (int temp = 0; temp < nodesIntersection.getLength(); temp++) {
-            Node node = nodesIntersection.item(temp);
+        for (int i = 0; i < nodesIntersection.getLength(); i++) {
+            Node node = nodesIntersection.item(i);
 
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) node;
@@ -80,23 +75,6 @@ public class XmlParser {
 
                 m.addIntersection(new Intersection(id, latitude, longitude));
             }
-        }
-    }
-
-    /**
-     * Create a file with the given resource file name
-     * @param fileName the filename of the resource
-     * @return new File from the resource
-     * @throws URISyntaxException
-     */
-    private File getFileFromResource(String fileName) throws URISyntaxException {
-        ClassLoader classLoader = getClass().getClassLoader();
-        URL resource = classLoader.getResource(fileName);
-        if (resource == null) {
-            throw new IllegalArgumentException("File not found! " + fileName);
-        } else {
-            System.out.println(resource.getPath());
-            return new File(resource.toURI());
         }
     }
 }
