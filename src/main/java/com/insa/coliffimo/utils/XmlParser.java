@@ -168,7 +168,7 @@ public class XmlParser {
         char TIME_SEPARATOR = ':';
         Node nodeDepot = d.getElementsByTagName(PLANNING_REQUEST_DEPOT_TAG_NAME).item(0);
 
-        if (nodeDepot.getNodeType() == Node.ELEMENT_NODE) {
+        if (nodeDepot != null && nodeDepot.getNodeType() == Node.ELEMENT_NODE) {
             Element element = (Element) nodeDepot;
 
             Long depotAddress = Long.parseLong(element.getAttribute(PLANNING_REQUEST_DEPOT_ADDRESS_ATTRIBUTE_NAME));
