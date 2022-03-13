@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.File;
@@ -127,63 +128,20 @@ public class TestXmlParser {
         Assertions.assertEquals(actualPlanningRequest, expectedPlanningRequest);
     }
 
-    @Test
+    @ParameterizedTest
+    @CsvSource({
+            "planning request with one digit departure time.xml, 08:01:04",
+            "planning request with one digit hour departure time.xml, 08:01:04",
+            "planning request with one digit minute departure time.xml, 16:04:40",
+            "planning request with one digit second departure time.xml, 16:08:03",
+    })
     @DisplayName("Test_ConvertXmlToPlanningRequest_WithOneDigitDepartureTime_ReturnsPlanningRequest")
-    void Test_ConvertXmlToPlanningRequest_WithOneDigitDepartureTime_ReturnsPlanningRequest() {
-        String xmlPlanningRequestResourceFileName = "planning request with one digit departure time.xml";
+    void Test_ConvertXmlToPlanningRequest_WithOneDigitDepartureTime_ReturnsPlanningRequest(String xmlPlanningRequestResourceFileName, String departureTime) {
         String xmlPlanningRequestResourceFilePath = XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH + xmlPlanningRequestResourceFileName;
 
         PlanningRequest expectedPlanningRequest = new PlanningRequest();
         expectedPlanningRequest.setDepotAddress(25327124L);
-        expectedPlanningRequest.setDepotDepartureLocalTime(LocalTime.parse("08:01:04"));
-        expectedPlanningRequest.addRequest(new Request(26464256L, 239603465L, 0, 10000));
-
-        PlanningRequest actualPlanningRequest = xmlParser.ConvertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
-
-        Assertions.assertEquals(actualPlanningRequest, expectedPlanningRequest);
-    }
-
-    @Test
-    @DisplayName("Test_ConvertXmlToPlanningRequest_WithOneDigitHourDepartureTime_ReturnsPlanningRequest")
-    void Test_ConvertXmlToPlanningRequest_WithOneDigitHourDepartureTime_ReturnsPlanningRequest() {
-        String xmlPlanningRequestResourceFileName = "planning request with one digit hour departure time.xml";
-        String xmlPlanningRequestResourceFilePath = XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH + xmlPlanningRequestResourceFileName;
-
-        PlanningRequest expectedPlanningRequest = new PlanningRequest();
-        expectedPlanningRequest.setDepotAddress(25327124L);
-        expectedPlanningRequest.setDepotDepartureLocalTime(LocalTime.parse("08:01:04"));
-        expectedPlanningRequest.addRequest(new Request(26464256L, 239603465L, 0, 10000));
-
-        PlanningRequest actualPlanningRequest = xmlParser.ConvertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
-
-        Assertions.assertEquals(actualPlanningRequest, expectedPlanningRequest);
-    }
-
-    @Test
-    @DisplayName("Test_ConvertXmlToPlanningRequest_WithOneDigitMinuteDepartureTime_ReturnsPlanningRequest")
-    void Test_ConvertXmlToPlanningRequest_WithOneDigitMinuteDepartureTime_ReturnsPlanningRequest() {
-        String xmlPlanningRequestResourceFileName = "planning request with one digit minute departure time.xml";
-        String xmlPlanningRequestResourceFilePath = XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH + xmlPlanningRequestResourceFileName;
-
-        PlanningRequest expectedPlanningRequest = new PlanningRequest();
-        expectedPlanningRequest.setDepotAddress(25327124L);
-        expectedPlanningRequest.setDepotDepartureLocalTime(LocalTime.parse("16:04:40"));
-        expectedPlanningRequest.addRequest(new Request(26464256L, 239603465L, 0, 10000));
-
-        PlanningRequest actualPlanningRequest = xmlParser.ConvertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
-
-        Assertions.assertEquals(actualPlanningRequest, expectedPlanningRequest);
-    }
-
-    @Test
-    @DisplayName("Test_ConvertXmlToPlanningRequest_WithOneDigitSecondDepartureTime_ReturnsPlanningRequest")
-    void Test_ConvertXmlToPlanningRequest_WithOneDigitSecondDepartureTime_ReturnsPlanningRequest() {
-        String xmlPlanningRequestResourceFileName = "planning request with one digit second departure time.xml";
-        String xmlPlanningRequestResourceFilePath = XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH + xmlPlanningRequestResourceFileName;
-
-        PlanningRequest expectedPlanningRequest = new PlanningRequest();
-        expectedPlanningRequest.setDepotAddress(25327124L);
-        expectedPlanningRequest.setDepotDepartureLocalTime(LocalTime.parse("16:08:03"));
+        expectedPlanningRequest.setDepotDepartureLocalTime(LocalTime.parse(departureTime));
         expectedPlanningRequest.addRequest(new Request(26464256L, 239603465L, 0, 10000));
 
         PlanningRequest actualPlanningRequest = xmlParser.ConvertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
