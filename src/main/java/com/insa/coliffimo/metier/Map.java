@@ -38,7 +38,7 @@ public class Map {
     @Override
     public String toString() {
         return "Map{" +
-                ", listIntersections=" + listIntersections +
+                "listIntersections=" + listIntersections +
                 '}';
     }
 
