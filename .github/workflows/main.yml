@@ -1,0 +1,76 @@
+# Workflow used to deploy Coliffimo assembled application (.bat + .jars) with Actions (Continuous Integration)
+name: coliffimo-deployment
+
+# Controls when the action will run. Triggers the workflow on tag creation formatted as v*.*.*.
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+env:
+  CC_TEST_REPORTER_URL: https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+
+# Coliffimo's workflow for testing, building and deploying the application as a release on GitHub.
+jobs:
+  # Job called "Production deployment" for building the app as a standalone
+  build:
+    name: Production deployment
+
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out repository under $GITHUB_WORKSPACE, so the job can access it
+      - uses: actions/checkout@v2
+
+      # Cache dependencies to speed up the workflow
+      - name: Cache Gradle packages
+        uses: actions/cache@v2
+        with:
+          path: |
+            ./.gradle
+            ./build
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+
+      # Authorize access to gradlew as executable
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      # Setup java 17
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          cache: 'gradle'
+          java-version: '17'
+
+      # Download and launch CodeClimate test coverage reporter
+#      - name: Setting up CodeClimate test coverage reporter
+#        run: |
+#          curl -L $CC_TEST_REPORTER_URL > ./cc-test-reporter
+#          chmod +x ./cc-test-reporter
+#          GIT_BRANCH=${GITHUB_REF##*/} GIT_COMMIT_SHA=$GITHUB_SHA ./cc-test-reporter before-build
+
+      # Pass tests
+      - name: Pass tests
+        run: ./gradlew test --stacktrace --info --scan
+
+      # Format test coverage report to code climate json report
+#      - name: Format & publish test coverage report to code climate
+#        run: |
+#          GIT_BRANCH=${GITHUB_REF##*/} GIT_COMMIT_SHA=$GITHUB_SHA ./cc-test-reporter format-coverage build/js/packages/MercuriPro-Browser-test/coverage/lcov.info --prefix ../../../../ --input-type lcov --debug
+#          GIT_BRANCH=${GITHUB_REF##*/} GIT_COMMIT_SHA=$GITHUB_SHA ./cc-test-reporter upload-coverage --debug
+#        env:
+#          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+
+      # Build app for production
+      - name: Build with Gradle
+        run: ./gradlew assemble
+
+      # Upload assembled app as an asset to the tag
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: build/distributions/Coliffimo.zip

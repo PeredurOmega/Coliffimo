@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<map>
+    <segment destination="26316433" length="129.96458" name="Rue Sainte-Anne de Baraban" origin="26316432"/>
+    <segment destination="25303833" length="148.15503" name="Rue du Professeur Rochaix" origin="25303800"/>
+    <segment destination="55463812" length="21.551727" name="Route de Genas" origin="25611425"/>
+    <segment destination="25611424" length="83.16971" name="Route de Genas" origin="25611425"/>
+    <segment destination="55463792" length="104.732445" name="Rue Meunier" origin="25611425"/>
+    <segment destination="26317293" length="238.35002" name="Rue Feuillat" origin="25611425"/>
+    <segment destination="26317242" length="139.95462" name="Rue du Dauphiné" origin="25611428"/>
+    <segment destination="26317260" length="180.70561" name="Rue du Docteur Vaillant" origin="25611428"/>
+</map>

@@ -1,5 +1,7 @@
 package com.insa.coliffimo.metier;
 
+import java.util.Objects;
+
 /**
  * Class representing a couple of points for a delivery (pickup point and delivery point).
  */
@@ -7,12 +9,12 @@ public class Request {
     /**
      * Variable containing the identifiant of the pickup intersection.
      */
-    private int pickupAddress;
+    private Long pickupAddress;
 
     /**
      * Variable containing the identifiant of the delivery intersection.
      */
-    private int deliveryAddress;
+    private Long deliveryAddress;
 
     /**
      * Variable representing the time needed for picking the pack up at the pickup point (in seconds).
@@ -31,26 +33,26 @@ public class Request {
      * @param pickupDuration
      * @param deliveryDuration
      */
-    public Request(int pickupAddress, int deliveryAddress, int pickupDuration, int deliveryDuration){
+    public Request(Long pickupAddress, Long deliveryAddress, int pickupDuration, int deliveryDuration){
         this.pickupAddress = pickupAddress;
         this.deliveryAddress = deliveryAddress;
         this.pickupDuration = pickupDuration;
         this.deliveryDuration = deliveryDuration;
     }
 
-    public int getPickupAddress(){
+    public Long getPickupAddress(){
         return pickupAddress;
     }
 
-    public void setPickupAddress(int pickupAddress){
+    public void setPickupAddress(Long pickupAddress){
         this.pickupAddress = pickupAddress;
     }
 
-    public int getDeliveryAddress(){
+    public Long getDeliveryAddress(){
         return deliveryAddress;
     }
 
-    public void setDeliveryAddress(int deliveryAddress){
+    public void setDeliveryAddress(Long deliveryAddress){
         this.deliveryAddress = deliveryAddress;
     }
 
@@ -78,5 +80,18 @@ public class Request {
                 ", pickupDuration=" + pickupDuration +
                 ", deliveryDuration=" + deliveryDuration +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Request request = (Request) o;
+        return pickupDuration == request.pickupDuration && deliveryDuration == request.deliveryDuration && Objects.equals(pickupAddress, request.pickupAddress) && Objects.equals(deliveryAddress, request.deliveryAddress);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pickupAddress, deliveryAddress, pickupDuration, deliveryDuration);
     }
 }
