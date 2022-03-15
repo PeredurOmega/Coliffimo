@@ -41,6 +41,7 @@ jobs:
       - uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
+          cache: 'gradle'
           java-version: '17'
 
       # Download and launch CodeClimate test coverage reporter
