@@ -1,11 +1,10 @@
-# Workflow used to deploy Coliffimo assembled application (.bat + .jars) with Actions (Continuous Integration)
+# Workflow used to deploy Coliffimo pass tests with Actions (Continuous Integration)
 name: Mercuri Pro deployment
 
-# Controls when the action will run. Triggers the workflow on tag creation formatted as v*.*.*.
+# Controls when the action will run. Triggers the workflow on push events but only for the master branch.
 on:
   push:
-    tags:
-      - "v*.*.*"
+    branches: [master]
 
 env:
   CC_TEST_REPORTER_URL: https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
@@ -14,7 +13,7 @@ env:
 jobs:
   # Job called "Production deployment" for building the app as a standalone
   build:
-    name: Production deployment
+    name: Tests
 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -67,10 +66,3 @@ jobs:
       # Build app for production
       - name: Build with Gradle
         run: ./gradlew assemble
-
-      # Upload assembled app as an asset to the tag
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: build/distributions/Coliffimo.zip
