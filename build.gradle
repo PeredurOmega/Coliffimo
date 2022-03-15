@@ -36,8 +36,12 @@ javafx {
 }
 
 dependencies {
-    implementation("com.graphhopper:graphhopper-web:4.0")
-    implementation("com.graphhopper:jsprit-core:1.8")
+    implementation("com.graphhopper:graphhopper-web:4.0") {
+        exclude group: 'org.slf4j'
+    }
+    implementation("com.graphhopper:jsprit-core:1.8") {
+        exclude group: 'org.slf4j'
+    }
     implementation("io.github.palexdev:materialfx:11.13.2") {
         exclude group: 'org.openjfx'
     }
