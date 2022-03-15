@@ -37,6 +37,12 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
+      # Setup java 17
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       # Download and launch CodeClimate test coverage reporter
 #      - name: Setting up CodeClimate test coverage reporter
 #        run: |
