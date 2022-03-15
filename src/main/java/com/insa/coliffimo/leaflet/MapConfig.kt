@@ -15,5 +15,6 @@ class MapConfig @JvmOverloads constructor(
     val layers: List<MapLayer> = listOf(MapLayer.OPENSTREETMAP),
     val zoomControlConfig: ZoomControlConfig = ZoomControlConfig(),
     val scaleControlConfig: ScaleControlConfig = ScaleControlConfig(),
-    val initialCenter: LatLong = LatLong(51.505, -0.09)
+    val initialCenter: LatLong = LatLong(45.760, 4.859),
+    val initialZoom: Int = 13
 )

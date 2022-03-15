@@ -30,17 +30,15 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CompletableFuture<Worker.State> cfMapLoadState = mapView.displayMap(
-                new MapConfig(
-                        Arrays.asList(MapLayer.values()),
-                        new ZoomControlConfig(true, ControlPosition.BOTTOM_LEFT),
-                        new ScaleControlConfig(true, ControlPosition.BOTTOM_LEFT, true))
-        );
+        MapConfig initialMap = new MapConfig(Arrays.asList(MapLayer.values()),
+                new ZoomControlConfig(true, ControlPosition.BOTTOM_LEFT),
+                new ScaleControlConfig(true, ControlPosition.BOTTOM_LEFT, true));
+        CompletableFuture<Worker.State> cfMapLoadState = mapView.displayMap(initialMap);
 
         // display Berlin initially after map has been loaded
         cfMapLoadState.whenComplete((workerState, error) -> {
             if (workerState == Worker.State.SUCCEEDED) {
-                mapView.setView(new LatLong(52.5172, 13.4040), 9);
+                mapView.setView(initialMap.getInitialCenter(), initialMap.getInitialZoom());
             }
         });
 
