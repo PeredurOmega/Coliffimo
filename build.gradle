@@ -8,7 +8,7 @@ plugins {
 }
 
 group 'com.insa'
-version '1.0.3'
+version '1.0.4'
 
 repositories {
     mavenCentral()
@@ -33,6 +33,10 @@ application {
 javafx {
     version = '17.0.2'
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
+}
+
+configurations {
+    jaxDoclet
 }
 
 dependencies {
