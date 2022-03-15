@@ -46,7 +46,7 @@ jobs:
 
       # Pass tests
       - name: Pass tests
-        run: ./gradlew test
+        run: ./gradlew test --stacktrace --info --scan
 
       # Format test coverage report to code climate json report
 #      - name: Format & publish test coverage report to code climate
