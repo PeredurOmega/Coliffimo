@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+
+<?import com.insa.coliffimo.leaflet.LeafletMapView?>
+<?import javafx.scene.layout.FlowPane?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insa.coliffimo.HelloController">
+   <center>
+      <FlowPane layoutY="-1.0">
+            <LeafletMapView fx:id="mapView" prefHeight="750.0" prefWidth="1200.0" />
+          <Button layoutX="40.0" layoutY="14.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0" text="Charger un programme Pickup &amp; Delivery">
+              <font>
+                  <Font size="14.0" />
+              </font>
+          </Button>
+      </FlowPane>
+   </center>
+</BorderPane>
