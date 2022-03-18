@@ -1,5 +1,6 @@
 package com.insa.coliffimo.leaflet
 
+import com.insa.coliffimo.leaflet.markers.Marker
 import javafx.concurrent.Worker
 import javafx.scene.layout.StackPane
 import javafx.scene.web.WebEngine

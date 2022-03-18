@@ -1,4 +1,4 @@
-package com.insa.coliffimo.leaflet
+package com.insa.coliffimo.leaflet.markers
 
 /**
  * Enumeration for all marker colors of the leaflet-color-markers JavaScript library.

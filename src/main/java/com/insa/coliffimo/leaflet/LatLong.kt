@@ -1,5 +1,6 @@
 package com.insa.coliffimo.leaflet
 
+
 /**
  * Immutable value class for defining a geo position.
  *
