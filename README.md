@@ -99,7 +99,7 @@ Les `pickupAddress` et `deliveryAddress` sont des id d'intersections, les `picku
 TODO: à insérer
 
 ## Environnement technique
-Le langage utilisé pour ce projet est Java 17, avec quelques parties en Kotlin également.
+Le langage utilisé pour ce projet est Java 17 également.
 Pour l'interface utilisateur, nous avons utilisé JavaFx et pour les tests, JUnit.
 
 Pour l'intégration continue, nous avons utilisé Gradle.
