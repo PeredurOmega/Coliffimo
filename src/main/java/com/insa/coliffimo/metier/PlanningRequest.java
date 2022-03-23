@@ -78,4 +78,11 @@ public class PlanningRequest {
     public int hashCode() {
         return Objects.hash(depotAddress, depotDepartureLocalTime, listRequests);
     }
+
+    public void updateCoordinatesRequests(Map m){
+        for(int i = 0; i < this.listRequests.size(); i++){
+            this.listRequests.get(i).updateCoordinates(m);
+        }
+    }
+
 }

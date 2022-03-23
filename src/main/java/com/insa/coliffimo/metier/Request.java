@@ -27,6 +27,26 @@ public class Request {
     private int deliveryDuration;
 
     /**
+     * Variable containing the latitude of the pickup intersection.
+     */
+    private float latitudePickup = 0;
+
+    /**
+     * Variable containing the longitude of the pickup intersection.
+     */
+    private float longitudePickup = 0;
+
+    /**
+     * Variable containing the latitude of the delivery intersection.
+     */
+    private float latitudeDelivery = 0;
+
+    /**
+     * Variable containing the longitude of the delivery intersection.
+     */
+    private float longitudeDelivery = 0;
+
+    /**
      * Constructor of the class.
      * @param pickupAddress
      * @param deliveryAddress
@@ -72,6 +92,38 @@ public class Request {
         this.deliveryDuration = deliveryDuration;
     }
 
+    public float getLatitudePickup(){
+        return latitudePickup;
+    }
+
+    public void setLatitudePickup(float latitudePickup){
+        this.latitudePickup = latitudePickup;
+    }
+
+    public float getLongitudePickup(){
+        return longitudePickup;
+    }
+
+    public void setLongitudePickup(float longitudePickup){
+        this.longitudePickup = longitudePickup;
+    }
+
+    public float getLatitudeDelivery(){
+        return latitudeDelivery;
+    }
+
+    public void setLatitudeDelivery(float latitudeDelivery){
+        this.latitudeDelivery = latitudeDelivery;
+    }
+
+    public float getLongitudeDelivery(){
+        return longitudeDelivery;
+    }
+
+    public void setLongitudeDelivery(float longitudeDelivery){
+        this.longitudeDelivery = longitudeDelivery;
+    }
+
     @Override
     public String toString() {
         return "Request{" +
@@ -94,4 +146,14 @@ public class Request {
     public int hashCode() {
         return Objects.hash(pickupAddress, deliveryAddress, pickupDuration, deliveryDuration);
     }
+
+    public void updateCoordinates(Map m){
+        Intersection pointPickup = m.getListIntersections().get(this.pickupAddress);
+        Intersection pointDelivery = m.getListIntersections().get(this.deliveryAddress);
+        this.latitudePickup = pointPickup.getLatitude();
+        this.longitudePickup = pointPickup.getLongitude();
+        this.latitudeDelivery = pointDelivery.getLatitude();
+        this.longitudeDelivery = pointDelivery.getLongitude();
+    }
+
 }
