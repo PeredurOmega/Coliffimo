@@ -1,9 +1,9 @@
 package com.insa.coliffimo.utils;
 
-import com.insa.coliffimo.metier.Intersection;
-import com.insa.coliffimo.metier.Map;
-import com.insa.coliffimo.metier.PlanningRequest;
-import com.insa.coliffimo.metier.Request;
+import com.insa.coliffimo.business.Intersection;
+import com.insa.coliffimo.business.Map;
+import com.insa.coliffimo.business.PlanningRequest;
+import com.insa.coliffimo.business.Request;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -17,6 +17,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalTime;
+import java.util.HashMap;
 
 public class XmlParser {
     /**
@@ -42,11 +43,12 @@ public class XmlParser {
 
     /**
      * Parse xml file into a map object
+     *
      * @param xmlFile The xml file to parse
      * @return Map The map based on xml file
-     * @source https://mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/
+     * @see <a href="https://mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/">Java DOM Parser</a>
      */
-    public Map ConvertXmlToMap(File xmlFile) {
+    public Map convertXmlToMap(File xmlFile) {
         Map map = new Map();
 
         // Instantiate the Factory
@@ -75,12 +77,14 @@ public class XmlParser {
     }
 
     /**
-     * Parse xml file into a planning reuqest object
-     * @param xmlFile The xml file to parse
-     * @return PlanningRequest The planningRequest based on xml file
-     * @source https://mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/
+     * Parse xml file into a planning request object.
+     *
+     * @param xmlFile       The xml file to parse.
+     * @param intersections HashMap of the intersection's id as key and the corresponding intersection as value.
+     * @return PlanningRequest The planningRequest based on xml file.
+     * @see <a href="https://mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/">Java DOM Parser</a>
      */
-    public PlanningRequest ConvertXmlToPlanningRequest(File xmlFile) {
+    public PlanningRequest convertXmlToPlanningRequest(File xmlFile, HashMap<Long, Intersection> intersections) {
         PlanningRequest planningRequest = new PlanningRequest();
 
         // Instantiate the Factory
@@ -99,8 +103,8 @@ public class XmlParser {
             // http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
             doc.getDocumentElement().normalize();
 
-            setDepotIntoPlanningRequest(planningRequest, doc);
-            addRequestsToPlanningRequest(planningRequest, doc);
+            setDepotIntoPlanningRequest(planningRequest, doc, intersections);
+            addRequestsToPlanningRequest(planningRequest, doc, intersections);
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
@@ -111,11 +115,11 @@ public class XmlParser {
 
     /**
      * Add an intersection to the map from the document
+     *
      * @param m The map to update
      * @param d The document from which to get information
      */
-    private void addIntersectionsToMap(Map m, Document d)
-    {
+    private void addIntersectionsToMap(Map m, Document d) {
         NodeList nodesIntersection = d.getElementsByTagName(INTERSECTION_TAG_NAME);
 
         for (int i = 0; i < nodesIntersection.getLength(); i++) {
@@ -134,13 +138,14 @@ public class XmlParser {
     }
 
     /**
-     * Add requests to the planning request from the document
-     * @param p The planning request to update
-     * @param d The document from which to get information
+     * Add requests to the planning request from the xml document.
+     *
+     * @param planning      The planning request to update.
+     * @param document      The document from which to get information.
+     * @param intersections HashMap of the intersection's id as key and the corresponding intersection as value.
      */
-    private void addRequestsToPlanningRequest(PlanningRequest p, Document d)
-    {
-        NodeList nodesRequests = d.getElementsByTagName(PLANNING_REQUEST_REQUEST_TAG_NAME);
+    private void addRequestsToPlanningRequest(PlanningRequest planning, Document document, HashMap<Long, Intersection> intersections) {
+        NodeList nodesRequests = document.getElementsByTagName(PLANNING_REQUEST_REQUEST_TAG_NAME);
 
         for (int i = 0; i < nodesRequests.getLength(); i++) {
             Node node = nodesRequests.item(i);
@@ -153,20 +158,25 @@ public class XmlParser {
                 int pickupDuration = Integer.parseInt(element.getAttribute(PLANNING_REQUEST_REQUEST_PICKUP_DURATION_ADDRESS_ATTRIBUTE_NAME));
                 int deliveryDuration = Integer.parseInt(element.getAttribute(PLANNING_REQUEST_REQUEST_DELIVERY_DURATION_ADDRESS_ATTRIBUTE_NAME));
 
-                p.addRequest(new Request(pickupAddress, deliveryAddress, pickupDuration, deliveryDuration));
+                //TODO CATCH NOT EXISTING INTERSECTION
+                Intersection pickup = intersections.get(pickupAddress);
+                Intersection delivery = intersections.get(deliveryAddress);
+
+                planning.addRequest(new Request(pickup, delivery, pickupDuration, deliveryDuration));
             }
         }
     }
 
     /**
-     * Set the depot adress and departure local time into the planning request from the document
-     * @param p The planning request to update
-     * @param d The document from which to get information
+     * Set the depot address and departure local time into the planning request from the document.
+     *
+     * @param planning      The planning request to update.
+     * @param document      The document from which to get information.
+     * @param intersections HashMap of the intersection's id as key and the corresponding intersection as value.
      */
-    private void setDepotIntoPlanningRequest(PlanningRequest p, Document d)
-    {
+    private void setDepotIntoPlanningRequest(PlanningRequest planning, Document document, HashMap<Long, Intersection> intersections) {
         char TIME_SEPARATOR = ':';
-        Node nodeDepot = d.getElementsByTagName(PLANNING_REQUEST_DEPOT_TAG_NAME).item(0);
+        Node nodeDepot = document.getElementsByTagName(PLANNING_REQUEST_DEPOT_TAG_NAME).item(0);
 
         if (nodeDepot != null && nodeDepot.getNodeType() == Node.ELEMENT_NODE) {
             Element element = (Element) nodeDepot;
@@ -175,20 +185,23 @@ public class XmlParser {
 
             String depotDepartureLocalTimeStr = element.getAttribute(PLANNING_REQUEST_DEPOT_DEPARTURE_TIME_ATTRIBUTE_NAME);
             String[] depotDepartureLocalTimeStrSplit = depotDepartureLocalTimeStr.split(":");
-            String depotDepartureLocalTimeWithValidFormat = new String();
+            StringBuilder depotDepartureLocalTimeWithValidFormat = new StringBuilder();
             for (int i = 0; i < depotDepartureLocalTimeStrSplit.length; i++) {
                 if (depotDepartureLocalTimeStrSplit[i].length() == 1) {
                     depotDepartureLocalTimeStrSplit[i] = "0" + depotDepartureLocalTimeStrSplit[i];
                 }
-                depotDepartureLocalTimeWithValidFormat += depotDepartureLocalTimeStrSplit[i];
+                depotDepartureLocalTimeWithValidFormat.append(depotDepartureLocalTimeStrSplit[i]);
                 if (i < depotDepartureLocalTimeStrSplit.length - 1) {
-                    depotDepartureLocalTimeWithValidFormat += TIME_SEPARATOR;
+                    depotDepartureLocalTimeWithValidFormat.append(TIME_SEPARATOR);
                 }
             }
-            LocalTime depotDepartureLocalTime = LocalTime.parse(depotDepartureLocalTimeWithValidFormat);
+            LocalTime depotDepartureLocalTime = LocalTime.parse(depotDepartureLocalTimeWithValidFormat.toString());
 
-            p.setDepotAddress(depotAddress);
-            p.setDepotDepartureLocalTime(depotDepartureLocalTime);
+            //TODO CATCH NOT EXISTING INTERSECTION
+            Intersection depot = intersections.get(depotAddress);
+
+            planning.setDepot(depot);
+            planning.setDepotDepartureLocalTime(depotDepartureLocalTime);
         }
     }
 }
