@@ -1,4 +1,4 @@
-# Coliffimo
+Coliffimo
 ![GitHub release (release name instead of tag name)](https://img.shields.io/github/v/release/PeredurOmega/Coliffimo?include_prereleases)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/PeredurOmega/Coliffimo/coliffimo-deployment?label=build-deployment)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/PeredurOmega/Coliffimo/coliffimo-tests?label=build-tests)
