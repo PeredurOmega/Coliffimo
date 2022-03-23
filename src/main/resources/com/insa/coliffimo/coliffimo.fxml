@@ -10,15 +10,52 @@
 
 <?import com.insa.coliffimo.leaflet.LeafletMapView?>
 <?import javafx.scene.layout.FlowPane?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insa.coliffimo.HelloController">
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insa.coliffimo.HelloController">
    <center>
-      <FlowPane layoutY="-1.0">
-            <LeafletMapView fx:id="mapView" prefHeight="750.0" prefWidth="1200.0" />
-          <Button layoutX="40.0" layoutY="14.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0" text="Charger un programme Pickup &amp; Delivery">
-              <font>
-                  <Font size="14.0" />
-              </font>
-          </Button>
-      </FlowPane>
+       <LeafletMapView fx:id="mapView" minHeight="-Infinity" minWidth="-Infinity">
+           <BorderPane>
+                <top>
+                    <HBox translateX="-50" alignment="CENTER_RIGHT">
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0" text="Charger un programme Pickup &amp; Delivery">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0" text="Charger une carte">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+                    </HBox>
+                </top>
+               <right>
+                   <VBox alignment="BOTTOM_RIGHT">
+                       <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0" text="Charger une carte">
+                           <font>
+                               <Font size="14.0" />
+                           </font>
+                       </Button>
+                       <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0" text="Charger une carte">
+                           <font>
+                               <Font size="14.0" />
+                           </font>
+                       </Button>
+                       <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0" text="Charger une carte">
+                           <font>
+                               <Font size="14.0" />
+                           </font>
+                       </Button>
+                       <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0" text="Charger une carte">
+                           <font>
+                               <Font size="14.0" />
+                           </font>
+                       </Button>
+                   </VBox>
+               </right>
+           </BorderPane>
+       </LeafletMapView>
    </center>
 </BorderPane>
