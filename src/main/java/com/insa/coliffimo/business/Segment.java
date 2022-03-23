@@ -1,4 +1,4 @@
-package com.insa.coliffimo.metier;
+package com.insa.coliffimo.business;
 
 import java.util.Objects;
 
@@ -18,21 +18,21 @@ public class Segment {
     private float length;
 
     /**
-     * Variable containing the identifiant of the origin intersection.
+     * Variable containing the id of the origin intersection.
      */
     private Long origin;
 
     /**
-     * Variable containing the identifiant of the destination intersection.
+     * Variable containing the id of the destination intersection.
      */
     private Long destination;
 
     /**
      * Constructor of the class.
-     * @param name
-     * @param length
-     * @param origin
-     * @param destination
+     * @param name Name of the segment.
+     * @param length Length of the segment (in meters).
+     * @param origin Intersection's id of the origin.
+     * @param destination Intersection's id of the destination.
      */
     public Segment(String name, float length, Long origin, Long destination) {
         this.name = name;

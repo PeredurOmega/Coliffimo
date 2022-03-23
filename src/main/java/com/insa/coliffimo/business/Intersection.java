@@ -1,6 +1,7 @@
-package com.insa.coliffimo.metier;
+package com.insa.coliffimo.business;
 
-import java.math.BigInteger;
+import com.graphhopper.jsprit.core.problem.Location;
+
 import java.util.Objects;
 
 /**
@@ -25,11 +26,12 @@ public class Intersection {
 
     /**
      * Constructor of the class.
-     * @param id
-     * @param latitude
-     * @param longitude
+     *
+     * @param id        ID of the intersection.
+     * @param latitude  Latitude corresponding to the Intersection.
+     * @param longitude Longitude corresponding to the Intersection.
      */
-    public Intersection(Long id, float latitude, float longitude){
+    public Intersection(Long id, float latitude, float longitude) {
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -57,6 +59,10 @@ public class Intersection {
 
     public void setLongitude(float longitude) {
         this.longitude = longitude;
+    }
+
+    public Location asLocation() {
+        return Location.newInstance(getLatitude(), getLongitude());
     }
 
     @Override

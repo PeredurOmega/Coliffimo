@@ -91,7 +91,7 @@ modularity.disableEffectiveArgumentsAdjustment()
 
 application {
     mainModule = 'com.insa.coliffimo'
-    mainClass = 'com.insa.coliffimo.HelloApplication'
+    mainClass = 'com.insa.coliffimo.Application'
 }
 
 compileKotlin {

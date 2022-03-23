@@ -1,9 +1,9 @@
 package com.insa.coliffimo;
 
-import com.insa.coliffimo.metier.Intersection;
-import com.insa.coliffimo.metier.Map;
-import com.insa.coliffimo.metier.PlanningRequest;
-import com.insa.coliffimo.metier.Request;
+import com.insa.coliffimo.business.Intersection;
+import com.insa.coliffimo.business.Map;
+import com.insa.coliffimo.business.PlanningRequest;
+import com.insa.coliffimo.business.Request;
 import com.insa.coliffimo.utils.XmlParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,7 +36,7 @@ public class TestXmlParser {
 
         Map expectedMap = new Map();
 
-        Map actualMap = xmlParser.ConvertXmlToMap(new File(xmlMapResourceFilePath));
+        Map actualMap = xmlParser.convertXmlToMap(new File(xmlMapResourceFilePath));
 
         Assertions.assertEquals(actualMap, expectedMap);
     }
@@ -55,7 +55,7 @@ public class TestXmlParser {
         expectedMap.addIntersection(new Intersection(208769499L, (float)45.760597, (float)4.87622));
         expectedMap.addIntersection(new Intersection(975886496L, (float)45.756874, (float)4.8574047));
 
-        Map actualMap = xmlParser.ConvertXmlToMap(new File(xmlMapResourceFilePath));
+        Map actualMap = xmlParser.convertXmlToMap(new File(xmlMapResourceFilePath));
 
         Assertions.assertEquals(actualMap, expectedMap);
     }
@@ -68,7 +68,7 @@ public class TestXmlParser {
 
         PlanningRequest expectedPlanningRequest = new PlanningRequest();
 
-        PlanningRequest actualPlanningRequest = xmlParser.ConvertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
+        PlanningRequest actualPlanningRequest = xmlParser.convertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
 
         Assertions.assertEquals(actualPlanningRequest, expectedPlanningRequest);
     }
@@ -83,7 +83,7 @@ public class TestXmlParser {
         expectedPlanningRequest.setDepotAddress(25327124L);
         expectedPlanningRequest.setDepotDepartureLocalTime(LocalTime.parse("16:20:30"));
 
-        PlanningRequest actualPlanningRequest = xmlParser.ConvertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
+        PlanningRequest actualPlanningRequest = xmlParser.convertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
 
         Assertions.assertEquals(actualPlanningRequest, expectedPlanningRequest);
     }
@@ -99,7 +99,7 @@ public class TestXmlParser {
         expectedPlanningRequest.setDepotDepartureLocalTime(LocalTime.parse("16:20:30"));
         expectedPlanningRequest.addRequest(new Request(26464256L, 239603465L, 0, 10000));
 
-        PlanningRequest actualPlanningRequest = xmlParser.ConvertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
+        PlanningRequest actualPlanningRequest = xmlParser.convertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
 
         Assertions.assertEquals(actualPlanningRequest, expectedPlanningRequest);
     }
@@ -123,7 +123,7 @@ public class TestXmlParser {
         expectedPlanningRequest.addRequest(new Request(26035105L, 25624158L, 480, 300));
         expectedPlanningRequest.addRequest(new Request(1362204817L, 843129906L, 180, 540));
 
-        PlanningRequest actualPlanningRequest = xmlParser.ConvertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
+        PlanningRequest actualPlanningRequest = xmlParser.convertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
 
         Assertions.assertEquals(actualPlanningRequest, expectedPlanningRequest);
     }
@@ -144,7 +144,7 @@ public class TestXmlParser {
         expectedPlanningRequest.setDepotDepartureLocalTime(LocalTime.parse(departureTime));
         expectedPlanningRequest.addRequest(new Request(26464256L, 239603465L, 0, 10000));
 
-        PlanningRequest actualPlanningRequest = xmlParser.ConvertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
+        PlanningRequest actualPlanningRequest = xmlParser.convertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
 
         Assertions.assertEquals(actualPlanningRequest, expectedPlanningRequest);
     }
