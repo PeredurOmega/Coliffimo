@@ -6,8 +6,15 @@ import com.insa.coliffimo.router.MapResource;
 import com.insa.coliffimo.router.PlanningResource;
 import com.insa.coliffimo.router.RouterRunnable;
 import javafx.concurrent.Worker;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
@@ -21,11 +28,21 @@ public class MainController implements Initializable {
     private static final String XML_MAP_RESOURCE_DIRECTORY_PATH = Paths.get("src", "main", "resources", "map").toAbsolutePath() + "/";
     private static final String XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH = Paths.get("src", "main", "resources", "planningRequest").toAbsolutePath() + "/";
 
+    private String xmlMapFile;
+    private String xmlRequestFile;
+
+    @FXML
+    public BorderPane rootPane;
+    @FXML
+    public Label infoLabel;
+
     /**
      * the MapView containing the map
      */
     @FXML
     private LeafletMapView mapView;
+
+    private final FileChooser fileChooser = new FileChooser();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -40,7 +57,7 @@ public class MainController implements Initializable {
                 mapView.setView(initialMap.getInitialCenter(), initialMap.getInitialZoom());
                 MapResource mapResource = new MapResource(new File(XML_MAP_RESOURCE_DIRECTORY_PATH + "mediumMap.xml"));
                 PlanningResource planningResource = new PlanningResource(mapResource, new File(XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH + "requestsMedium5.xml"));
-                new Thread(new RouterRunnable(planningResource, mapView)).start();
+                new Thread(new RouterRunnable(planningResource, mapView, rootPane)).start();
             }
         });
 
@@ -53,5 +70,36 @@ public class MainController implements Initializable {
                 movePositionMarker()
             }
         }*/
+    }
+
+    public void chooseMapFile(ActionEvent actionEvent) {
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+        if (file!=null){
+            xmlMapFile = file.getAbsolutePath();
+        }
+    }
+
+    public void chooseRequestFile(ActionEvent actionEvent) {
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+        if (file!=null){
+            xmlRequestFile = file.getAbsolutePath();
+        }
+    }
+
+    public void processItinerary(ActionEvent actionEvent) {
+        if (xmlMapFile != null && xmlRequestFile != null) {
+            mapView.clearMarkersAndTracks();
+            MapResource mapResource = new MapResource(new File(xmlMapFile));
+            PlanningResource planningResource = new PlanningResource(mapResource, new File(xmlRequestFile));
+            new Thread(new RouterRunnable(planningResource, mapView, rootPane)).start();
+        } else {
+            if (xmlMapFile == null && xmlRequestFile != null) infoLabel.setText("Fichier de map non renseigné");
+            else if (xmlMapFile != null) infoLabel.setText("Fichier de request non renseigné");
+            else infoLabel.setText("Aucun fichier renseigné");
+        }
     }
 }

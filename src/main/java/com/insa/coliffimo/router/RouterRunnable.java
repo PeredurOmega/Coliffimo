@@ -15,35 +15,46 @@ import com.graphhopper.jsprit.core.problem.vehicle.Vehicle;
 import com.graphhopper.jsprit.core.util.Coordinate;
 import com.graphhopper.jsprit.core.util.Solutions;
 import com.graphhopper.jsprit.core.util.VehicleRoutingTransportCostsMatrix;
+import com.graphhopper.util.Instruction;
+import com.graphhopper.util.Translation;
 import com.insa.coliffimo.leaflet.LatLong;
 import com.insa.coliffimo.leaflet.LeafletMapView;
 import com.insa.coliffimo.leaflet.markers.DeliveryMarker;
 import com.insa.coliffimo.leaflet.markers.DepotMarker;
 import com.insa.coliffimo.leaflet.markers.PickupMarker;
 import javafx.application.Platform;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class RouterRunnable implements Runnable {
 
     private final PlanningResource planningResource;
     private final LeafletMapView mapView;
+    private final BorderPane rootPane;
 
     private final HashMap<String, ResponsePath> bestPathsCache = new HashMap<>();
 
-    public RouterRunnable(PlanningResource planningResource, LeafletMapView mapView) {
+    public RouterRunnable(PlanningResource planningResource, LeafletMapView mapView, BorderPane rootPane) {
         this.planningResource = planningResource;
         this.mapView = mapView;
+        this.rootPane = rootPane;
     }
 
     @Override
     public void run() {
-        ArrayList<LatLong> route = computeBestRoute();
+        RouteInfo route = computeBestRoute();
 
         Platform.runLater(() -> {
-            mapView.addTrack(route);
+            mapView.addTrack(route.getFullTracks());
 
             Vehicle vehicle = planningResource.getVehicle();
             ArrayList<Shipment> shipments = planningResource.getShipments();
@@ -53,10 +64,28 @@ public class RouterRunnable implements Runnable {
                 mapView.addMarker(from(shipment.getPickupLocation()), "Pickup", new PickupMarker("#66FF00"), 1);
                 mapView.addMarker(from(shipment.getDeliveryLocation()), "Delivery", new DeliveryMarker("#000066"), 1);
             });
+
+            Translation tr = RhoneAlpesGraphHopper.getGraphHopper().getTranslationMap().getWithFallBack(Locale.FRANCE);
+            VBox rightPane = new VBox();
+            rightPane.getStyleClass().add("vbox");
+            int i = 1;
+            for (Instruction iti : route.getFullInstructions()) {
+                String indication = StringUtils.uncapitalize(iti.getTurnDescription(tr));
+                int distance = (int) iti.getDistance();
+                if (indication.startsWith("continuez") && distance > 0) {
+                    indication = indication + " pendant " + distance + " mètres";
+                } else if (!indication.startsWith("arrivée") && distance > 0) {
+                    indication = indication + " et continuez sur " + distance + " mètres";
+                }
+                rightPane.getChildren().add(new Label(StringUtils.capitalize(indication)));
+            }
+            ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setContent(rightPane);
+            rootPane.setRight(scrollPane);
         });
     }
 
-    private ArrayList<LatLong> computeBestRoute() {
+    private RouteInfo computeBestRoute() {
         Vehicle vehicle = planningResource.getVehicle();
         ArrayList<Shipment> shipments = planningResource.getShipments();
 
@@ -101,7 +130,6 @@ public class RouterRunnable implements Runnable {
                         .setProfile("car");
                 // GHResponse : store possible routes and returns the best with getBest()
                 GHResponse rsp = graphHopper.route(req);
-
                 // Handle errors
                 if (rsp.hasErrors()) {
                     throw new RuntimeException(rsp.getErrors().toString());
@@ -138,7 +166,7 @@ public class RouterRunnable implements Runnable {
         return locations;
     }
 
-    private ArrayList<LatLong> computeFullRoute(VehicleRoutingProblemSolution bestSolution) {
+    private RouteInfo computeFullRoute(VehicleRoutingProblemSolution bestSolution) {
         ArrayList<Location> tracks = new ArrayList<>();
         bestSolution.getRoutes().forEach(vehicleRoute -> {
             tracks.add(vehicleRoute.getStart().getLocation());
@@ -146,13 +174,15 @@ public class RouterRunnable implements Runnable {
             tracks.add(vehicleRoute.getEnd().getLocation());
         });
 
-        ArrayList<LatLong> fullTracks = new ArrayList<>();
+        RouteInfo itinerary = new RouteInfo();
         for (int i = 0; i < tracks.size() - 1; i++) {
             Coordinate from = tracks.get(i).getCoordinate();
             Coordinate to = tracks.get(i + 1).getCoordinate();
-            bestPathsCache.get(from.toString() + to).getPoints().forEach(p -> fullTracks.add(new LatLong(p.lat, p.lon)));
+            ResponsePath path = bestPathsCache.get(from.toString() + to);
+            path.getPoints().forEach(p -> itinerary.getFullTracks().add(new LatLong(p.lat, p.lon)));
+            path.getInstructions().forEach(iti -> itinerary.getFullInstructions().add(iti));
         }
-        return fullTracks;
+        return itinerary;
     }
 
     private LatLong from(Location location) {

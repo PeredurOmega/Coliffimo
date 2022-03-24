@@ -15,22 +15,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import java.net.URL?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="50" minWidth="50" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insa.coliffimo.HelloController">
+<?import javafx.scene.control.Label?>
+<BorderPane id="rootPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="50" minWidth="50"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.insa.coliffimo.MainController">
    <center>
        <LeafletMapView fx:id="mapView">
        </LeafletMapView>
    </center>
     <top>
         <HBox alignment="TOP_CENTER">
-            <MFXButton mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0" text="Charger un programme Pickup &amp; Delivery" />
-            <MFXButton mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0" text="Charger une carte" />
+            <MFXButton mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0"
+                       text="Charger une carte" onAction="#chooseMapFile" />
+            <MFXButton mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0"
+                       text="Charger un programme Pickup &amp; Delivery" onAction="#chooseRequestFile" />
+            <MFXButton mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0"
+                       text="Calculer l'itinéraire" onAction="#processItinerary" />
+            <Label fx:id="infoLabel"/>
         </HBox>
     </top>
-<!--    <right>-->
-<!--        <ScrollPane>-->
-
-<!--        </ScrollPane>-->
-<!--    </right>-->
     <stylesheets>
         <URL value="@style.css"/>
     </stylesheets>
