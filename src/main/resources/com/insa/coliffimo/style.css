@@ -2,6 +2,13 @@
     -fx-font-size: 14;
 }
 
+.direction-icon{
+    -fx-fit-to-width: 16;
+    -fx-fit-to-height: 16;
+}
+.instruction-line {
+    -fx-padding: 3 0 3 0;
+}
 .button {
     -fx-background-color: #EAF2FF;
     -fx-border-color: #b3d0fd;
@@ -13,4 +20,8 @@
 
 .vbox {
     -fx-background-color: white;
+}
+
+.instructionBlocPane {
+    -fx-padding: 5 0 5 0;
 }

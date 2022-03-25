@@ -23,17 +23,24 @@ import com.insa.coliffimo.leaflet.markers.DeliveryMarker;
 import com.insa.coliffimo.leaflet.markers.DepotMarker;
 import com.insa.coliffimo.leaflet.markers.PickupMarker;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Locale;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class RouterRunnable implements Runnable {
 
@@ -67,17 +74,101 @@ public class RouterRunnable implements Runnable {
 
             Translation tr = RhoneAlpesGraphHopper.getGraphHopper().getTranslationMap().getWithFallBack(Locale.FRANCE);
             VBox rightPane = new VBox();
+            Button seePathDetailsButton = null;
             rightPane.getStyleClass().add("vbox");
             int i = 1;
-            for (Instruction iti : route.getFullInstructions()) {
-                String indication = StringUtils.uncapitalize(iti.getTurnDescription(tr));
-                int distance = (int) iti.getDistance();
-                if (indication.startsWith("continuez") && distance > 0) {
-                    indication = indication + " pendant " + distance + " mètres";
-                } else if (!indication.startsWith("arrivée") && distance > 0) {
-                    indication = indication + " et continuez sur " + distance + " mètres";
+            int instructionBlocPaneIndex = 0;
+            VBox instructionBlocPane = new VBox();
+            instructionBlocPane.getStyleClass().add("instruction-bloc");
+            instructionBlocPane.getStyleClass().add("instruction-bloc" + instructionBlocPaneIndex);
+
+            int finalInstructionBlocPaneIndex = instructionBlocPaneIndex;
+            seePathDetailsButton = new Button("Détails de l'itinéraire");
+            seePathDetailsButton.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, new EventHandler<javafx.scene.input.MouseEvent>() {
+                @Override
+                public void handle(javafx.scene.input.MouseEvent e) {
+                    Set<Node> nodes = rightPane.lookupAll(".instruction-bloc" + finalInstructionBlocPaneIndex);
+                    System.out.println("il y a "+ ".instruction-bloc" + finalInstructionBlocPaneIndex);
+                    nodes.forEach(n -> {
+                        n.setVisible(!n.isVisible());
+                        /* setManaged équivalent à display : none; en CSS
+                         * Permet de faire disparaître la mise en page de l'élément
+                         **/
+                        n.setManaged(!n.isManaged());
+                       // n.setVisible(false);
+                    });
                 }
-                rightPane.getChildren().add(new Label(StringUtils.capitalize(indication)));
+            });
+            instructionBlocPane.getChildren().add(seePathDetailsButton);
+
+            for (Instruction iti : route.getFullInstructions()) {
+                HBox instructionLine = new HBox();
+                instructionLine.getStyleClass().add("instruction-line");
+                String indication = StringUtils.uncapitalize(iti.getTurnDescription(tr));
+
+                if (!indication.startsWith("arrivée")){
+                    int distance = (int) iti.getDistance();
+
+                    if (indication.startsWith("continuez") && distance > 0) {
+                        indication = indication + " pendant " + distance + " mètres";
+                    } else if (!indication.startsWith("arrivée") && distance > 0) {
+                        indication = indication + " et continuez sur " + distance + " mètres";
+                    }
+
+                    String imageFileName = "";
+                    switch (iti.getSign()) {
+                        case Instruction.CONTINUE_ON_STREET -> imageFileName = "arrow-up";
+                        case Instruction.TURN_LEFT -> imageFileName = "arrow-left";
+                        case Instruction.TURN_RIGHT -> imageFileName = "arrow-right";
+                        case Instruction.TURN_SLIGHT_LEFT -> imageFileName = "arrow-up-left";
+                        case Instruction.TURN_SLIGHT_RIGHT -> imageFileName = "arrow-up-right";
+                        default -> imageFileName = "";
+                    }
+                    if (!imageFileName.isEmpty()) {
+                        Image image = null;
+                        try {
+                            image = new Image(new FileInputStream(
+                                    Paths.get(
+                                            "src", "main", "resources", "img").toAbsolutePath() + "/" + imageFileName + ".png"));
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        ImageView imageView = new ImageView(image);
+                        imageView.setFitHeight(18);
+                        imageView.setFitWidth(18);
+                        imageView.setPreserveRatio(true);
+
+                        instructionLine.getChildren().add(imageView);
+                    }
+                    instructionLine.getChildren().add(new Label(StringUtils.capitalize(indication)));
+                    instructionBlocPane.getChildren().add(instructionLine);
+                } else {
+                    rightPane.getChildren().add(instructionBlocPane);
+                    instructionBlocPaneIndex++;
+                    instructionBlocPane = new VBox();
+                    instructionBlocPane.getStyleClass().add("instruction-bloc");
+                    instructionBlocPane.getStyleClass().add("instruction-bloc" + instructionBlocPaneIndex);
+
+                    seePathDetailsButton = new Button("Détails de l'itinéraire");
+                    int finalInstructionBlocPaneIndex1 = instructionBlocPaneIndex;
+                    seePathDetailsButton.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, new EventHandler<javafx.scene.input.MouseEvent>() {
+                        @Override
+                        public void handle(javafx.scene.input.MouseEvent e) {
+                            Set<Node> nodes = rightPane.lookupAll(".instruction-bloc" + finalInstructionBlocPaneIndex1);
+                            System.out.println("il y a "+ ".instruction-bloc" + finalInstructionBlocPaneIndex1);
+                            nodes.forEach(n -> {
+                                n.setVisible(!n.isVisible());
+                                /* setManaged équivalent à display : none; en CSS
+                                 * Permet de faire disparaître la mise en page de l'élément
+                                 **/
+                                n.setManaged(!n.isManaged());
+                               // n.setVisible(false);
+                            });
+                        }
+                    });
+                    instructionBlocPane.getChildren().add(seePathDetailsButton);
+                    instructionBlocPaneIndex++;
+                }
             }
             ScrollPane scrollPane = new ScrollPane();
             scrollPane.setContent(rightPane);
