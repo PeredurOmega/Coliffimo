@@ -5,6 +5,7 @@ import javafx.concurrent.Worker
 import javafx.scene.layout.StackPane
 import javafx.scene.web.WebEngine
 import javafx.scene.web.WebView
+import netscape.javascript.JSObject
 import java.util.concurrent.CompletableFuture
 
 
@@ -20,6 +21,7 @@ open class LeafletMapView : StackPane() {
 
     private val webView = WebView()
     private val webEngine: WebEngine = webView.engine
+    private val mapClickBridge = MapClickBridge()
 
     private var varNameSuffix: Int = 1
 
@@ -68,6 +70,8 @@ open class LeafletMapView : StackPane() {
         execScript("var baseMaps = { $jsLayers };")
 
         // execute script for map view creation (Leaflet attribution must not be a clickable link)
+        val jsobj = webEngine.executeScript("window") as JSObject
+        jsobj.setMember("java", mapClickBridge)
         execScript(
             """
                 |var myMap = L.map('map', {
@@ -78,7 +82,14 @@ open class LeafletMapView : StackPane() {
                 |});
                 |
                 |var attribution = myMap.attributionControl;
-                |attribution.setPrefix('Leaflet');""".trimMargin()
+                |attribution.setPrefix('Leaflet');
+                |
+                |myMap.on('click', function(e) {
+                |   var coords = e.latlng;
+                |   var lat = coords.lat;
+                |   var lng = coords.lng;
+                |   java.callbackMapClick(lat, lng);
+                |});""".trimMargin()
         )
 
         // execute script for layer control definition if there are multiple layers
@@ -142,14 +153,21 @@ open class LeafletMapView : StackPane() {
      * @param zIndexOffset zIndexOffset (higher number means on top)
      * @return variable name of the created marker
      */
-    fun addMarker(position: LatLong, title: String, marker: Marker, zIndexOffset: Int): String {
+    fun addMarker(position: LatLong, title: String, marker: Marker, zIndexOffset: Int, popupLabel: String, idMarker: String): String {
         val varName = "marker${varNameSuffix++}"
 
         execScript(
             "var $varName = L.marker([${position.latitude}, ${position.longitude}], "
-                    + "{title: '$title', icon: ${marker.iconName}, zIndexOffset: $zIndexOffset}).addTo(myMap);"
+                    + "{title: '$title', icon: ${marker.iconName}, zIndexOffset: $zIndexOffset, draggable: true}).addTo(myMap);" +
+                    "$varName.bindPopup(\"$popupLabel\");" +
+                    "$varName.on('dragend', function(e) {" +
+                    "var coords = e.target.getLatLng();" +
+                    "var lat = coords.lat;" +
+                    "var lng = coords.lng;" +
+                    "java.callbackMapDragged(lat, lng, \"$idMarker\");" +
+                    "});"
         )
-        return varName;
+        return varName
     }
 
     /**

@@ -68,7 +68,9 @@ public class TestXmlParser {
 
         PlanningRequest expectedPlanningRequest = new PlanningRequest();
 
-        PlanningRequest actualPlanningRequest = xmlParser.convertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath));
+        String xmlMapResourceFilePath = XML_MAP_RESOURCE_DIRECTORY_PATH + "map with intersections and other tags.xml";
+        Map map = xmlParser.convertXmlToMap(new File(xmlMapResourceFilePath));
+        PlanningRequest actualPlanningRequest = xmlParser.convertXmlToPlanningRequest(new File(xmlPlanningRequestResourceFilePath), map.getListIntersections());
 
         Assertions.assertEquals(actualPlanningRequest, expectedPlanningRequest);
     }
