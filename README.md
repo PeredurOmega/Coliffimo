@@ -93,7 +93,16 @@ Les `pickupAddress` et `deliveryAddress` sont des id d'intersections, les `picku
 * Le trajet du livreur est calculé lorsque le fichier XML est chargé par l'utilisateur.
 * L’utilisateur peut alors visualiser, sur la carte affichée précédemment, le trajet proposé pour le livreur.
 * L’utilisateur peut zoomer/dézoomer sur la carte.
+* Une liste d'instructions décrivant l'itinéraire est affichée sur la droite. Elles peuvent être exportées au format JSON.
 
+### Cas d’utilisation 4 : Modifier interactivement le programme
+*En tant qu’utilisateur, je veux pouvoir modifier interactivement le programme afin de disposer d’une interface facilement utilisable.*
+
+**Spécifications fonctionnelles :**
+* L’utilisateur peut supprimer un couple de points ou en ajouter en cliquant sur la carte.
+* L’utilisateur peut spécifier une fenêtre horaire pour le passage à un point donné.
+* L'utilisateur peut cliquer sur un point de passage pour en voir les coordonnées
+* L’utilisateur peut déplacer un point de passage en drag&drop
 
 ## Diagramme de classes
 TODO: à insérer
