@@ -167,7 +167,7 @@ open class LeafletMapView : StackPane() {
                     "java.callbackMapDragged(lat, lng, \"$idMarker\");" +
                     "});"
         )
-        return varName;
+        return varName
     }
 
     /**

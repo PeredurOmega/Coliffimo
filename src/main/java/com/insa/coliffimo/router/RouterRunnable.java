@@ -22,14 +22,15 @@ import com.insa.coliffimo.leaflet.LeafletMapView;
 import com.insa.coliffimo.leaflet.markers.DeliveryMarker;
 import com.insa.coliffimo.leaflet.markers.DepotMarker;
 import com.insa.coliffimo.leaflet.markers.PickupMarker;
+import com.insa.coliffimo.utils.ColorGenerator;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import org.apache.commons.lang3.StringUtils;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -58,18 +59,23 @@ public class RouterRunnable implements Runnable {
 
             Vehicle vehicle = planningResource.getVehicle();
             ArrayList<Shipment> shipments = planningResource.getShipments();
-            //TODO IMPROVE AND USE CUSTOM COLOR
-            mapView.addMarker(from(vehicle.getStartLocation()), "Start/Arrival", new DepotMarker("#660000"), 1, "start", "0");
-            for(Shipment shipment: shipments){
+            ArrayList<Color> colors = new ColorGenerator().generateColorList(shipments.size());
+
+            mapView.addMarker(from(vehicle.getStartLocation()), "Start/Arrival", new DepotMarker("#000000"), 1, "start", "0");
+
+            int k = 0;
+            for (Shipment shipment : shipments) {
                 String idMarker = shipment.getId();
-                mapView.addMarker(from(shipment.getPickupLocation()), "Pickup", new PickupMarker("#66FF00"), 1, "pickup", "pickup"+idMarker);
-                mapView.addMarker(from(shipment.getDeliveryLocation()), "Delivery", new DeliveryMarker("#000066"), 1, "delivery", "delivery"+idMarker);
-            };
+                String hex = "#" + Integer.toHexString(colors.get(k).getRGB()).substring(2);
+                mapView.addMarker(from(shipment.getPickupLocation()), "Pickup", new PickupMarker(hex), 1, "pickup", "pickup" + idMarker);
+                mapView.addMarker(from(shipment.getDeliveryLocation()), "Delivery", new DeliveryMarker(hex), 1, "delivery", "delivery" + idMarker);
+                k++;
+            }
 
             Translation tr = RhoneAlpesGraphHopper.getGraphHopper().getTranslationMap().getWithFallBack(Locale.FRANCE);
             VBox rightPane = new VBox();
             rightPane.getStyleClass().add("vbox");
-            int i = 1;
+
             for (Instruction iti : route.getFullInstructions()) {
                 String indication = StringUtils.uncapitalize(iti.getTurnDescription(tr));
                 int distance = (int) iti.getDistance();
