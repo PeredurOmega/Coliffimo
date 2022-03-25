@@ -36,12 +36,15 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import org.apache.commons.lang3.StringUtils;
 
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.List;
 
 public class RouterRunnable implements Runnable {
 
@@ -150,14 +153,25 @@ public class RouterRunnable implements Runnable {
                     instructionBlocPane.getChildren().add(instructionLine);
                 } else {
                     rightPane.getChildren().add(instructionBlocPane);
-                    instructionBlocPaneIndex++;
                     instructionBlocPane = new VBox();
                     instructionBlocPane.getStyleClass().add("instruction-bloc");
                     seePathDetailButton = new Button("Détails de l'itinéraire");
                     seePathDetailButton.getStyleClass().add("see-detail-button");
+                    Circle pointCircle = new Circle();
+                    pointCircle.setTranslateY(4);
+                    pointCircle.setRadius(6);
+                    System.out.println(instructionBlocPaneIndex);
+                    System.out.println("ship="+shipments.size());
+                    if (instructionBlocPaneIndex >= shipments.size()) {
+                        pointCircle.setFill(javafx.scene.paint.Color.rgb(0, 0, 0, 0));
+                    } else {
+                        pointCircle.setFill(javafx.scene.paint.Color.rgb(colors.get(instructionBlocPaneIndex).getRed(), colors.get(instructionBlocPaneIndex).getGreen(), colors.get(instructionBlocPaneIndex).getBlue()));
+                    }
                     arrivalLabel = new Label("Arrivée au point (" + iti.getPoints().getLat(0) + ";" + iti.getPoints().getLon(0) + ")");
                     arrivalLabel.getStyleClass().add("arrival-label");
+                    HBox circleAndArrival = new HBox(pointCircle, arrivalLabel);
 
+                    instructionBlocPaneIndex++;
                     int finalInstructionBlocPaneIndex1 = instructionBlocPaneIndex;
                     seePathDetailButton.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, new EventHandler<javafx.scene.input.MouseEvent>() {
                         @Override
@@ -169,7 +183,7 @@ public class RouterRunnable implements Runnable {
                             });
                         }
                     });
-                    instructionBlocPane.getChildren().add(arrivalLabel);
+                    instructionBlocPane.getChildren().add(circleAndArrival);
                     instructionBlocPane.getChildren().add(seePathDetailButton);
                 }
             }
