@@ -90,7 +90,7 @@ public class Request {
     public String toString() {
         return "Request{" +
                 "pickup=" + pickup.toString() +
-                ", deliveryAddress=" + delivery.toString() +
+                ", delivery=" + delivery.toString() +
                 ", pickupDuration=" + pickupDuration +
                 ", deliveryDuration=" + deliveryDuration +
                 '}';

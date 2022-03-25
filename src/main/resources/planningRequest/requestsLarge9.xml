@@ -2,12 +2,12 @@
 <planningRequest>
 <depot address="25327124" departureTime="8:0:0"/>
 <request pickupAddress="26464256" deliveryAddress="239603465" pickupDuration="0" deliveryDuration="600"/>
-<request pickupAddress="25319255" adresseLivraison="1370403192" pickupDuration="600" deliveryDuration="120"/>
-<request pickupAddress="984553611" adresseLivraison="1368674802" pickupDuration="60" deliveryDuration="480"/>
-<request pickupAddress="1678996781" adresseLivraison="26084216" pickupDuration="420" deliveryDuration="600"/>
-<request pickupAddress="1301805013" adresseLivraison="25310896" pickupDuration="420" deliveryDuration="240"/>
-<request pickupAddress="59654812" adresseLivraison="25316399" pickupDuration="120" deliveryDuration="60"/>
-<request pickupAddress="130144280" adresseLivraison="25499154" pickupDuration="240" deliveryDuration="120"/>
-<request pickupAddress="26035105" adresseLivraison="25624158" pickupDuration="480" deliveryDuration="300"/>
-<request pickupAddress="1362204817" adresseLivraison="843129906" pickupDuration="180" deliveryDuration="540"/>
+<request pickupAddress="25319255" deliveryAddress="1370403192" pickupDuration="600" deliveryDuration="120"/>
+<request pickupAddress="984553611" deliveryAddress="1368674802" pickupDuration="60" deliveryDuration="480"/>
+<request pickupAddress="1678996781" deliveryAddress="26084216" pickupDuration="420" deliveryDuration="600"/>
+<request pickupAddress="1301805013" deliveryAddress="25310896" pickupDuration="420" deliveryDuration="240"/>
+<request pickupAddress="59654812" deliveryAddress="25316399" pickupDuration="120" deliveryDuration="60"/>
+<request pickupAddress="130144280" deliveryAddress="25499154" pickupDuration="240" deliveryDuration="120"/>
+<request pickupAddress="26035105" deliveryAddress="25624158" pickupDuration="480" deliveryDuration="300"/>
+<request pickupAddress="1362204817" deliveryAddress="843129906" pickupDuration="180" deliveryDuration="540"/>
 </planningRequest>

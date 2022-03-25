@@ -9,6 +9,7 @@ import java.io.IOException;
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
+        //TODO stage.getIcons().add(new Image("file:icon.png"));
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("coliffimo.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setMaximized(true);
