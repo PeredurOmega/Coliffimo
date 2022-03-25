@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.insa.coliffimo.leaflet.LeafletMapView?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
+<?import com.insa.coliffimo.leaflet.LeafletMapView?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
-            prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.insa.coliffimo.MainController">
-    <top>
-        <Label fx:id="welcomeText"/>
-    </top>
+<?import javafx.scene.layout.FlowPane?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.insa.coliffimo.HelloController">
     <center>
-        <Pane>
-            <LeafletMapView fx:id="mapView"/>
-            <MFXButton id="custom" minHeight="27.0" minWidth="70.0" text="Custom" onAction="#onHelloButtonClick"
-                       GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM"/>
-        </Pane>
+        <LeafletMapView fx:id="mapView"/>
     </center>
+<!--    <bottom>-->
+<!--        <FlowPane>-->
+<!--            <MFXButton id="custom" text="Custom" onAction="#onHelloButtonClick"/>-->
+<!--        </FlowPane>-->
+<!--    </bottom>-->
 </BorderPane>

@@ -1,0 +1,16 @@
+.label, .button{
+    -fx-font-size: 14;
+}
+
+.button {
+    -fx-background-color: #EAF2FF;
+    -fx-border-color: #b3d0fd;
+}
+
+#rootPane {
+    -fx-background-color: white;
+}
+
+.vbox {
+    -fx-background-color: white;
+}
