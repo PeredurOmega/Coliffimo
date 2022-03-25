@@ -59,10 +59,10 @@ public class RouterRunnable implements Runnable {
             Vehicle vehicle = planningResource.getVehicle();
             ArrayList<Shipment> shipments = planningResource.getShipments();
             //TODO IMPROVE AND USE CUSTOM COLOR
-            mapView.addMarker(from(vehicle.getStartLocation()), "Start/Arrival", new DepotMarker("#660000"), 1);
+            mapView.addMarker(from(vehicle.getStartLocation()), "Start/Arrival", new DepotMarker("#660000"), 1, "start");
             shipments.forEach(shipment -> {
-                mapView.addMarker(from(shipment.getPickupLocation()), "Pickup", new PickupMarker("#66FF00"), 1);
-                mapView.addMarker(from(shipment.getDeliveryLocation()), "Delivery", new DeliveryMarker("#000066"), 1);
+                mapView.addMarker(from(shipment.getPickupLocation()), "Pickup", new PickupMarker("#66FF00"), 1, "pickup");
+                mapView.addMarker(from(shipment.getDeliveryLocation()), "Delivery", new DeliveryMarker("#000066"), 1, "delivery");
             });
 
             Translation tr = RhoneAlpesGraphHopper.getGraphHopper().getTranslationMap().getWithFallBack(Locale.FRANCE);

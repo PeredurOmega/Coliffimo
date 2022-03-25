@@ -142,12 +142,13 @@ open class LeafletMapView : StackPane() {
      * @param zIndexOffset zIndexOffset (higher number means on top)
      * @return variable name of the created marker
      */
-    fun addMarker(position: LatLong, title: String, marker: Marker, zIndexOffset: Int): String {
+    fun addMarker(position: LatLong, title: String, marker: Marker, zIndexOffset: Int, popupLabel: String): String {
         val varName = "marker${varNameSuffix++}"
 
         execScript(
             "var $varName = L.marker([${position.latitude}, ${position.longitude}], "
-                    + "{title: '$title', icon: ${marker.iconName}, zIndexOffset: $zIndexOffset}).addTo(myMap);"
+                    + "{title: '$title', icon: ${marker.iconName}, zIndexOffset: $zIndexOffset}).addTo(myMap);" +
+                    "$varName.bindPopup(\"$popupLabel\");"
         )
         return varName;
     }

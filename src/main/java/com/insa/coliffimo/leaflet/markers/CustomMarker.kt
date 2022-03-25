@@ -8,6 +8,7 @@ abstract class CustomMarker() : Marker {
           className: "",
           iconSize: [36, 60],
           iconAnchor: [17, 60],
+          popupAnchor: [0, -60],
         })
         """.trimIndent()
 }
