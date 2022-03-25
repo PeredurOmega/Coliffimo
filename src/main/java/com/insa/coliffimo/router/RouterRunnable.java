@@ -47,6 +47,7 @@ public class RouterRunnable implements Runnable {
     private final PlanningResource planningResource;
     private final LeafletMapView mapView;
     private final BorderPane rootPane;
+    private final List<Button> seePathDetailButtons = new ArrayList<>();
 
     private final HashMap<String, ResponsePath> bestPathsCache = new HashMap<>();
 
@@ -74,39 +75,39 @@ public class RouterRunnable implements Runnable {
 
             Translation tr = RhoneAlpesGraphHopper.getGraphHopper().getTranslationMap().getWithFallBack(Locale.FRANCE);
             VBox rightPane = new VBox();
-            Button seePathDetailsButton = null;
+            Button seePathDetailButton = null;
+            Label arrivalLabel = null;
             rightPane.getStyleClass().add("vbox");
             int i = 1;
             int instructionBlocPaneIndex = 0;
             VBox instructionBlocPane = new VBox();
             instructionBlocPane.getStyleClass().add("instruction-bloc");
-            instructionBlocPane.getStyleClass().add("instruction-bloc" + instructionBlocPaneIndex);
 
             int finalInstructionBlocPaneIndex = instructionBlocPaneIndex;
-            seePathDetailsButton = new Button("Détails de l'itinéraire");
-            seePathDetailsButton.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, new EventHandler<javafx.scene.input.MouseEvent>() {
+            seePathDetailButton = new Button("Détails de l'itinéraire");
+            seePathDetailButton.getStyleClass().add("see-detail-button");
+            seePathDetailButton.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, new EventHandler<javafx.scene.input.MouseEvent>() {
                 @Override
                 public void handle(javafx.scene.input.MouseEvent e) {
-                    Set<Node> nodes = rightPane.lookupAll(".instruction-bloc" + finalInstructionBlocPaneIndex);
-                    System.out.println("il y a "+ ".instruction-bloc" + finalInstructionBlocPaneIndex);
+                    Set<Node> nodes = rightPane.lookupAll(".instruction-line-in-bloc" + finalInstructionBlocPaneIndex);
                     nodes.forEach(n -> {
                         n.setVisible(!n.isVisible());
-                        /* setManaged équivalent à display : none; en CSS
-                         * Permet de faire disparaître la mise en page de l'élément
-                         **/
                         n.setManaged(!n.isManaged());
-                       // n.setVisible(false);
                     });
+                    System.out.println(rightPane.getWidth());
                 }
             });
-            instructionBlocPane.getChildren().add(seePathDetailsButton);
+            rightPane.getChildren().add(seePathDetailButton);
 
             for (Instruction iti : route.getFullInstructions()) {
                 HBox instructionLine = new HBox();
-                instructionLine.getStyleClass().add("instruction-line");
-                String indication = StringUtils.uncapitalize(iti.getTurnDescription(tr));
+                instructionLine.setVisible(false);
+                instructionLine.setManaged(false);
+                instructionLine.getStyleClass().add("instruction-line-in-bloc");
+                instructionLine.getStyleClass().add("instruction-line-in-bloc" + instructionBlocPaneIndex);
 
-                if (!indication.startsWith("arrivée")){
+                String indication = StringUtils.uncapitalize(iti.getTurnDescription(tr));
+                if (!indication.startsWith("arrivée")) {
                     int distance = (int) iti.getDistance();
 
                     if (indication.startsWith("continuez") && distance > 0) {
@@ -118,10 +119,8 @@ public class RouterRunnable implements Runnable {
                     String imageFileName = "";
                     switch (iti.getSign()) {
                         case Instruction.CONTINUE_ON_STREET -> imageFileName = "arrow-up";
-                        case Instruction.TURN_LEFT -> imageFileName = "arrow-left";
-                        case Instruction.TURN_RIGHT -> imageFileName = "arrow-right";
-                        case Instruction.TURN_SLIGHT_LEFT -> imageFileName = "arrow-up-left";
-                        case Instruction.TURN_SLIGHT_RIGHT -> imageFileName = "arrow-up-right";
+                        case Instruction.TURN_LEFT, Instruction.KEEP_LEFT, Instruction.TURN_SLIGHT_LEFT, Instruction.TURN_SHARP_LEFT -> imageFileName = "arrow-left";
+                        case Instruction.TURN_RIGHT, Instruction.KEEP_RIGHT, Instruction.TURN_SLIGHT_RIGHT, Instruction.TURN_SHARP_RIGHT -> imageFileName = "arrow-right";
                         default -> imageFileName = "";
                     }
                     if (!imageFileName.isEmpty()) {
@@ -147,27 +146,24 @@ public class RouterRunnable implements Runnable {
                     instructionBlocPaneIndex++;
                     instructionBlocPane = new VBox();
                     instructionBlocPane.getStyleClass().add("instruction-bloc");
-                    instructionBlocPane.getStyleClass().add("instruction-bloc" + instructionBlocPaneIndex);
+                    seePathDetailButton = new Button("Détails de l'itinéraire");
+                    seePathDetailButton.getStyleClass().add("see-detail-button");
+                    arrivalLabel = new Label("Arrivée au point (" + iti.getPoints().getLat(0) + ";" + iti.getPoints().getLon(0) + ")");
+                    arrivalLabel.getStyleClass().add("arrival-label");
 
-                    seePathDetailsButton = new Button("Détails de l'itinéraire");
                     int finalInstructionBlocPaneIndex1 = instructionBlocPaneIndex;
-                    seePathDetailsButton.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, new EventHandler<javafx.scene.input.MouseEvent>() {
+                    seePathDetailButton.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, new EventHandler<javafx.scene.input.MouseEvent>() {
                         @Override
                         public void handle(javafx.scene.input.MouseEvent e) {
-                            Set<Node> nodes = rightPane.lookupAll(".instruction-bloc" + finalInstructionBlocPaneIndex1);
-                            System.out.println("il y a "+ ".instruction-bloc" + finalInstructionBlocPaneIndex1);
+                            Set<Node> nodes = rightPane.lookupAll(".instruction-line-in-bloc" + finalInstructionBlocPaneIndex1);
                             nodes.forEach(n -> {
                                 n.setVisible(!n.isVisible());
-                                /* setManaged équivalent à display : none; en CSS
-                                 * Permet de faire disparaître la mise en page de l'élément
-                                 **/
                                 n.setManaged(!n.isManaged());
-                               // n.setVisible(false);
                             });
                         }
                     });
-                    instructionBlocPane.getChildren().add(seePathDetailsButton);
-                    instructionBlocPaneIndex++;
+                    instructionBlocPane.getChildren().add(arrivalLabel);
+                    instructionBlocPane.getChildren().add(seePathDetailButton);
                 }
             }
             ScrollPane scrollPane = new ScrollPane();
