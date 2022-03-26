@@ -11,12 +11,14 @@ import com.graphhopper.jsprit.core.problem.Location;
 import com.graphhopper.jsprit.core.problem.VehicleRoutingProblem;
 import com.graphhopper.jsprit.core.problem.job.Shipment;
 import com.graphhopper.jsprit.core.problem.solution.VehicleRoutingProblemSolution;
+import com.graphhopper.jsprit.core.problem.solution.route.VehicleRoute;
 import com.graphhopper.jsprit.core.problem.vehicle.Vehicle;
 import com.graphhopper.jsprit.core.util.Coordinate;
 import com.graphhopper.jsprit.core.util.Solutions;
 import com.graphhopper.jsprit.core.util.VehicleRoutingTransportCostsMatrix;
 import com.graphhopper.util.Instruction;
 import com.graphhopper.util.Translation;
+import com.insa.coliffimo.business.Intersection;
 import com.insa.coliffimo.leaflet.LatLong;
 import com.insa.coliffimo.leaflet.LeafletMapView;
 import com.insa.coliffimo.leaflet.markers.DeliveryMarker;
@@ -37,6 +39,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Pair;
 import org.apache.commons.lang3.StringUtils;
 
 import java.awt.*;
@@ -51,14 +55,20 @@ public class RouterRunnable implements Runnable {
     private final PlanningResource planningResource;
     private final LeafletMapView mapView;
     private final BorderPane rootPane;
-    private final List<Button> seePathDetailButtons = new ArrayList<>();
+    private final MapResource mapResource;
 
     private final HashMap<String, ResponsePath> bestPathsCache = new HashMap<>();
 
-    public RouterRunnable(PlanningResource planningResource, LeafletMapView mapView, BorderPane rootPane) {
+    public enum ShipmentType {
+        PICKUP,
+        DELIVERY
+    }
+
+    public RouterRunnable(PlanningResource planningResource, LeafletMapView mapView, BorderPane rootPane, MapResource mapResource) {
         this.planningResource = planningResource;
         this.mapView = mapView;
         this.rootPane = rootPane;
+        this.mapResource = mapResource;
     }
 
     @Override
@@ -71,13 +81,19 @@ public class RouterRunnable implements Runnable {
             Vehicle vehicle = planningResource.getVehicle();
             ArrayList<Shipment> shipments = planningResource.getShipments();
             ArrayList<Color> colors = new ColorGenerator().generateColorList(shipments.size());
+            HashMap<String, Pair<ShipmentType, Color>> locationIdShipmentTypeColorHashMap = new HashMap<>();
+            System.out.println("on genere "+shipments.size()+" couleurs");
 
             mapView.addMarker(from(vehicle.getStartLocation()), "Start/Arrival", new DepotMarker("#000000"), 1, "start", "0");
-
             int k = 0;
             for (Shipment shipment : shipments) {
                 String idMarker = shipment.getId();
+                System.out.println("[getPickupLocation="+shipment.getPickupLocation().getId()+"]");
+                System.out.println("[getDeliveryLocation="+shipment.getDeliveryLocation().getId()+"]");
+                //hashmap id shipment color
                 String hex = "#" + Integer.toHexString(colors.get(k).getRGB()).substring(2);
+                locationIdShipmentTypeColorHashMap.put(shipment.getPickupLocation().getId(), new Pair<>(ShipmentType.PICKUP, colors.get(k)));
+                locationIdShipmentTypeColorHashMap.put(shipment.getDeliveryLocation().getId(), new Pair<>(ShipmentType.DELIVERY, colors.get(k)));
                 mapView.addMarker(from(shipment.getPickupLocation()), "Pickup", new PickupMarker(hex), 1, "pickup", "pickup" + idMarker);
                 mapView.addMarker(from(shipment.getDeliveryLocation()), "Delivery", new DeliveryMarker(hex), 1, "delivery", "delivery" + idMarker);
                 k++;
@@ -107,6 +123,15 @@ public class RouterRunnable implements Runnable {
                     System.out.println(rightPane.getWidth());
                 }
             });
+
+            Circle pointCircle = new Circle();
+            pointCircle.setTranslateY(4);
+            pointCircle.setRadius(6);
+            Label departureLabel = new Label("Départ");
+            departureLabel.getStyleClass().add("departure-label");
+            pointCircle.setFill(javafx.scene.paint.Color.rgb(0,0,0));
+            HBox circleAndDeparture = new HBox(pointCircle, departureLabel);
+            rightPane.getChildren().add(circleAndDeparture);
             rightPane.getChildren().add(seePathDetailButton);
 
             for (Instruction iti : route.getFullInstructions()) {
@@ -152,22 +177,27 @@ public class RouterRunnable implements Runnable {
                     instructionLine.getChildren().add(new Label(StringUtils.capitalize(indication)));
                     instructionBlocPane.getChildren().add(instructionLine);
                 } else {
+                    //trouver le shipment le + proche, et récup l'id de ce shipment
+                    //aller chercher dans la hashmap la color correspondante à cet id
+                    String closestShipmentId = findClosestShipmentId(iti.getPoints().get(0).getLat(), iti.getPoints().get(0).getLon());
+                    String shipmentType = "";
+
                     rightPane.getChildren().add(instructionBlocPane);
                     instructionBlocPane = new VBox();
                     instructionBlocPane.getStyleClass().add("instruction-bloc");
                     seePathDetailButton = new Button("Détails de l'itinéraire");
                     seePathDetailButton.getStyleClass().add("see-detail-button");
-                    Circle pointCircle = new Circle();
+                    Pair<ShipmentType, Color> locationIdShipmentTypeColor = locationIdShipmentTypeColorHashMap.get(closestShipmentId);
+                    pointCircle = new Circle();
                     pointCircle.setTranslateY(4);
                     pointCircle.setRadius(6);
-                    System.out.println(instructionBlocPaneIndex);
-                    System.out.println("ship="+shipments.size());
-                    if (instructionBlocPaneIndex >= shipments.size()) {
-                        pointCircle.setFill(javafx.scene.paint.Color.rgb(0, 0, 0, 0));
-                    } else {
-                        pointCircle.setFill(javafx.scene.paint.Color.rgb(colors.get(instructionBlocPaneIndex).getRed(), colors.get(instructionBlocPaneIndex).getGreen(), colors.get(instructionBlocPaneIndex).getBlue()));
-                    }
-                    arrivalLabel = new Label("Arrivée au point (" + iti.getPoints().getLat(0) + ";" + iti.getPoints().getLon(0) + ")");
+                    pointCircle.setFill(javafx.scene.paint.Color.rgb(
+                            locationIdShipmentTypeColor.getValue().getRed(),
+                            locationIdShipmentTypeColor.getValue().getGreen(),
+                            locationIdShipmentTypeColor.getValue().getBlue()));
+                    shipmentType = locationIdShipmentTypeColor.getKey() == ShipmentType.PICKUP ? " de retrait" : " de livraison";
+
+                    arrivalLabel = new Label("Arrivée au point" + shipmentType + " (" + iti.getPoints().getLat(0) + ";" + iti.getPoints().getLon(0) + ")");
                     arrivalLabel.getStyleClass().add("arrival-label");
                     HBox circleAndArrival = new HBox(pointCircle, arrivalLabel);
 
@@ -187,10 +217,45 @@ public class RouterRunnable implements Runnable {
                     instructionBlocPane.getChildren().add(seePathDetailButton);
                 }
             }
+
+            Label finalArrivalLabel = new Label("Arrivée");
+            departureLabel.getStyleClass().add("final-arrival-label");
+            pointCircle = new Circle();
+            pointCircle.setTranslateY(4);
+            pointCircle.setRadius(6);
+            pointCircle.setFill(javafx.scene.paint.Color.rgb(0,0,0));
+            HBox circleAndFinalArrival = new HBox(pointCircle, finalArrivalLabel);
+            rightPane.getChildren().add(circleAndFinalArrival);
+
             ScrollPane scrollPane = new ScrollPane();
             scrollPane.setContent(rightPane);
             rootPane.setRight(scrollPane);
         });
+    }
+
+    /**
+     * Find the closest shipment from the given latitude and longitude point
+     *
+     * @param lat : the latitude of the point to find a shipment
+     * @param longi : the longitude of the point to find a shipment
+     * @return id of the closest shipment
+     */
+    private String findClosestShipmentId(double lat, double longi){
+        String closestShipmentId = null;
+        double closestDistance = 100000;
+        for (Shipment s : planningResource.getShipments()) {
+            double distancePickupShipment = Math.pow(lat-s.getPickupLocation().getCoordinate().getX(),2.0) + Math.pow(longi-s.getPickupLocation().getCoordinate().getY(),2.0);
+            double distanceDeliveryShipment = Math.pow(lat-s.getDeliveryLocation().getCoordinate().getX(),2.0) + Math.pow(longi-s.getDeliveryLocation().getCoordinate().getY(),2.0);
+            if(distancePickupShipment<closestDistance) {
+                closestShipmentId = s.getPickupLocation().getId();
+                closestDistance = distancePickupShipment;
+            } else if(distanceDeliveryShipment<closestDistance) {
+                closestShipmentId = s.getDeliveryLocation().getId();
+                closestDistance = distanceDeliveryShipment;
+            }
+        }
+
+        return closestShipmentId;
     }
 
     private RouteInfo computeBestRoute() {
@@ -278,7 +343,9 @@ public class RouterRunnable implements Runnable {
         ArrayList<Location> tracks = new ArrayList<>();
         bestSolution.getRoutes().forEach(vehicleRoute -> {
             tracks.add(vehicleRoute.getStart().getLocation());
-            vehicleRoute.getActivities().forEach(tourActivity -> tracks.add(tourActivity.getLocation()));
+            vehicleRoute.getActivities().forEach(tourActivity -> {
+                tracks.add(tourActivity.getLocation());
+            });
             tracks.add(vehicleRoute.getEnd().getLocation());
         });
 
