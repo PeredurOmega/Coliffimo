@@ -57,7 +57,7 @@ public class MainController implements Initializable {
                 mapView.setView(initialMap.getInitialCenter(), initialMap.getInitialZoom());
                 MapResource mapResource = new MapResource(new File(XML_MAP_RESOURCE_DIRECTORY_PATH + "mediumMap.xml"));
                 PlanningResource planningResource = new PlanningResource(mapResource, new File(XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH + "requestsMedium5.xml"));
-                new Thread(new RouterRunnable(planningResource, mapView, rootPane, mapResource)).start();
+                new Thread(new RouterRunnable(planningResource, mapView, rootPane)).start();
             }
         });
 
@@ -95,7 +95,7 @@ public class MainController implements Initializable {
             mapView.clearMarkersAndTracks();
             MapResource mapResource = new MapResource(new File(xmlMapFile));
             PlanningResource planningResource = new PlanningResource(mapResource, new File(xmlRequestFile));
-            new Thread(new RouterRunnable(planningResource, mapView, rootPane, mapResource)).start();
+            new Thread(new RouterRunnable(planningResource, mapView, rootPane)).start();
         } else {
             if (xmlMapFile == null && xmlRequestFile != null) infoLabel.setText("Fichier de map non renseigné");
             else if (xmlMapFile != null) infoLabel.setText("Fichier de request non renseigné");

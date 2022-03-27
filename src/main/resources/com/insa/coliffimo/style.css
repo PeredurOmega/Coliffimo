@@ -2,12 +2,12 @@
     -fx-font-size: 14;
 }
 
-.instruction-line-in-bloc {
-    -fx-padding: 5 0 5 0;
+.path-detail-line {
+    -fx-padding: 5 0 10 0;
 }
 
 .instruction-bloc {
-    -fx-padding: 0 0 5 0;
+    -fx-padding: 0 15 0 15;
 }
 
 .button {
