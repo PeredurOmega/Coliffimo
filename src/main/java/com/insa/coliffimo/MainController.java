@@ -5,6 +5,7 @@ import com.insa.coliffimo.leaflet.*;
 import com.insa.coliffimo.router.MapResource;
 import com.insa.coliffimo.router.PlanningResource;
 import com.insa.coliffimo.router.RouterRunnable;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,6 +36,8 @@ public class MainController implements Initializable {
     public BorderPane rootPane;
     @FXML
     public Label infoLabel;
+    @FXML
+    MFXButton collapseRightPanelButton;
 
     /**
      * the MapView containing the map
@@ -57,7 +60,7 @@ public class MainController implements Initializable {
                 mapView.setView(initialMap.getInitialCenter(), initialMap.getInitialZoom());
                 MapResource mapResource = new MapResource(new File(XML_MAP_RESOURCE_DIRECTORY_PATH + "mediumMap.xml"));
                 PlanningResource planningResource = new PlanningResource(mapResource, new File(XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH + "requestsMedium5.xml"));
-                new Thread(new RouterRunnable(planningResource, mapView, rootPane)).start();
+                new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton)).start();
             }
         });
 
@@ -95,7 +98,7 @@ public class MainController implements Initializable {
             mapView.clearMarkersAndTracks();
             MapResource mapResource = new MapResource(new File(xmlMapFile));
             PlanningResource planningResource = new PlanningResource(mapResource, new File(xmlRequestFile));
-            new Thread(new RouterRunnable(planningResource, mapView, rootPane)).start();
+            new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton)).start();
         } else {
             if (xmlMapFile == null && xmlRequestFile != null) infoLabel.setText("Fichier de map non renseigné");
             else if (xmlMapFile != null) infoLabel.setText("Fichier de request non renseigné");

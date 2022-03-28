@@ -23,8 +23,10 @@ import com.insa.coliffimo.leaflet.markers.DeliveryMarker;
 import com.insa.coliffimo.leaflet.markers.DepotMarker;
 import com.insa.coliffimo.leaflet.markers.PickupMarker;
 import com.insa.coliffimo.utils.ColorGenerator;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -53,6 +55,8 @@ public class RouterRunnable implements Runnable {
     private VBox instructionBlocPane = null;
     HashMap<String, javafx.scene.paint.Color> locationIdMappedWithColor = new HashMap<>();
     HashMap<String, ShipmentType> locationIdMappedWithShipmentType = new HashMap<>();
+    ScrollPane scrollPane = new ScrollPane();
+    MFXButton collapseRightPanelButton;
 
     private final HashMap<String, ResponsePath> bestPathsCache = new HashMap<>();
 
@@ -61,10 +65,11 @@ public class RouterRunnable implements Runnable {
         DELIVERY
     }
 
-    public RouterRunnable(PlanningResource planningResource, LeafletMapView mapView, BorderPane rootPane) {
+    public RouterRunnable(PlanningResource planningResource, LeafletMapView mapView, BorderPane rootPane, MFXButton collapseRightPanelButton) {
         this.planningResource = planningResource;
         this.mapView = mapView;
         this.rootPane = rootPane;
+        this.collapseRightPanelButton = collapseRightPanelButton;
     }
 
     @Override
@@ -114,7 +119,7 @@ public class RouterRunnable implements Runnable {
             instructionBlocPane.getChildren().add(finalArrivalLine);
             rightPane.getChildren().add(instructionBlocPane);
 
-            ScrollPane scrollPane = new ScrollPane();
+            scrollPane = new ScrollPane();
             scrollPane.setContent(rightPane);
             rootPane.setRight(scrollPane);
         });
@@ -146,6 +151,7 @@ public class RouterRunnable implements Runnable {
     private void initRightPane() {
         rightPane = new VBox();
         rightPane.getStyleClass().add("vbox");
+        this.collapseRightPanelButton.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, collapseRightPanel());
     }
 
     private void initInstructionBlocPane() {
@@ -247,7 +253,6 @@ public class RouterRunnable implements Runnable {
         pointCircle.setRadius(6);
         pointCircle.setFill(javafx.scene.paint.Color.rgb(0,0,0));
         HBox finalArrivalLine = new HBox(pointCircle, finalArrivalLabel);
-        //finalArrivalLine.setSpacing(5);
         HBox.setMargin(finalArrivalLine, new Insets(100, 100, 100, 100));
 
         finalArrivalLine.getStyleClass().add("final-arrival-line");
@@ -267,6 +272,17 @@ public class RouterRunnable implements Runnable {
                 n.setVisible(!n.isVisible());
                 n.setManaged(!n.isManaged());
             });
+        };
+    }
+
+    /**
+     * Set event handler to collapse right panel
+     * @return event handler to collapse right panel
+     */
+    private EventHandler<javafx.scene.input.MouseEvent> collapseRightPanel() {
+        return e -> {
+            if (rootPane.getRight() != null) rootPane.setRight(null);
+            else rootPane.setRight(scrollPane);
         };
     }
 

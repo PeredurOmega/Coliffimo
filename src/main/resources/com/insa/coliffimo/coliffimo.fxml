@@ -30,6 +30,8 @@
                        text="Charger un programme Pickup &amp; Delivery" onAction="#chooseRequestFile" />
             <MFXButton mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0"
                        text="Calculer l'itinéraire" onAction="#processItinerary" />
+            <MFXButton mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0"
+                       text="Afficher/Cacher l'itinéraire" fx:id="collapseRightPanelButton" />
             <Label fx:id="infoLabel"/>
         </HBox>
     </top>
