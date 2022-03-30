@@ -82,7 +82,7 @@ public class Request {
                 .setPickupLocation(Location.newInstance(pickup.getLatitude(), pickup.getLongitude()))
                 .setDeliveryLocation(Location.newInstance(delivery.getLatitude(), delivery.getLongitude()))
                 .setDeliveryServiceTime(getDeliveryDuration() * 1000)
-                .setPickupServiceTime(getDeliveryDuration() * 1000)
+                .setPickupServiceTime(getPickupDuration() * 1000)
                 .build();
     }
 
