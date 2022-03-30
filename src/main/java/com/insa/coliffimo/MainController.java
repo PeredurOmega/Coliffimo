@@ -3,7 +3,6 @@ package com.insa.coliffimo;
 import com.insa.coliffimo.business.AdditionalLocalMarkers;
 import com.insa.coliffimo.leaflet.*;
 import com.insa.coliffimo.leaflet.markers.DeliveryMarker;
-import com.insa.coliffimo.leaflet.markers.DepotMarker;
 import com.insa.coliffimo.leaflet.markers.PickupMarker;
 import com.insa.coliffimo.router.MapResource;
 import com.insa.coliffimo.router.PlanningResource;
@@ -69,16 +68,6 @@ public class MainController implements Initializable {
                 new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, additionalLocalMarkers.getShipments())).start();
             }
         });
-
-
-        /*
-        positionTooltip.setAutoHide(true)
-
-        slPosition.valueProperty().addListener { _, oldValue, newValue ->
-            if (oldValue.toInt() != newValue.toInt()) {
-                movePositionMarker()
-            }
-        }*/
     }
 
     public void chooseMapFile(ActionEvent actionEvent) {
