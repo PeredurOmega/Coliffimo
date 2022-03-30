@@ -17,6 +17,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 public class XmlParser {
@@ -183,7 +184,7 @@ public class XmlParser {
 
             Long depotAddress = Long.parseLong(element.getAttribute(PLANNING_REQUEST_DEPOT_ADDRESS_ATTRIBUTE_NAME));
 
-            String depotDepartureLocalTimeStr = element.getAttribute(PLANNING_REQUEST_DEPOT_DEPARTURE_TIME_ATTRIBUTE_NAME);
+            String depotDepartureLocalTimeStr = element.getAttribute(PLANNING_REQUEST_DEPOT_DEPARTURE_TIME_ATTRIBUTE_NAME)+"1";
             String[] depotDepartureLocalTimeStrSplit = depotDepartureLocalTimeStr.split(":");
             StringBuilder depotDepartureLocalTimeWithValidFormat = new StringBuilder();
             for (int i = 0; i < depotDepartureLocalTimeStrSplit.length; i++) {
@@ -195,8 +196,10 @@ public class XmlParser {
                     depotDepartureLocalTimeWithValidFormat.append(TIME_SEPARATOR);
                 }
             }
-            LocalTime depotDepartureLocalTime = LocalTime.parse(depotDepartureLocalTimeWithValidFormat.toString());
-
+            //LocalTime depotDepartureLocalTime = LocalTime.parse(depotDepartureLocalTimeWithValidFormat.toString(), DateTimeFormatter.ISO_ZONED_DATE_TIME);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            LocalTime depotDepartureLocalTime = LocalTime.parse(depotDepartureLocalTimeWithValidFormat.toString(), formatter);
+            //System.out.println(depotDepartureLocalTime);
             //TODO CATCH NOT EXISTING INTERSECTION
             Intersection depot = intersections.get(depotAddress);
 
