@@ -5,6 +5,7 @@ plugins {
     id 'org.beryx.jlink' version '2.25.0'
     id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.12'
     id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+    id 'org.jetbrains.dokka' version '1.6.10'
 }
 
 group 'com.insa'
@@ -54,6 +55,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     testImplementation("org.junit.jupiter:junit-jupiter:${junitVersion}")
+    implementation("org.json:json:20171018")
 }
 
 test {
