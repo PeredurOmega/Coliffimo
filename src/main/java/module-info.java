@@ -8,8 +8,10 @@ module com.insa.coliffimo {
     requires kotlin.stdlib;
     requires graphhopper.web;
     requires json;
+    requires jdk.jsobject;
 
     opens com.insa.coliffimo to javafx.fxml;
-    opens com.insa.coliffimo.leaflet to javafx.fxml;
+    opens com.insa.coliffimo.leaflet to javafx.fxml, javafx.web;
     exports com.insa.coliffimo;
+    exports com.insa.coliffimo.leaflet;
 }

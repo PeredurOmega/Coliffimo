@@ -28,6 +28,25 @@ public class Map {
         this.listIntersections.put(i.getId(), i);
     }
 
+    /**
+     * Find the closest intersection of the list from a point's coordinates.
+     *
+     * @param lat : the latitude of the point to find an intersection
+     * @param longi : the longitude of the point to find an intersection
+     */
+    public Intersection findClosestIntersection(float lat, float longi){
+        Intersection closest = null;
+        double closestDistance = 100000;
+        for (Intersection i : listIntersections.values()) {
+            double distanceI = Math.pow(lat-i.getLatitude(),2.0) + Math.pow(longi-i.getLongitude(),2.0);
+            if(distanceI<closestDistance){
+                closest = i;
+                closestDistance = distanceI;
+            }
+        }
+        return closest;
+    }
+
     @Override
     public String toString() {
         return "Map{" +

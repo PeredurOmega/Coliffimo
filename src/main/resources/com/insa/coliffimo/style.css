@@ -2,6 +2,14 @@
     -fx-font-size: 14;
 }
 
+.path-detail-line {
+    -fx-padding: 5 0 10 0;
+}
+
+.instruction-bloc {
+    -fx-padding: 0 15 0 15;
+}
+
 .button {
     -fx-background-color: #EAF2FF;
     -fx-border-color: #b3d0fd;
