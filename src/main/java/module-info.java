@@ -12,4 +12,5 @@ module com.insa.coliffimo {
     opens com.insa.coliffimo to javafx.fxml;
     opens com.insa.coliffimo.leaflet to javafx.fxml, javafx.web;
     exports com.insa.coliffimo;
+    exports com.insa.coliffimo.leaflet;
 }

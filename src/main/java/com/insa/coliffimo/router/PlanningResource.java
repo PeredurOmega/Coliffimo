@@ -40,5 +40,4 @@ public class PlanningResource {
     public ArrayList<Shipment> getShipments() {
         return planningRequest.asShipments();
     }
-
 }

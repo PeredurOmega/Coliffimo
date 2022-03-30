@@ -26,7 +26,6 @@ import com.insa.coliffimo.utils.ColorGenerator;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -49,6 +48,7 @@ import java.util.*;
 public class RouterRunnable implements Runnable {
 
     private final PlanningResource planningResource;
+    private final ArrayList<Shipment> localShipments;
     private final LeafletMapView mapView;
     private final BorderPane rootPane;
     private VBox rightPane = new VBox();
@@ -65,11 +65,12 @@ public class RouterRunnable implements Runnable {
         DELIVERY
     }
 
-    public RouterRunnable(PlanningResource planningResource, LeafletMapView mapView, BorderPane rootPane, MFXButton collapseRightPanelButton) {
+    public RouterRunnable(PlanningResource planningResource, LeafletMapView mapView, BorderPane rootPane, MFXButton collapseRightPanelButton, ArrayList<Shipment> localShipments) {
         this.planningResource = planningResource;
         this.mapView = mapView;
         this.rootPane = rootPane;
         this.collapseRightPanelButton = collapseRightPanelButton;
+        this.localShipments = localShipments;
     }
 
     @Override
@@ -100,7 +101,7 @@ public class RouterRunnable implements Runnable {
                     HBox pathDetailLine = getPathDetailLine(indication, iti, instructionBlocPaneIndex);
                     instructionBlocPane.getChildren().add(pathDetailLine);
                 } else {
-                    //find closest shipment to get matching color and shipment type from hashmaps
+                    // Find the closest shipment to get matching color and shipment type from hashmaps
                     String closestShipmentId = findClosestShipmentId(iti.getPoints().get(0).getLat(), iti.getPoints().get(0).getLon());
 
                     rightPane.getChildren().add(instructionBlocPane);
@@ -126,10 +127,11 @@ public class RouterRunnable implements Runnable {
     }
 
     private void initMapView(RouteInfo route) {
+        mapView.clearMarkersAndTracks();
         mapView.addTrack(route.getFullTracks());
 
         Vehicle vehicle = planningResource.getVehicle();
-        ArrayList<Shipment> shipments = planningResource.getShipments();
+        ArrayList<Shipment> shipments = getAllShipments();
         ArrayList<Color> colors = new ColorGenerator().generateColorList(shipments.size());
 
         mapView.addMarker(from(vehicle.getStartLocation()), "Start/Arrival", new DepotMarker("#000000"), 1, "start", "0");
@@ -223,7 +225,7 @@ public class RouterRunnable implements Runnable {
         pointCircle.setTranslateY(4);
         pointCircle.setRadius(6);
         Label departureLabel = new Label("  Départ");
-        pointCircle.setFill(javafx.scene.paint.Color.rgb(0,0,0));
+        pointCircle.setFill(javafx.scene.paint.Color.rgb(0, 0, 0));
         HBox departureLine = new HBox(pointCircle, departureLabel);
         departureLine.getStyleClass().add("departure-line");
 
@@ -251,7 +253,7 @@ public class RouterRunnable implements Runnable {
         Circle pointCircle = new Circle();
         pointCircle.setTranslateY(4);
         pointCircle.setRadius(6);
-        pointCircle.setFill(javafx.scene.paint.Color.rgb(0,0,0));
+        pointCircle.setFill(javafx.scene.paint.Color.rgb(0, 0, 0));
         HBox finalArrivalLine = new HBox(pointCircle, finalArrivalLabel);
         HBox.setMargin(finalArrivalLine, new Insets(100, 100, 100, 100));
 
@@ -262,6 +264,7 @@ public class RouterRunnable implements Runnable {
 
     /**
      * Set event handler to collapse an instruction bloc pane
+     *
      * @param instructionBlocPaneIndex the index of the instruction bloc pane to collapse
      * @return event handler to collapse matching instruction bloc pane
      */
@@ -277,6 +280,7 @@ public class RouterRunnable implements Runnable {
 
     /**
      * Set event handler to collapse right panel
+     *
      * @return event handler to collapse right panel
      */
     private EventHandler<javafx.scene.input.MouseEvent> collapseRightPanel() {
@@ -289,20 +293,20 @@ public class RouterRunnable implements Runnable {
     /**
      * Find the closest shipment from the given latitude and longitude point
      *
-     * @param lat : the latitude of the point to find a shipment
+     * @param lat   : the latitude of the point to find a shipment
      * @param longi : the longitude of the point to find a shipment
      * @return id of the closest shipment
      */
-    private String findClosestShipmentId(double lat, double longi){
+    private String findClosestShipmentId(double lat, double longi) {
         String closestShipmentId = null;
         double closestDistance = 100000;
         for (Shipment s : planningResource.getShipments()) {
-            double distancePickupShipment = Math.pow(lat-s.getPickupLocation().getCoordinate().getX(),2.0) + Math.pow(longi-s.getPickupLocation().getCoordinate().getY(),2.0);
-            double distanceDeliveryShipment = Math.pow(lat-s.getDeliveryLocation().getCoordinate().getX(),2.0) + Math.pow(longi-s.getDeliveryLocation().getCoordinate().getY(),2.0);
-            if(distancePickupShipment<closestDistance) {
+            double distancePickupShipment = Math.pow(lat - s.getPickupLocation().getCoordinate().getX(), 2.0) + Math.pow(longi - s.getPickupLocation().getCoordinate().getY(), 2.0);
+            double distanceDeliveryShipment = Math.pow(lat - s.getDeliveryLocation().getCoordinate().getX(), 2.0) + Math.pow(longi - s.getDeliveryLocation().getCoordinate().getY(), 2.0);
+            if (distancePickupShipment < closestDistance) {
                 closestShipmentId = s.getPickupLocation().getId();
                 closestDistance = distancePickupShipment;
-            } else if(distanceDeliveryShipment<closestDistance) {
+            } else if (distanceDeliveryShipment < closestDistance) {
                 closestShipmentId = s.getDeliveryLocation().getId();
                 closestDistance = distanceDeliveryShipment;
             }
@@ -311,9 +315,16 @@ public class RouterRunnable implements Runnable {
         return closestShipmentId;
     }
 
+    private ArrayList<Shipment> getAllShipments() {
+        ArrayList<Shipment> shipments = new ArrayList<>();
+        shipments.addAll(planningResource.getShipments());
+        shipments.addAll(localShipments);
+        return shipments;
+    }
+
     private RouteInfo computeBestRoute() {
         Vehicle vehicle = planningResource.getVehicle();
-        ArrayList<Shipment> shipments = planningResource.getShipments();
+        ArrayList<Shipment> shipments = getAllShipments();
 
         VehicleRoutingTransportCostsMatrix costMatrix = computeCostMatrix(vehicle, shipments);
         // Define the problem using the cost matrix, the vehicle and the shipments
@@ -396,9 +407,7 @@ public class RouterRunnable implements Runnable {
         ArrayList<Location> tracks = new ArrayList<>();
         bestSolution.getRoutes().forEach(vehicleRoute -> {
             tracks.add(vehicleRoute.getStart().getLocation());
-            vehicleRoute.getActivities().forEach(tourActivity -> {
-                tracks.add(tourActivity.getLocation());
-            });
+            vehicleRoute.getActivities().forEach(tourActivity -> tracks.add(tourActivity.getLocation()));
             tracks.add(vehicleRoute.getEnd().getLocation());
         });
 

@@ -1,5 +1,6 @@
 package com.insa.coliffimo.leaflet
 
+import com.insa.coliffimo.MainController
 import com.insa.coliffimo.leaflet.markers.Marker
 import javafx.concurrent.Worker
 import javafx.scene.layout.StackPane
@@ -21,8 +22,7 @@ open class LeafletMapView : StackPane() {
 
     private val webView = WebView()
     private val webEngine: WebEngine = webView.engine
-    private val mapClickBridge = MapClickBridge()
-
+    private var mapClickBridge: MapClickBridge? = null
     private var varNameSuffix: Int = 1
 
     /**
@@ -56,6 +56,10 @@ open class LeafletMapView : StackPane() {
         val localFileUrl = LeafletMapView::class.java.getResource("/leafletmap/leafletmap.html")
         webEngine.load(localFileUrl!!.toExternalForm())
         return finalMapLoadState
+    }
+
+    fun setUpBridge(mainController: MainController) {
+        mapClickBridge = MapClickBridge(mainController)
     }
 
     private fun executeMapSetupScripts(mapConfig: MapConfig) {
@@ -153,7 +157,14 @@ open class LeafletMapView : StackPane() {
      * @param zIndexOffset zIndexOffset (higher number means on top)
      * @return variable name of the created marker
      */
-    fun addMarker(position: LatLong, title: String, marker: Marker, zIndexOffset: Int, popupLabel: String, idMarker: String): String {
+    fun addMarker(
+        position: LatLong,
+        title: String,
+        marker: Marker,
+        zIndexOffset: Int,
+        popupLabel: String,
+        idMarker: String
+    ): String {
         val varName = "marker${varNameSuffix++}"
 
         execScript(
@@ -198,9 +209,8 @@ open class LeafletMapView : StackPane() {
     fun addTrack(positions: List<LatLong>): String {
         val varName = "track${varNameSuffix++}"
 
-        val jsPositions = positions
-            .map { "    [${it.latitude}, ${it.longitude}]" }
-            .joinToString(", \n")
+        val jsPositions =
+            positions.takeLast(positions.size - 3).joinToString(", \n") { "    [${it.latitude}, ${it.longitude}]" }
 
         execScript(
             """
@@ -208,8 +218,20 @@ open class LeafletMapView : StackPane() {
             |$jsPositions
             |];
 
-            |var $varName = L.polyline(latLngs, {color: 'red', weight: 2}).addTo(myMap);
+            |var $varName = L.polyline(latLngs, {color: '#00B0FF', weight: 3}).addTo(myMap);
             |myMap.fitBounds($varName.getBounds());""".trimMargin()
+        )
+
+        execScript(
+            """
+            |var latLngs2 = [
+            |[${positions[0].latitude}, ${positions[0].longitude}],
+            |[${positions[1].latitude}, ${positions[1].longitude}],
+            |[${positions[2].latitude}, ${positions[2].longitude}],
+            |[${positions[3].latitude}, ${positions[3].longitude}]
+            |];
+
+            |L.polyline(latLngs2, {color: 'green', weight: 3}).addTo(myMap);""".trimMargin()
         )
         return varName;
     }
