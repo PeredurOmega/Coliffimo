@@ -15,6 +15,7 @@ import java.util.UUID;
 public class PlanningResource {
     private final MapResource mapResource;
     private final PlanningRequest planningRequest;
+    private ArrayList<Shipment> shipments = null;
 
     public PlanningResource(MapResource mapResource, File xmlPlanningRequestResourceFile) {
         this.mapResource = mapResource;
@@ -38,7 +39,8 @@ public class PlanningResource {
     }
 
     public ArrayList<Shipment> getShipments() {
-        return planningRequest.asShipments();
+        if (shipments == null) shipments = planningRequest.asShipments();
+        return shipments;
     }
 
     public PlanningRequest getPlanningRequest() {
