@@ -52,9 +52,9 @@ public class JsonParser {
             indicate.put("Description", indication);
             if (indication.startsWith("arrivée")) {
                 depart = depart.plusMinutes(time/60000);
-                double virg = time/60000;
+                double virg = time/(double)60000;
                 virg = virg - Math.floor(virg);
-                depart = depart.plusSeconds((long)virg);
+                depart = depart.plusSeconds((long)(virg*100));
                 indicate.put("Heure d'arrivée", depart);
                 time = 0;
             }
