@@ -170,7 +170,8 @@ open class LeafletMapView : StackPane() {
         execScript(
             "var $varName = L.marker([${position.latitude}, ${position.longitude}], "
                     + "{title: '$title', icon: ${marker.iconName}, zIndexOffset: $zIndexOffset, draggable: true}).addTo(myMap);" +
-                    "$varName.bindPopup(\"$popupLabel\");" +
+                    "" +
+                    "$varName.bindPopup(\"<p>$popupLabel</p><button onClick=\\\"(function(){java.callbackMarkerDelete('$idMarker');})()\\\">Supprimer</button>\");" +
                     "$varName.on('dragend', function(e) {" +
                     "var coords = e.target.getLatLng();" +
                     "var lat = coords.lat;" +

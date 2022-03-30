@@ -1,5 +1,6 @@
 package com.insa.coliffimo;
 
+import com.graphhopper.jsprit.core.problem.job.Shipment;
 import com.insa.coliffimo.business.AdditionalLocalMarkers;
 import com.insa.coliffimo.leaflet.*;
 import com.insa.coliffimo.leaflet.markers.DeliveryMarker;
@@ -22,6 +23,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.concurrent.CompletableFuture;
@@ -33,6 +35,9 @@ public class MainController implements Initializable {
 
     private String xmlMapFile = XML_MAP_RESOURCE_DIRECTORY_PATH + "mediumMap.xml";
     private String xmlRequestFile = XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH + "requestsMedium5.xml";
+
+    private MapResource mapResource = new MapResource(new File(xmlMapFile));;
+    private PlanningResource planningResource = new PlanningResource(mapResource, new File(xmlRequestFile));;
 
     @FXML
     public BorderPane rootPane;
@@ -64,8 +69,6 @@ public class MainController implements Initializable {
         cfMapLoadState.whenComplete((workerState, error) -> {
             if (workerState == Worker.State.SUCCEEDED) {
                 mapView.setView(initialMap.getInitialCenter(), initialMap.getInitialZoom());
-                MapResource mapResource = new MapResource(new File(XML_MAP_RESOURCE_DIRECTORY_PATH + "mediumMap.xml"));
-                PlanningResource planningResource = new PlanningResource(mapResource, new File(XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH + "requestsMedium5.xml"));
                 new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, additionalLocalMarkers.getShipments())).start();
             }
         });
@@ -103,8 +106,8 @@ public class MainController implements Initializable {
 
     public void processItinerary(ActionEvent actionEvent) {
         if (xmlMapFile != null && xmlRequestFile != null) {
-            MapResource mapResource = new MapResource(new File(xmlMapFile));
-            PlanningResource planningResource = new PlanningResource(mapResource, new File(xmlRequestFile));
+            mapResource = new MapResource(new File(xmlMapFile));
+            planningResource = new PlanningResource(mapResource, new File(xmlRequestFile));
             new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, additionalLocalMarkers.getShipments())).start();
         } else {
             if (xmlMapFile == null && xmlRequestFile != null) infoLabel.setText("Fichier de map non renseigné");
@@ -116,11 +119,22 @@ public class MainController implements Initializable {
     public void addPoint(LatLong marker) {
         if (additionalLocalMarkers.addCoordinate(marker)) {
             mapView.addMarker(marker, "Temp delivery", new DeliveryMarker("#555555"), 1, "Temp delivery", "temp-delivery");
-            MapResource mapResource = new MapResource(new File(xmlMapFile));
-            PlanningResource planningResource = new PlanningResource(mapResource, new File(xmlRequestFile));
             new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, additionalLocalMarkers.getShipments())).start();
         } else {
             mapView.addMarker(marker, "Temp pickup", new PickupMarker("#555555"), 1, "Temp pickup", "temp-pickup");
         }
+    }
+
+    public void deletePoint(String idMarker) {
+        deleteShipment(idMarker);
+        new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, additionalLocalMarkers.getShipments())).start();
+    }
+
+    public void deleteShipment(String idMarker) {
+        ArrayList<Shipment> localShipments = planningResource.getShipments();
+        ArrayList<Shipment> tempShipments = additionalLocalMarkers.getShipments();
+        String idShipment = idMarker.replace("pickup", "").replace("delivery", "");
+        localShipments.removeIf(shipment -> shipment.getId().equals(idShipment));
+        tempShipments.removeIf(shipment -> shipment.getId().equals(idShipment));
     }
 }
