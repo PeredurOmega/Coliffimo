@@ -1,25 +1,20 @@
 package com.insa.coliffimo.router;
 
-import com.graphhopper.util.Instruction;
+import com.graphhopper.jsprit.core.problem.solution.route.activity.TourActivities;
+import com.graphhopper.util.InstructionList;
 import com.insa.coliffimo.leaflet.LatLong;
 
 import java.util.ArrayList;
 
 public class RouteInfo {
 
-    private final ArrayList<LatLong> fullTracks;
-    private final ArrayList<Instruction> fullInstructions;
+    public final ArrayList<LatLong> fullTracks;
+    public final ArrayList<InstructionList> instructionLists;
+    public final ArrayList<TourActivities> tourActivities;
 
-    public RouteInfo(){
-        fullTracks = new ArrayList<>();
-        fullInstructions = new ArrayList<>();
-    }
-
-    public ArrayList<LatLong> getFullTracks() {
-        return fullTracks;
-    }
-
-    public ArrayList<Instruction> getFullInstructions() {
-        return fullInstructions;
+    public RouteInfo(ArrayList<LatLong> fullTracks, ArrayList<InstructionList> instructionLists, ArrayList<TourActivities> tourActivities) {
+        this.fullTracks = fullTracks;
+        this.instructionLists = instructionLists;
+        this.tourActivities = tourActivities;
     }
 }
