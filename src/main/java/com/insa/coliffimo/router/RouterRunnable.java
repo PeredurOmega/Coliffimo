@@ -22,6 +22,7 @@ import com.insa.coliffimo.leaflet.LeafletMapView;
 import com.insa.coliffimo.leaflet.markers.DeliveryMarker;
 import com.insa.coliffimo.leaflet.markers.DepotMarker;
 import com.insa.coliffimo.leaflet.markers.PickupMarker;
+import com.insa.coliffimo.utils.JsonParser;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -52,7 +53,7 @@ public class RouterRunnable implements Runnable {
     @Override
     public void run() {
         RouteInfo route = computeBestRoute();
-
+        JsonParser.sauvegarder(route, "sauvegarde.JSON", this.planningResource.getPlanningRequest().getDepotDepartureLocalTime());
         Platform.runLater(() -> {
             mapView.addTrack(route.getFullTracks());
 
@@ -68,7 +69,6 @@ public class RouterRunnable implements Runnable {
             Translation tr = RhoneAlpesGraphHopper.getGraphHopper().getTranslationMap().getWithFallBack(Locale.FRANCE);
             VBox rightPane = new VBox();
             rightPane.getStyleClass().add("vbox");
-            int i = 1;
             for (Instruction iti : route.getFullInstructions()) {
                 String indication = StringUtils.uncapitalize(iti.getTurnDescription(tr));
                 int distance = (int) iti.getDistance();

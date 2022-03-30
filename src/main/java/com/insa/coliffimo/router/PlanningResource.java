@@ -41,4 +41,7 @@ public class PlanningResource {
         return planningRequest.asShipments();
     }
 
+    public PlanningRequest getPlanningRequest() {
+        return planningRequest;
+    }
 }

@@ -7,6 +7,7 @@ module com.insa.coliffimo {
     requires jsprit.core;
     requires kotlin.stdlib;
     requires graphhopper.web;
+    requires json;
 
     opens com.insa.coliffimo to javafx.fxml;
     opens com.insa.coliffimo.leaflet to javafx.fxml;
