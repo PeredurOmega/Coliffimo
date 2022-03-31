@@ -81,7 +81,7 @@ public class RouterRunnable implements Runnable {
     @Override
     public void run() {
         RouteInfo route = computeBestRoute();
-        JsonParser.sauvegarder(route, "sauvegarde.JSON", this.planningResource.getPlanningRequest().getDepotDepartureLocalTime());
+        JsonParser.sauvegarder(route, "sauvegarde.JSON", planningResource);
         Platform.runLater(() -> {
             Translation tr = RhoneAlpesGraphHopper.getGraphHopper().getTranslationMap().getWithFallBack(Locale.FRANCE);
             int instructionBlocPaneIndex = 0;

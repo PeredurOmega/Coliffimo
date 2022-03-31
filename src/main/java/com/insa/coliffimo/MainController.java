@@ -1,5 +1,6 @@
 package com.insa.coliffimo;
 
+import com.graphhopper.jsprit.core.problem.Location;
 import com.graphhopper.jsprit.core.problem.job.Shipment;
 import com.insa.coliffimo.business.AdditionalLocalMarkers;
 import com.insa.coliffimo.leaflet.*;
@@ -25,6 +26,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 public class MainController implements Initializable {
@@ -142,5 +144,48 @@ public class MainController implements Initializable {
         String idShipment = idMarker.replace("pickup", "").replace("delivery", "");
         localShipments.removeIf(shipment -> shipment.getId().equals(idShipment));
         tempShipments.removeIf(shipment -> shipment.getId().equals(idShipment));
+    }
+
+    public void movePoint(String idMarker, double lat, double lng) {
+        String idShipment = idMarker.replace("pickup", "").replace("delivery", "");
+        addMovedPoint(idMarker, lat, lng, idShipment, planningResource.getShipments());
+        addMovedPoint(idMarker, lat, lng, idShipment, additionalLocalMarkers.getShipments());
+
+        firstCoordinate = null;
+        firstAdded = false;
+        new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
+    }
+
+    private void addMovedPoint(String idMarker, double lat, double lng, String idShipment, ArrayList<Shipment> shipments) {
+        Shipment newShipment;
+        for (Shipment shipment : shipments){
+            if (shipment.getId().equals(idShipment)){
+                if(idMarker.startsWith("pickup")){
+                    newShipment = Shipment.Builder.newInstance(UUID.randomUUID().toString())
+                            .setPickupLocation(Location.newInstance(lat, lng))
+                            .setDeliveryLocation(Location.newInstance(
+                                    shipment.getDeliveryLocation().getCoordinate().getX(),
+                                    shipment.getDeliveryLocation().getCoordinate().getY()))
+                            .setDeliveryServiceTime(shipment.getDeliveryServiceTime())
+                            .setPickupServiceTime(shipment.getPickupServiceTime())
+                            .build();
+                    shipments.remove(shipment);
+                    shipments.add(newShipment);
+                    break;
+                } else if (idMarker.startsWith("delivery")) {
+                    newShipment = Shipment.Builder.newInstance(UUID.randomUUID().toString())
+                            .setDeliveryLocation(Location.newInstance(lat, lng))
+                            .setPickupLocation(Location.newInstance(
+                                    shipment.getPickupLocation().getCoordinate().getX(),
+                                    shipment.getPickupLocation().getCoordinate().getY()))
+                            .setDeliveryServiceTime(shipment.getDeliveryServiceTime())
+                            .setPickupServiceTime(shipment.getPickupServiceTime())
+                            .build();
+                    shipments.remove(shipment);
+                    shipments.add(newShipment);
+                    break;
+                }
+            }
+        }
     }
 }

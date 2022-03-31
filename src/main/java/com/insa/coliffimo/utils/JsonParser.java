@@ -1,8 +1,11 @@
 package com.insa.coliffimo.utils;
 
+import com.graphhopper.jsprit.core.problem.solution.route.activity.TourActivities;
+import com.graphhopper.jsprit.core.problem.solution.route.activity.TourActivity;
 import com.graphhopper.util.Instruction;
 import com.graphhopper.util.InstructionList;
 import com.graphhopper.util.Translation;
+import com.insa.coliffimo.router.PlanningResource;
 import com.insa.coliffimo.router.RhoneAlpesGraphHopper;
 import com.insa.coliffimo.router.RouteInfo;
 import org.apache.commons.lang3.StringUtils;
@@ -28,12 +31,12 @@ public class JsonParser {
      * @param PATH
      */
     public JsonParser(String PATH) {
-        this.PATH = PATH;
+        JsonParser.PATH = PATH;
     }
 
 
-    public static void sauvegarder(RouteInfo info, String filename, LocalTime depot) {
-        LocalTime depart = depot;
+    public static void sauvegarder(RouteInfo info, String filename, PlanningResource planningResource) {
+        LocalTime depart = planningResource.getPlanningRequest().getDepotDepartureLocalTime();
         createPath(filename);
         JSONObject itineraire = new JSONObject();
         JSONArray trajets = new JSONArray();
@@ -63,9 +66,9 @@ public class JsonParser {
                 trajets.put(indicate);
             }
         }
-        itineraire.put("Heure de départ", depot);
+        itineraire.put("Heure de départ", depart);
         itineraire.put("Trajet", trajets);
-        if (JsonParser.createPath(filename) == false) {
+        if (!JsonParser.createPath(filename)) {
             File f = new File(JsonParser.PATH + filename);
             f.delete();
         }
@@ -90,14 +93,19 @@ public class JsonParser {
         try {
             File file = new File(JsonParser.PATH + filename);
             file.mkdirs();
-            if (file.createNewFile()) {
-                return true;
-            } else {
-                return false;
-            }
+            return file.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return true;
+    }
+
+    private double activityTime(TourActivities tourActivity, String id){
+        for (TourActivity a : tourActivity.getActivities()){
+            if (a.getLocation().getId().equals(id)){
+                return a.getArrTime()/1000;
+            }
+        }
+        return 0.0;
     }
 }

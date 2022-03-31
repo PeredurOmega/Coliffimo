@@ -169,17 +169,13 @@ open class LeafletMapView : StackPane() {
         val popupTitle = "<p>$popupLabel</p>"
         val popupButton = "<button onClick=\\\"(function(){java.callbackMarkerDelete('$idMarker');})()\\\">Supprimer</button>"
         val popupHtml = if(idMarker != "0")  popupTitle + popupButton else popupTitle
+        val dragString = if(idMarker != "0") "$varName.on('dragend', function(e) { var coords = e.target.getLatLng(); var lat = coords.lat; var lng = coords.lng; java.callbackMapDragged(lat, lng, \"$idMarker\"); });" else ""
+        val dragBool = idMarker != "0"
         execScript(
                     "var $varName = L.marker([${position.latitude}, ${position.longitude}], "
-                    + "{title: '$title', icon: ${marker.iconName}, zIndexOffset: $zIndexOffset, draggable: true}).addTo(myMap);" +
-                    "" +
+                    + "{title: '$title', icon: ${marker.iconName}, zIndexOffset: $zIndexOffset, draggable: $dragBool}).addTo(myMap);" +
                     "$varName.bindPopup(\"$popupHtml\");" +
-                    "$varName.on('dragend', function(e) {" +
-                    "var coords = e.target.getLatLng();" +
-                    "var lat = coords.lat;" +
-                    "var lng = coords.lng;" +
-                    "java.callbackMapDragged(lat, lng, \"$idMarker\");" +
-                    "});"
+                    dragString
         )
         return varName
     }

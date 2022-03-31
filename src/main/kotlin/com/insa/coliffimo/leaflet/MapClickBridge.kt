@@ -5,7 +5,6 @@ import com.insa.coliffimo.MainController
 class MapClickBridge(private val mainController: MainController) {
 
     fun callbackMapClick(lat: Double, lng: Double) {
-        println("$lat $lng marker CREATION")
         mainController.addPoint(LatLong(lat, lng))
     }
 
@@ -15,7 +14,7 @@ class MapClickBridge(private val mainController: MainController) {
     }
 
 
-    fun callbackMapDragged(lat: Double, lng: Double, name: String) {
-        println("dragged $lat $lng marker $name")
+    fun callbackMapDragged(lat: Double, lng: Double, idMarker: String) {
+        mainController.movePoint(idMarker, lat, lng)
     }
 }
