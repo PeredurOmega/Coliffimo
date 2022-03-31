@@ -3,10 +3,6 @@ package com.insa.coliffimo;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import org.apache.commons.io.IOUtils;
 
@@ -16,6 +12,7 @@ import java.net.URL;
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
+        autoDownloadMap();
         stage.getIcons().add(new Image("file:src/main/resources/img/logo.png"));
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("coliffimo.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -23,7 +20,6 @@ public class Application extends javafx.application.Application {
         stage.setTitle("Coliffimo");
         stage.setScene(scene);
         stage.show();
-        autoDownloadMap(stage);
     }
 
     public static void main(String[] args) {
@@ -32,12 +28,13 @@ public class Application extends javafx.application.Application {
         launch();
     }
 
-    public static void autoDownloadMap(Stage stage){
+    public static void autoDownloadMap() {
         // auto download map if file does not exists
         String map_file_path = "./resources/rhone-alpes-latest.osm.pbf";
         File rhone_alpes_map = new File(map_file_path);
-        if(!rhone_alpes_map.exists()) {
-            System.out.println("Téléchargement de la carte");
+        rhone_alpes_map.mkdirs();
+        if (!rhone_alpes_map.exists()) {
+            System.out.println("Téléchargement de la carte en cours...");
 
             InputStream inputStream = null;
             try {
@@ -58,6 +55,7 @@ public class Application extends javafx.application.Application {
                 e.printStackTrace();
             }
             System.out.println(i);
+            System.out.println("Téléchargement de la carte terminé");
         }
     }
 }
