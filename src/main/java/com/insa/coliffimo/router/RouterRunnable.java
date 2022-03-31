@@ -47,6 +47,10 @@ import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.nio.file.Paths;
+import java.time.Instant;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.Temporal;
 import java.util.List;
 import java.util.*;
 
@@ -134,9 +138,12 @@ public class RouterRunnable implements Runnable {
 
         Vehicle vehicle = planningResource.getVehicle();
         ArrayList<Shipment> shipments = getAllShipments();
-        ArrayList<Color> colors = new ColorGenerator().generateColorList(shipments.size());
 
-        mapView.addMarker(from(vehicle.getStartLocation()), "Start/Arrival", new DepotMarker("#000000"), 1, "start", "0");
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+        ArrayList<Color> colors = new ColorGenerator().generateColorList(shipments.size());
+        LocalTime departureTime = planningResource.getPlanningRequest().getDepotDepartureLocalTime();
+        LocalTime tempTime = departureTime;
+
         int k = 0;
         for (Shipment shipment : shipments) {
             String idMarker = shipment.getId();
@@ -146,10 +153,24 @@ public class RouterRunnable implements Runnable {
             shipmentInfoHashMap.put(shipment.getPickupLocation().getId(), new ShipmentInfo(color, ShipmentInfo.ShipmentType.PICKUP));
             shipmentInfoHashMap.put(shipment.getDeliveryLocation().getId(), new ShipmentInfo(color, ShipmentInfo.ShipmentType.DELIVERY));
 
-            mapView.addMarker(from(shipment.getPickupLocation()), "Pickup", new PickupMarker(hex), 1, "pickup", "pickup" + idMarker);
-            mapView.addMarker(from(shipment.getDeliveryLocation()), "Delivery", new DeliveryMarker(hex), 1, "delivery", "delivery" + idMarker);
+            LocalTime pickupTime = departureTime.plusSeconds((long) activityTime(route.tourActivities.get(0), shipment.getPickupLocation().getId()));
+            String pickupLabel = "Pickup</p><p>" +
+                    shipment.getPickupLocation().getCoordinate().getX() + ", " +
+                    shipment.getPickupLocation().getCoordinate().getY() + "</p><p>" +
+                    "Arrivée : " + pickupTime.format(timeFormat) + "</p><p>" +
+                    "Départ : " + pickupTime.plusSeconds((long) (shipment.getPickupServiceTime()/1000)).format(timeFormat);
+
+            LocalTime deliveryTime = departureTime.plusSeconds((long) activityTime(route.tourActivities.get(0), shipment.getDeliveryLocation().getId()));
+            String deliveryLabel = "Pickup</p><p>" +
+                    shipment.getDeliveryLocation().getCoordinate().getX() + ", " +
+                    shipment.getDeliveryLocation().getCoordinate().getY() + "</p><p>" +
+                    "Arrivée : " + deliveryTime.format(timeFormat) + "</p><p>" +
+                    "Départ : " + deliveryTime.plusSeconds((long) (shipment.getDeliveryServiceTime()/1000)).format(timeFormat);
+            mapView.addMarker(from(shipment.getPickupLocation()), "Pickup", new PickupMarker(hex), 1, pickupLabel, "pickup" + idMarker);
+            mapView.addMarker(from(shipment.getDeliveryLocation()), "Delivery", new DeliveryMarker(hex), 1, deliveryLabel, "delivery" + idMarker);
             k++;
         }
+        mapView.addMarker(from(vehicle.getStartLocation()), "Start/Arrival", new DepotMarker("#000000"), 1, "Dépôt</p><p>Départ "+departureTime.format(timeFormat)+"</p><p>Arrivée "+tempTime.format(timeFormat), "0");
     }
 
     private void initRightPane() {
@@ -403,5 +424,14 @@ public class RouterRunnable implements Runnable {
 
     private LatLong from(Location location) {
         return new LatLong(location.getCoordinate().getX(), location.getCoordinate().getY());
+    }
+
+    private double activityTime(TourActivities tourActivity, String id){
+        for (TourActivity a : tourActivity.getActivities()){
+            if (a.getLocation().getId().equals(id)){
+                return a.getArrTime()/1000;
+            }
+        }
+        return 0.0;
     }
 }

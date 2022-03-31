@@ -9,9 +9,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalTime;
 import java.util.Locale;
 
@@ -70,7 +69,8 @@ public class JsonParser {
             File f = new File(JsonParser.PATH + filename);
             f.delete();
         }
-        try (FileWriter ecriture = new FileWriter(JsonParser.PATH + filename)) {
+        try (OutputStreamWriter ecriture =
+                     new OutputStreamWriter(new FileOutputStream(JsonParser.PATH + filename), StandardCharsets.UTF_8)) {
             ecriture.write(itineraire.toString(4));
             ecriture.flush();
 
