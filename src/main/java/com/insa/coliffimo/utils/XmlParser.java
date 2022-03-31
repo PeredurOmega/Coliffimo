@@ -184,7 +184,7 @@ public class XmlParser {
 
             Long depotAddress = Long.parseLong(element.getAttribute(PLANNING_REQUEST_DEPOT_ADDRESS_ATTRIBUTE_NAME));
 
-            String depotDepartureLocalTimeStr = element.getAttribute(PLANNING_REQUEST_DEPOT_DEPARTURE_TIME_ATTRIBUTE_NAME) + "1";
+            String depotDepartureLocalTimeStr = element.getAttribute(PLANNING_REQUEST_DEPOT_DEPARTURE_TIME_ATTRIBUTE_NAME);
             String[] depotDepartureLocalTimeStrSplit = depotDepartureLocalTimeStr.split(":");
             StringBuilder depotDepartureLocalTimeWithValidFormat = new StringBuilder();
             for (int i = 0; i < depotDepartureLocalTimeStrSplit.length; i++) {
