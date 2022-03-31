@@ -37,6 +37,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -47,10 +48,8 @@ import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.nio.file.Paths;
-import java.time.Instant;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.Temporal;
 import java.util.List;
 import java.util.*;
 
@@ -61,19 +60,22 @@ public class RouterRunnable implements Runnable {
     private final HashMap<String, ShipmentInfo> shipmentInfoHashMap = new HashMap<>();
     private final LeafletMapView mapView;
     private final BorderPane rootPane;
+    private final boolean buttonHandler;
     private VBox rightPane = new VBox();
     private VBox instructionBlocPane = null;
     ScrollPane scrollPane = new ScrollPane();
     MFXButton collapseRightPanelButton;
 
+
     private final HashMap<String, ResponsePath> bestPathsCache = new HashMap<>();
 
-    public RouterRunnable(PlanningResource planningResource, LeafletMapView mapView, BorderPane rootPane, MFXButton collapseRightPanelButton, ArrayList<Shipment> localShipments) {
+    public RouterRunnable(PlanningResource planningResource, LeafletMapView mapView, BorderPane rootPane, MFXButton collapseRightPanelButton, boolean buttonHandler, ArrayList<Shipment> localShipments) {
         this.planningResource = planningResource;
         this.mapView = mapView;
         this.rootPane = rootPane;
         this.collapseRightPanelButton = collapseRightPanelButton;
         this.localShipments = localShipments;
+        this.buttonHandler = buttonHandler;
     }
 
     @Override
@@ -176,7 +178,7 @@ public class RouterRunnable implements Runnable {
     private void initRightPane() {
         rightPane = new VBox();
         rightPane.getStyleClass().add("vbox");
-        this.collapseRightPanelButton.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, collapseRightPanel());
+        if (!buttonHandler) this.collapseRightPanelButton.addEventHandler(MouseEvent.MOUSE_RELEASED, collapseRightPanel());
     }
 
     private void initInstructionBlocPane() {

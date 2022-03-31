@@ -35,11 +35,13 @@ public class MainController implements Initializable {
     private String xmlMapFile = XML_MAP_RESOURCE_DIRECTORY_PATH + "mediumMap.xml";
     private String xmlRequestFile = XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH + "requestsMedium5.xml";
 
-    private MapResource mapResource = new MapResource(new File(xmlMapFile));;
+    private MapResource mapResource = new MapResource(new File(xmlMapFile));
     private PlanningResource planningResource = new PlanningResource(mapResource, new File(xmlRequestFile));
 
     private boolean firstAdded = false;
     private LatLong firstCoordinate = null;
+
+    private boolean buttonHandler = false;
 
     @FXML
     public BorderPane rootPane;
@@ -71,7 +73,8 @@ public class MainController implements Initializable {
         cfMapLoadState.whenComplete((workerState, error) -> {
             if (workerState == Worker.State.SUCCEEDED) {
                 mapView.setView(initialMap.getInitialCenter(), initialMap.getInitialZoom());
-                new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, additionalLocalMarkers.getShipments())).start();
+                new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
+                buttonHandler = true;
             }
         });
     }
@@ -98,13 +101,13 @@ public class MainController implements Initializable {
         }
     }
 
-    public void processItinerary(ActionEvent actionEvent) {
+    public void processItinerary() {
         if (xmlMapFile != null && xmlRequestFile != null) {
             mapResource = new MapResource(new File(xmlMapFile));
             planningResource = new PlanningResource(mapResource, new File(xmlRequestFile));
             firstCoordinate = null;
             firstAdded = false;
-            new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, additionalLocalMarkers.getShipments())).start();
+            new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
         } else {
             if (xmlMapFile == null && xmlRequestFile != null) infoLabel.setText("Fichier de map non renseigné");
             else if (xmlMapFile != null) infoLabel.setText("Fichier de request non renseigné");
@@ -120,7 +123,7 @@ public class MainController implements Initializable {
         } else {
             mapView.addMarker(marker, "Temp delivery", new DeliveryMarker("#555555"), 1, "Temp delivery", "temp-delivery");
             additionalLocalMarkers.addShipments(firstCoordinate, marker);
-            new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, additionalLocalMarkers.getShipments())).start();
+            new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
             firstCoordinate = null;
             firstAdded = false;
         }
@@ -130,7 +133,7 @@ public class MainController implements Initializable {
         deleteShipment(idMarker);
         firstCoordinate = null;
         firstAdded = false;
-        new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, additionalLocalMarkers.getShipments())).start();
+        new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
     }
 
     public void deleteShipment(String idMarker) {
