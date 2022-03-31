@@ -37,8 +37,8 @@ public class MainController implements Initializable {
     private String xmlMapFile = XML_MAP_RESOURCE_DIRECTORY_PATH + "mediumMap.xml";
     private String xmlRequestFile = XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH + "requestsMedium5.xml";
 
-    private MapResource mapResource = new MapResource(new File(xmlMapFile));
-    private PlanningResource planningResource = new PlanningResource(mapResource, new File(xmlRequestFile));
+    private MapResource mapResource = null;
+    private PlanningResource planningResource = null;
 
     private boolean firstAdded = false;
     private LatLong firstCoordinate = null;
@@ -75,8 +75,8 @@ public class MainController implements Initializable {
         cfMapLoadState.whenComplete((workerState, error) -> {
             if (workerState == Worker.State.SUCCEEDED) {
                 mapView.setView(initialMap.getInitialCenter(), initialMap.getInitialZoom());
-                new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
-                buttonHandler = true;
+                //new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
+                //buttonHandler = true;
             }
         });
     }
@@ -118,7 +118,7 @@ public class MainController implements Initializable {
     }
 
     public void addPoint(LatLong marker) {
-        if (!firstAdded){
+        if (!firstAdded) {
             mapView.addMarker(marker, "Temp pickup", new PickupMarker("#555555"), 1, "Temp pickup", "temp-pickup");
             firstCoordinate = marker;
             firstAdded = true;
@@ -158,9 +158,9 @@ public class MainController implements Initializable {
 
     private void addMovedPoint(String idMarker, double lat, double lng, String idShipment, ArrayList<Shipment> shipments) {
         Shipment newShipment;
-        for (Shipment shipment : shipments){
-            if (shipment.getId().equals(idShipment)){
-                if(idMarker.startsWith("pickup")){
+        for (Shipment shipment : shipments) {
+            if (shipment.getId().equals(idShipment)) {
+                if (idMarker.startsWith("pickup")) {
                     newShipment = Shipment.Builder.newInstance(UUID.randomUUID().toString())
                             .setPickupLocation(Location.newInstance(lat, lng))
                             .setDeliveryLocation(Location.newInstance(

@@ -184,7 +184,7 @@ public class XmlParser {
 
             Long depotAddress = Long.parseLong(element.getAttribute(PLANNING_REQUEST_DEPOT_ADDRESS_ATTRIBUTE_NAME));
 
-            String depotDepartureLocalTimeStr = element.getAttribute(PLANNING_REQUEST_DEPOT_DEPARTURE_TIME_ATTRIBUTE_NAME);
+            String depotDepartureLocalTimeStr = element.getAttribute(PLANNING_REQUEST_DEPOT_DEPARTURE_TIME_ATTRIBUTE_NAME) + "1";
             String[] depotDepartureLocalTimeStrSplit = depotDepartureLocalTimeStr.split(":");
             StringBuilder depotDepartureLocalTimeWithValidFormat = new StringBuilder();
             for (int i = 0; i < depotDepartureLocalTimeStrSplit.length; i++) {
@@ -201,7 +201,7 @@ public class XmlParser {
             LocalTime depotDepartureLocalTime = LocalTime.parse(depotDepartureLocalTimeWithValidFormat.toString(), formatter);
             //TODO CATCH NOT EXISTING INTERSECTION
             Intersection depot = intersections.get(depotAddress);
-            if(depot == null) {
+            if (depot == null) {
                 System.out.println("Intersection not found");
             }
             planning.setDepot(depot);

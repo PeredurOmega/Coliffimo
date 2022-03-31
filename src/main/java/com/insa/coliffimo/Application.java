@@ -32,7 +32,7 @@ public class Application extends javafx.application.Application {
         // auto download map if file does not exists
         String map_file_path = "./resources/rhone-alpes-latest.osm.pbf";
         File rhone_alpes_map = new File(map_file_path);
-        rhone_alpes_map.mkdirs();
+        rhone_alpes_map.getParentFile().mkdirs();
         if (!rhone_alpes_map.exists()) {
             System.out.println("Téléchargement de la carte en cours...");
 

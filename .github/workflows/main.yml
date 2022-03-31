@@ -77,4 +77,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: build/distributions/Coliffimo.zip
+          fail_on_unmatched_files: false
+          files: |
+            build/distributions/Coliffimo-win.zip
+            build/distributions/Coliffimo-mac.zip
+            build/distributions/Coliffimo-linux.zip
