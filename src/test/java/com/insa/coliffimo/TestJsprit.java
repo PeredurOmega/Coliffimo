@@ -31,6 +31,7 @@ import java.util.Collection;
 public class TestJsprit {
 
     @Test
+    @Disabled
     public void testJsprit5() {
         ArrayList<Location> locations = new ArrayList<Location>();
         locations.add(Location.newInstance(45.747588, 4.833916));
