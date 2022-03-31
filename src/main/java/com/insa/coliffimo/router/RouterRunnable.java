@@ -163,7 +163,7 @@ public class RouterRunnable implements Runnable {
                     "Départ : " + pickupTime.plusSeconds((long) (shipment.getPickupServiceTime()/1000)).format(timeFormat);
 
             LocalTime deliveryTime = departureTime.plusSeconds((long) activityTime(route.tourActivities.get(0), shipment.getDeliveryLocation().getId()));
-            String deliveryLabel = "Pickup</p><p>" +
+            String deliveryLabel = "Delivery</p><p>" +
                     shipment.getDeliveryLocation().getCoordinate().getX() + ", " +
                     shipment.getDeliveryLocation().getCoordinate().getY() + "</p><p>" +
                     "Arrivée : " + deliveryTime.format(timeFormat) + "</p><p>" +
