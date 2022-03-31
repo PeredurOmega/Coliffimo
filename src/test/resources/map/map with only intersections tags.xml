@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <map>
-<intersection id="21992964" latitude="45.74778" longitude="4.8682485"/>
-<intersection id="208769133" latitude="45.759453" longitude="4.8698664"/>
-<intersection id="342873658" latitude="45.76038" longitude="4.8775625"/>
-<intersection id="342873532" latitude="45.76051" longitude="4.8783274"/>
-<intersection id="208769499" latitude="45.760597" longitude="4.87622"/>
-<intersection id="975886496" latitude="45.756874" longitude="4.8574047"/>
+    <intersection id="21992964" latitude="45.74778" longitude="4.8682485"/>
+    <intersection id="25327124" latitude="45.74778" longitude="4.8682485"/>
+    <intersection id="208769133" latitude="45.759453" longitude="4.8698664"/>
+    <intersection id="342873658" latitude="45.76038" longitude="4.8775625"/>
+    <intersection id="342873532" latitude="45.76051" longitude="4.8783274"/>
+    <intersection id="208769499" latitude="45.760597" longitude="4.87622"/>
+    <intersection id="975886496" latitude="45.756874" longitude="4.8574047"/>
 </map>
