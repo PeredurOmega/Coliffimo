@@ -14,7 +14,7 @@ public class Application extends javafx.application.Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("coliffimo.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setMaximized(true);
-        stage.setTitle("Hello!");
+        stage.setTitle("Coliffimo");
         stage.setScene(scene);
         stage.show();
     }
