@@ -103,7 +103,6 @@ public class RouterRunnable implements Runnable {
             initInstructionBlocPane();
             int i = 0;
             List<TourActivity> tourActivities = route.tourActivities.get(0).getActivities();
-
             for (InstructionList iti : route.instructionLists) {
                 for (Instruction instruction : iti) {
                     String indication = StringUtils.uncapitalize(instruction.getTurnDescription(tr));
@@ -125,7 +124,6 @@ public class RouterRunnable implements Runnable {
                 }
             }
 
-            initInstructionBlocPane();
             HBox finalArrivalLine = getFinalArrivalLine();
             instructionBlocPane.getChildren().add(finalArrivalLine);
             rightPane.getChildren().add(instructionBlocPane);
@@ -174,7 +172,25 @@ public class RouterRunnable implements Runnable {
             mapView.addMarker(from(shipment.getDeliveryLocation()), "Delivery", new DeliveryMarker(hex), 1, deliveryLabel, "delivery" + idMarker);
             k++;
         }
-        mapView.addMarker(from(vehicle.getStartLocation()), "Start/Arrival", new DepotMarker("#000000"), 1, "Dépôt</p><p>Départ "+departureTime.format(timeFormat)+"</p><p>Arrivée "+tempTime.format(timeFormat), "0");
+        double lastRouteTime = 0.0;
+        for (Instruction instruction : route.instructionLists.get(route.instructionLists.size()-1)){
+            lastRouteTime += instruction.getTime()/1000.0;
+        }
+        TourActivity lastTourActivity = route.tourActivities.get(0).getActivities().get(route.tourActivities.get(0).getActivities().size() - 1);
+        double timeAtLastPoint = lastTourActivity.getArrTime();
+        double lastDeliveryTime = 0.0;
+        for (Shipment shipment : shipments) {
+            if (Objects.equals(shipment.getDeliveryLocation().getId(), lastTourActivity.getLocation().getId())) {
+                lastDeliveryTime = shipment.getDeliveryServiceTime();
+                break;
+            }
+        }
+        System.out.println(lastRouteTime);
+        String depotLabel = "Dépôt</p><p>Départ "+
+                departureTime.format(timeFormat)+
+                "</p><p>Arrivée "+
+                departureTime.plusSeconds((long) timeAtLastPoint / 1000).plusSeconds((long) (lastDeliveryTime/1000)).plusSeconds((long) lastRouteTime).format(timeFormat);
+        mapView.addMarker(from(vehicle.getStartLocation()), "Start/Arrival", new DepotMarker("#000000"), 1, depotLabel, "0");
     }
 
     private void initRightPane() {
@@ -242,7 +258,8 @@ public class RouterRunnable implements Runnable {
         if (imageView != null) {
             pathDetailLine.getChildren().add(imageView);
         }
-        pathDetailLine.getChildren().add(new Label(StringUtils.capitalize(indication)));
+        if (!indication.startsWith("arrivée"))
+            pathDetailLine.getChildren().add(new Label(StringUtils.capitalize(indication)));
 
         return pathDetailLine;
     }
@@ -270,7 +287,6 @@ public class RouterRunnable implements Runnable {
         Label arrivalLabel = new Label("  Arrivée au point" + shipmentType);
         HBox arrivalLine = new HBox(pointCircle, arrivalLabel);
         arrivalLine.getStyleClass().add("arrival-line");
-
         return arrivalLine;
     }
 
