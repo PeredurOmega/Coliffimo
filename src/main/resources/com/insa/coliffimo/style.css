@@ -13,6 +13,7 @@
 .button {
     -fx-background-color: #EAF2FF;
     -fx-border-color: #b3d0fd;
+    -fx-cursor: hand;
 }
 
 #rootPane {
