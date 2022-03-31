@@ -55,7 +55,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     testImplementation("org.junit.jupiter:junit-jupiter:${junitVersion}")
-    implementation("org.json:json:20171018")
+    implementation("com.google.code.gson:gson:2.9.0")
 }
 
 test {

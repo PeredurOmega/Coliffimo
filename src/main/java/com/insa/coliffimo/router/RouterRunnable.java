@@ -11,6 +11,7 @@ import com.graphhopper.jsprit.core.problem.Location;
 import com.graphhopper.jsprit.core.problem.VehicleRoutingProblem;
 import com.graphhopper.jsprit.core.problem.job.Shipment;
 import com.graphhopper.jsprit.core.problem.solution.VehicleRoutingProblemSolution;
+import com.graphhopper.jsprit.core.problem.solution.route.VehicleRoute;
 import com.graphhopper.jsprit.core.problem.solution.route.activity.TourActivities;
 import com.graphhopper.jsprit.core.problem.solution.route.activity.TourActivity;
 import com.graphhopper.jsprit.core.problem.vehicle.Vehicle;
@@ -81,7 +82,8 @@ public class RouterRunnable implements Runnable {
     @Override
     public void run() {
         RouteInfo route = computeBestRoute();
-        JsonParser.sauvegarder(route, "sauvegarde.JSON", planningResource);
+        ArrayList<Shipment> shipments = getAllShipments();
+        JsonParser.sauvegarder(route, "sauvegarde.JSON");
         Platform.runLater(() -> {
             Translation tr = RhoneAlpesGraphHopper.getGraphHopper().getTranslationMap().getWithFallBack(Locale.FRANCE);
             int instructionBlocPaneIndex = 0;
@@ -421,7 +423,7 @@ public class RouterRunnable implements Runnable {
             path.getPoints().forEach(p -> fullTracks.add(new LatLong(p.lat, p.lon)));
             instructionLists.add(path.getInstructions());
         }
-        return new RouteInfo(fullTracks, instructionLists, tourActivities);
+        return new RouteInfo((ArrayList<VehicleRoute>) bestSolution.getRoutes(), fullTracks, instructionLists, tourActivities);
     }
 
     private LatLong from(Location location) {
