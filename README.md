@@ -18,7 +18,7 @@ Elle est utlisée pour calculer le meilleur itinéraire, prenant en compte plusi
 
 Vous trouverez dans les releases du projet GitHub les archives zip des différentes versions de l'application.
 
-Désarchivez le fichier zip téléchargé puis lancez l'application avec l'exécutable situé dans le dossier bin : Coliffimo.bat (pour Windows) ou Coliffimo (pour Linux).
+Désarchivez le fichier zip de la dernière version (Release) téléchargé puis lancez l'application avec l'exécutable situé dans le dossier bin : Coliffimo.bat (pour Windows) ou Coliffimo (pour Linux).
 
 Au premier lancement, le téléchargement de la carte de Rhône-Alpes va s'effectuer.
 
