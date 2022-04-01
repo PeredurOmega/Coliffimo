@@ -110,6 +110,7 @@ public class MainController implements Initializable {
             firstCoordinate = null;
             firstAdded = false;
             new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
+            buttonHandler = true;
         } else {
             if (xmlMapFile == null && xmlRequestFile != null) infoLabel.setText("Fichier de map non renseigné");
             else if (xmlMapFile != null) infoLabel.setText("Fichier de request non renseigné");

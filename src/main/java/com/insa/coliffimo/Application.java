@@ -1,17 +1,21 @@
 package com.insa.coliffimo;
 
+import com.insa.coliffimo.utils.MapDownloadThread;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.apache.commons.io.IOUtils;
+import javafx.stage.StageStyle;
 
 import java.io.*;
-import java.net.URL;
 
 public class Application extends javafx.application.Application {
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException{
         autoDownloadMap();
         stage.getIcons().add(new Image("file:src/main/resources/img/logo.png"));
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("coliffimo.fxml"));
@@ -28,34 +32,25 @@ public class Application extends javafx.application.Application {
         launch();
     }
 
-    public static void autoDownloadMap() {
+    public static void autoDownloadMap(){
         // auto download map if file does not exists
         String map_file_path = "./resources/rhone-alpes-latest.osm.pbf";
         File rhone_alpes_map = new File(map_file_path);
         rhone_alpes_map.getParentFile().mkdirs();
         if (!rhone_alpes_map.exists()) {
-            System.out.println("Téléchargement de la carte en cours...");
+            Stage mapDownloadStage = new Stage();
+            mapDownloadStage.setTitle("Téléchargement de la carte");
+            mapDownloadStage.getIcons().add(new Image("file:src/main/resources/img/logo.png"));
+            mapDownloadStage.initStyle(StageStyle.UNDECORATED);
+            ProgressIndicator progressBar = new ProgressIndicator();
+            Label downloadLabel = new Label("Téléchargement de la carte en cours...");
+            VBox root = new VBox(downloadLabel, progressBar);
+            root.setAlignment(Pos.CENTER);
+            Scene scene = new Scene(root, 350, 75);
+            mapDownloadStage.setScene(scene);
+            new Thread(new MapDownloadThread(mapDownloadStage, root, downloadLabel, progressBar, map_file_path)).start();
+            mapDownloadStage.showAndWait();
 
-            InputStream inputStream = null;
-            try {
-                inputStream = new URL("http://download.geofabrik.de/europe/france/rhone-alpes-latest.osm.pbf").openStream();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            FileOutputStream fileOS = null;
-            try {
-                fileOS = new FileOutputStream(map_file_path);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            Long i = null;
-            try {
-                i = IOUtils.copyLarge(inputStream, fileOS);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            System.out.println(i);
-            System.out.println("Téléchargement de la carte terminé");
         }
     }
 }
