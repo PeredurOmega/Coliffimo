@@ -129,11 +129,11 @@ public class MainController implements Initializable {
 
     public void addPoint(LatLong marker) {
         if (!firstAdded) {
-            mapView.addMarker(marker, "Temp pickup", new PickupMarker("#555555"), 1, "Temp pickup", "temp-pickup");
+            mapView.addMarker(marker, "Temp pickup", new PickupMarker("#555555", 0), 1, "Temp pickup", "temp-pickup");
             firstCoordinate = marker;
             firstAdded = true;
         } else {
-            mapView.addMarker(marker, "Temp delivery", new DeliveryMarker("#555555"), 1, "Temp delivery", "temp-delivery");
+            mapView.addMarker(marker, "Temp delivery", new DeliveryMarker("#555555", 0), 1, "Temp delivery", "temp-delivery");
             additionalLocalMarkers.addShipments(firstCoordinate, marker);
             topPane.getChildren().add(itiProgress);
             new Thread(new RouterRunnable(planningResource, mapView, rootPane, topPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();

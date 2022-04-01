@@ -1,6 +1,6 @@
 package com.insa.coliffimo.leaflet.markers
 
-class PickupMarker(color: String) : CustomMarker() {
+class PickupMarker(color: String, positionNumber: Int) : CustomMarker() {
     override val iconName: String = divIcon(
         """
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.388 25">
@@ -9,6 +9,8 @@ class PickupMarker(color: String) : CustomMarker() {
             <path style="fill:$color" d="M7.244,8.127a.813.813,0,0,1-.756-.569q-.278-.918-.543-1.839a.789.789,0,0,1,.524-.977q1.149-.36,2.3-.707a.778.778,0,0,1,.976.5c.2.624.381,1.252.557,1.882a.786.786,0,0,1-.551.962c-.452.146-.908.281-1.363.421-.291.09-.581.181-.874.268C7.427,8.1,7.335,8.109,7.244,8.127Zm.085-2.8c.076.241.146.467.222.691a.091.091,0,0,0,.078.045q.506-.154,1.008-.32a.1.1,0,0,0,.047-.086c-.06-.207-.124-.412-.194-.615A.1.1,0,0,0,8.4,4.993C8.05,5.1,7.7,5.214,7.329,5.331Z"/>
             <path style="fill:$color" d="M10.985,7.808l.24.76c-.068.024-.126.047-.184.065l-4.147,1.3a1.2,1.2,0,0,1-1.551-.8Q4.759,7.31,4.19,5.478c-.032-.1-.068-.124-.17-.085-.174.065-.354.113-.53.172-.069.023-.107.015-.13-.065-.056-.192-.12-.382-.184-.573-.02-.06-.024-.1.053-.127.475-.149.948-.3,1.436-.456.015.039.031.075.042.112Q5.4,6.65,6.094,8.845a.406.406,0,0,0,.595.31l4.2-1.32Z"/>
             <path style="fill:$color" d="M6.87,12a.8.8,0,1,1,.8-.8A.8.8,0,0,1,6.87,12Z"/>
+            <circle cx="11.3" cy="3" r="3" style="fill:$color"></circle>
+            <text x="9.9" y="4.5" font-family="Roboto" "="" font-size="5" style="color:#fff;stroke: white;stroke-width: 0.4px;">$positionNumber</text>
         </svg>
         """.trimIndent()
     )

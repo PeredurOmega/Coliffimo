@@ -133,7 +133,7 @@ public class RouterRunnable implements Runnable {
             scrollPane = new ScrollPane();
             scrollPane.setContent(rightPane);
             rootPane.setRight(scrollPane);
-            topPane.getChildren().remove(topPane.getChildren().size()-1);
+            topPane.getChildren().remove(topPane.getChildren().size() - 1);
         });
     }
 
@@ -164,7 +164,7 @@ public class RouterRunnable implements Runnable {
                     shipment.getPickupLocation().getCoordinate().getX() + ", " +
                     shipment.getPickupLocation().getCoordinate().getY() + "</p><p>" +
                     "Arrivée : " + pickupTime.format(timeFormat) + "</p><p>" +
-                    "Départ : " + pickupTime.plusSeconds((long) (shipment.getPickupServiceTime()/1000)).format(timeFormat);
+                    "Départ : " + pickupTime.plusSeconds((long) (shipment.getPickupServiceTime() / 1000)).format(timeFormat);
 
             LocalTime deliveryTime = departureTime.plusSeconds((long) activityTime(route.tourActivities.get(0), shipment.getDeliveryLocation().getId()));
             int deliveryOrder = activityOrder(route.tourActivities.get(0), shipment.getDeliveryLocation().getId());
@@ -172,14 +172,14 @@ public class RouterRunnable implements Runnable {
                     shipment.getDeliveryLocation().getCoordinate().getX() + ", " +
                     shipment.getDeliveryLocation().getCoordinate().getY() + "</p><p>" +
                     "Arrivée : " + deliveryTime.format(timeFormat) + "</p><p>" +
-                    "Départ : " + deliveryTime.plusSeconds((long) (shipment.getDeliveryServiceTime()/1000)).format(timeFormat);
+                    "Départ : " + deliveryTime.plusSeconds((long) (shipment.getDeliveryServiceTime() / 1000)).format(timeFormat);
             mapView.addMarker(from(shipment.getPickupLocation()), "Pickup", new PickupMarker(hex, pickupOrder), 1, pickupLabel, "pickup" + idMarker);
             mapView.addMarker(from(shipment.getDeliveryLocation()), "Delivery", new DeliveryMarker(hex, deliveryOrder), 1, deliveryLabel, "delivery" + idMarker);
             k++;
         }
         double lastRouteTime = 0.0;
-        for (Instruction instruction : route.instructionLists.get(route.instructionLists.size()-1)){
-            lastRouteTime += instruction.getTime()/1000.0;
+        for (Instruction instruction : route.instructionLists.get(route.instructionLists.size() - 1)) {
+            lastRouteTime += instruction.getTime() / 1000.0;
         }
         TourActivity lastTourActivity = route.tourActivities.get(0).getActivities().get(route.tourActivities.get(0).getActivities().size() - 1);
         double timeAtLastPoint = lastTourActivity.getArrTime();
@@ -191,17 +191,18 @@ public class RouterRunnable implements Runnable {
             }
         }
         System.out.println(lastRouteTime);
-        String depotLabel = "Dépôt</p><p>Départ "+
-                departureTime.format(timeFormat)+
-                "</p><p>Arrivée "+
-                departureTime.plusSeconds((long) timeAtLastPoint / 1000).plusSeconds((long) (lastDeliveryTime/1000)).plusSeconds((long) lastRouteTime).format(timeFormat);
+        String depotLabel = "Dépôt</p><p>Départ " +
+                departureTime.format(timeFormat) +
+                "</p><p>Arrivée " +
+                departureTime.plusSeconds((long) timeAtLastPoint / 1000).plusSeconds((long) (lastDeliveryTime / 1000)).plusSeconds((long) lastRouteTime).format(timeFormat);
         mapView.addMarker(from(vehicle.getStartLocation()), "Start/Arrival", new DepotMarker("#000000"), 1, depotLabel, "0");
     }
 
     private void initRightPane() {
         rightPane = new VBox();
         rightPane.getStyleClass().add("vbox");
-        if (!buttonHandler) this.collapseRightPanelButton.addEventHandler(MouseEvent.MOUSE_RELEASED, collapseRightPanel());
+        if (!buttonHandler)
+            this.collapseRightPanelButton.addEventHandler(MouseEvent.MOUSE_RELEASED, collapseRightPanel());
     }
 
     private void initInstructionBlocPane() {
@@ -451,19 +452,19 @@ public class RouterRunnable implements Runnable {
         return new LatLong(location.getCoordinate().getX(), location.getCoordinate().getY());
     }
 
-    private double activityTime(TourActivities tourActivity, String id){
-        for (TourActivity a : tourActivity.getActivities()){
-            if (a.getLocation().getId().equals(id)){
-                return a.getArrTime()/1000;
+    private double activityTime(TourActivities tourActivity, String id) {
+        for (TourActivity a : tourActivity.getActivities()) {
+            if (a.getLocation().getId().equals(id)) {
+                return a.getArrTime() / 1000;
             }
         }
         return 0.0;
     }
 
-    private int activityOrder(TourActivities tourActivity, String id){
+    private int activityOrder(TourActivities tourActivity, String id) {
         int i = 1;
-        for (TourActivity a : tourActivity.getActivities()){
-            if (a.getLocation().getId().equals(id)){
+        for (TourActivity a : tourActivity.getActivities()) {
+            if (a.getLocation().getId().equals(id)) {
                 return i;
             }
             i++;
