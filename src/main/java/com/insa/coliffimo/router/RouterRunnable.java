@@ -159,6 +159,7 @@ public class RouterRunnable implements Runnable {
             shipmentInfoHashMap.put(shipment.getDeliveryLocation().getId(), new ShipmentInfo(color, ShipmentInfo.ShipmentType.DELIVERY));
 
             LocalTime pickupTime = departureTime.plusSeconds((long) activityTime(route.tourActivities.get(0), shipment.getPickupLocation().getId()));
+            int pickupOrder = activityOrder(route.tourActivities.get(0), shipment.getPickupLocation().getId());
             String pickupLabel = "Pickup</p><p>" +
                     shipment.getPickupLocation().getCoordinate().getX() + ", " +
                     shipment.getPickupLocation().getCoordinate().getY() + "</p><p>" +
@@ -166,13 +167,14 @@ public class RouterRunnable implements Runnable {
                     "Départ : " + pickupTime.plusSeconds((long) (shipment.getPickupServiceTime()/1000)).format(timeFormat);
 
             LocalTime deliveryTime = departureTime.plusSeconds((long) activityTime(route.tourActivities.get(0), shipment.getDeliveryLocation().getId()));
+            int deliveryOrder = activityOrder(route.tourActivities.get(0), shipment.getDeliveryLocation().getId());
             String deliveryLabel = "Delivery</p><p>" +
                     shipment.getDeliveryLocation().getCoordinate().getX() + ", " +
                     shipment.getDeliveryLocation().getCoordinate().getY() + "</p><p>" +
                     "Arrivée : " + deliveryTime.format(timeFormat) + "</p><p>" +
                     "Départ : " + deliveryTime.plusSeconds((long) (shipment.getDeliveryServiceTime()/1000)).format(timeFormat);
-            mapView.addMarker(from(shipment.getPickupLocation()), "Pickup", new PickupMarker(hex), 1, pickupLabel, "pickup" + idMarker);
-            mapView.addMarker(from(shipment.getDeliveryLocation()), "Delivery", new DeliveryMarker(hex), 1, deliveryLabel, "delivery" + idMarker);
+            mapView.addMarker(from(shipment.getPickupLocation()), "Pickup", new PickupMarker(hex, pickupOrder), 1, pickupLabel, "pickup" + idMarker);
+            mapView.addMarker(from(shipment.getDeliveryLocation()), "Delivery", new DeliveryMarker(hex, deliveryOrder), 1, deliveryLabel, "delivery" + idMarker);
             k++;
         }
         double lastRouteTime = 0.0;
@@ -456,5 +458,16 @@ public class RouterRunnable implements Runnable {
             }
         }
         return 0.0;
+    }
+
+    private int activityOrder(TourActivities tourActivity, String id){
+        int i = 1;
+        for (TourActivity a : tourActivity.getActivities()){
+            if (a.getLocation().getId().equals(id)){
+                return i;
+            }
+            i++;
+        }
+        return 0;
     }
 }
