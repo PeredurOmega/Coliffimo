@@ -23,7 +23,7 @@
        </LeafletMapView>
    </center>
     <top>
-        <HBox alignment="TOP_CENTER">
+        <HBox alignment="TOP_CENTER" fx:id="topPane">
             <MFXButton mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0"
                        text="Charger une carte" onAction="#chooseMapFile" />
             <MFXButton mnemonicParsing="false" prefHeight="43.0" prefWidth="324.0"

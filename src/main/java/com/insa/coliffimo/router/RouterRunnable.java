@@ -66,17 +66,19 @@ public class RouterRunnable implements Runnable {
     private VBox instructionBlocPane = null;
     ScrollPane scrollPane = new ScrollPane();
     MFXButton collapseRightPanelButton;
+    HBox topPane;
 
 
     private final HashMap<String, ResponsePath> bestPathsCache = new HashMap<>();
 
-    public RouterRunnable(PlanningResource planningResource, LeafletMapView mapView, BorderPane rootPane, MFXButton collapseRightPanelButton, boolean buttonHandler, ArrayList<Shipment> localShipments) {
+    public RouterRunnable(PlanningResource planningResource, LeafletMapView mapView, BorderPane rootPane, HBox topPane, MFXButton collapseRightPanelButton, boolean buttonHandler, ArrayList<Shipment> localShipments) {
         this.planningResource = planningResource;
         this.mapView = mapView;
         this.rootPane = rootPane;
         this.collapseRightPanelButton = collapseRightPanelButton;
         this.localShipments = localShipments;
         this.buttonHandler = buttonHandler;
+        this.topPane = topPane;
     }
 
     @Override
@@ -131,6 +133,7 @@ public class RouterRunnable implements Runnable {
             scrollPane = new ScrollPane();
             scrollPane.setContent(rightPane);
             rootPane.setRight(scrollPane);
+            topPane.getChildren().remove(topPane.getChildren().size()-1);
         });
     }
 

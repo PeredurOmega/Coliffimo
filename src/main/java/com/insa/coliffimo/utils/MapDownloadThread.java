@@ -7,11 +7,13 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.input.CountingInputStream;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class MapDownloadThread implements Runnable {
@@ -35,24 +37,22 @@ public class MapDownloadThread implements Runnable {
 
         InputStream inputStream = null;
         try {
-            inputStream = new URL("https://download.geofabrik.de/europe/france/rhone-alpes-latest.osm.pbf").openStream();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        FileOutputStream fileOS = null;
-        try {
+            URL url = new URL("https://download.geofabrik.de/europe/france/rhone-alpes-latest.osm.pbf");
+            HttpURLConnection httpConnection = (HttpURLConnection) (url.openConnection());
+            long completeFileSize = httpConnection.getContentLength();
+            System.out.println(completeFileSize);
+            inputStream = url.openStream();
+            CountingInputStream countingInputStream = new CountingInputStream(inputStream);
+            System.out.println("Fin du download");
+            FileOutputStream fileOS = null;
             fileOS = new FileOutputStream(mapFilePath);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        Long i = null;
-        try {
             assert inputStream != null;
-            i = IOUtils.copyLarge(inputStream, fileOS);
+            System.out.println("debut de la copie");
+            IOUtils.copyLarge(countingInputStream, fileOS);
+            System.out.println("Fin de la copie");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(i);
         System.out.println("Téléchargement de la carte terminé");
         Platform.runLater(() -> {
             label.setText("La fenêtre va se fermer automatiquement");

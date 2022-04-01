@@ -16,7 +16,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -34,6 +36,7 @@ public class MainController implements Initializable {
     private static final String XML_MAP_RESOURCE_DIRECTORY_PATH = Paths.get("src", "main", "resources", "map").toAbsolutePath() + "/";
     private static final String XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH = Paths.get("src", "main", "resources", "planningRequest").toAbsolutePath() + "/";
 
+
     private String xmlMapFile = XML_MAP_RESOURCE_DIRECTORY_PATH + "mediumMap.xml";
     private String xmlRequestFile = XML_PLANNING_REQUEST_RESOURCE_DIRECTORY_PATH + "requestsMedium5.xml";
 
@@ -49,11 +52,15 @@ public class MainController implements Initializable {
     public BorderPane rootPane;
 
     @FXML
+    public HBox topPane;
+
+    @FXML
     public Label infoLabel;
 
     @FXML
     MFXButton collapseRightPanelButton;
 
+    ProgressIndicator itiProgress = new ProgressIndicator();
     /**
      * the MapView containing the map
      */
@@ -65,6 +72,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        itiProgress.setPrefHeight(43.0);
         mapView.setUpBridge(this);
         MapConfig initialMap = new MapConfig(Arrays.asList(MapLayer.values()),
                 new ZoomControlConfig(true, ControlPosition.BOTTOM_LEFT),
@@ -109,7 +117,8 @@ public class MainController implements Initializable {
             planningResource = new PlanningResource(mapResource, new File(xmlRequestFile));
             firstCoordinate = null;
             firstAdded = false;
-            new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
+            topPane.getChildren().add(itiProgress);
+            new Thread(new RouterRunnable(planningResource, mapView, rootPane, topPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
             buttonHandler = true;
         } else {
             if (xmlMapFile == null && xmlRequestFile != null) infoLabel.setText("Fichier de map non renseigné");
@@ -126,7 +135,8 @@ public class MainController implements Initializable {
         } else {
             mapView.addMarker(marker, "Temp delivery", new DeliveryMarker("#555555"), 1, "Temp delivery", "temp-delivery");
             additionalLocalMarkers.addShipments(firstCoordinate, marker);
-            new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
+            topPane.getChildren().add(itiProgress);
+            new Thread(new RouterRunnable(planningResource, mapView, rootPane, topPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
             firstCoordinate = null;
             firstAdded = false;
         }
@@ -136,7 +146,8 @@ public class MainController implements Initializable {
         deleteShipment(idMarker);
         firstCoordinate = null;
         firstAdded = false;
-        new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
+        topPane.getChildren().add(itiProgress);
+        new Thread(new RouterRunnable(planningResource, mapView, rootPane, topPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
     }
 
     public void deleteShipment(String idMarker) {
@@ -154,7 +165,8 @@ public class MainController implements Initializable {
 
         firstCoordinate = null;
         firstAdded = false;
-        new Thread(new RouterRunnable(planningResource, mapView, rootPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
+        topPane.getChildren().add(itiProgress);
+        new Thread(new RouterRunnable(planningResource, mapView, rootPane, topPane, collapseRightPanelButton, buttonHandler, additionalLocalMarkers.getShipments())).start();
     }
 
     private void addMovedPoint(String idMarker, double lat, double lng, String idShipment, ArrayList<Shipment> shipments) {
