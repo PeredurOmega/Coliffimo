@@ -80,9 +80,9 @@ Les lignes `request` décrivent les différentes livraisons à effecturer, qui c
 Les `pickupAddress` et `deliveryAddress` sont des id d'intersections, les `pickupDuration` et `deliveryDuration` sont les temps dont aura besoin le livreur sur place pour récupérer ou déposer la commande, en secondes.
 
 * L’utilisateur peut alors visualiser, sur la carte affichée précédemment :
-    * Les points de départ représentés par des carrés
-    * Les points d’arrivée représentés par des ronds
-    * Les couples départ/arrivée correspondants sont repérés par des couleurs identiques
+    * Les points de pickup représentés par une image d'un diable avec un colis
+    * Les points de livraison représentés par une image d'un colis avec une marque de validation
+    * Les couples pickup/livraison correspondants sont repérés par des couleurs identiques
 
 * L’utilisateur peut zoomer/dézoomer sur la carte mais aucune interaction avec les différents points n’est possible
 
@@ -100,12 +100,11 @@ Les `pickupAddress` et `deliveryAddress` sont des id d'intersections, les `picku
 
 **Spécifications fonctionnelles :**
 * L’utilisateur peut supprimer un couple de points ou en ajouter en cliquant sur la carte.
-* L’utilisateur peut spécifier une fenêtre horaire pour le passage à un point donné.
 * L'utilisateur peut cliquer sur un point de passage pour en voir les coordonnées
-* L’utilisateur peut déplacer un point de passage en drag&drop
+* L’utilisateur peut déplacer un point de passage en drag&drop sur la carte
 
 ## Diagramme de classes
-TODO: à insérer
+![Diagramme de classe](doc/ihm/ColiffimoDiagram.png?raw=true)
 
 ## Environnement technique
 Le langage utilisé pour ce projet est Java 17 également.
