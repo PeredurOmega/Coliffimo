@@ -127,5 +127,5 @@ Pour l'interface utilisateur, nous avons utilisé JavaFx et pour les tests, JUni
 
 Pour l'intégration continue, nous avons utilisé Gradle.
 
-Cette application utlise également des librairies externes : [Jsprit](https://github.com/graphhopper/jsprit) et [graphhopper](https://github.com/graphhopper/graphhopper/), développées par Grahhopper.
+Cette application utlise également des librairies externes : [Jsprit](https://github.com/graphhopper/jsprit) et [graphhopper](https://github.com/graphhopper/graphhopper/), développées par Graphhopper.
 Ces librairies nous ont permis de résoudre l'algorithme du voyageur de commerce, avec les données d'OpenStreetMap.
