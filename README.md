@@ -13,13 +13,17 @@ Elle est utlisée pour calculer le meilleur itinéraire, prenant en compte plusi
 - Diagramme de classes
 - Environnement technique
 
-## Utilisation de Coliffimo
+## Documentation utilisateur de Coliffimo
 ### Lancement de l'application
 
-Vous trouverez dans le projet GitHub les archives zip des différentes versions de l'application.
+Vous trouverez dans les releases du projet GitHub les archives zip des différentes versions de l'application.
 
-Après téléchargement, décompressez l'archive et ouvrez le dossier bin.
-Le fichier à exécuter pour lancer l'application est alors Coliffimo.bat (pour Windows) ou Coliffimo (pour Linux).
+Désarchivez le fichier zip téléchargé puis lancez l'application avec l'exécutable situé dans le dossier bin : Coliffimo.bat (pour Windows) ou Coliffimo (pour Linux).
+
+Au premier lancement, le téléchargement de la carte de Rhône-Alpes va s'effectuer.
+
+La carte a un poids d'environ 400 Mo.
+
 
 ### Calcul d'un itinéraire
 
@@ -27,7 +31,18 @@ Une fois l'application lancée, une carte s'affiche. Cependant, pour pouvoir cal
 
 Ensuite, vous aurez la possibilité de charger un programme de Pickup&delivery, contenant les informations de la course à effectuer.
 
-Le meilleur itinéraire s'affiche alors sur la carte avec les heures de passage aux diffférents points.
+Le calcul de l'itinéraire s'effectuera après l'appui sur le bouton Calculer l'itinéraire.
+
+Le meilleur itinéraire s'affiche alors sur la carte.
+
+Le panneau de droite permet de visualiser les points de passage avec les couleurs associés aux marqueurs sur la carte.
+Il est possible de visualiser les détails des déplacements entre chaque point de passage en cliquant sur les boutons Détails de l'itinéraire.
+
+Pour rajouter un couple de point Pickup&Delivery, cliquer sur la carte à deux reprises avec le premier clic associé au point de pickup et le deuxième clic associé au point de livraison.
+
+Pour supprimer un couple de point Pickup&Delivery, cliquer sur un des deux points puis cliquer sur le bouton Supprimer.
+
+Il est également possible de déplacer un point sur la carte en effectuant un drag & drop du marqueur.
 
 ## Spécifications
 
