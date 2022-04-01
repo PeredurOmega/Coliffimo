@@ -35,7 +35,7 @@ public class MapDownloadThread implements Runnable {
 
         InputStream inputStream = null;
         try {
-            inputStream = new URL("http://download.geofabrik.de/europe/france/rhone-alpes-latest.osm.pbf").openStream();
+            inputStream = new URL("https://download.geofabrik.de/europe/france/rhone-alpes-latest.osm.pbf").openStream();
         } catch (IOException e) {
             e.printStackTrace();
         }
